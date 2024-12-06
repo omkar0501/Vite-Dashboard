@@ -1,0 +1,98 @@
+@import "../../Css/DashboardAll.css";
+
+/* --------bar chart --------------- */
+.bar-chart-title {
+  color: var(--primaryColor2);
+}
+.total-growth {
+  color: var(--primaryColor1);
+  font-weight: bolder !important;
+}
+
+.recharts-legend-item .recharts-surface {
+  border-radius: 50%;
+}
+
+.recharts-legend-item .recharts-symbols {
+  border-radius: 50%;
+}
+
+/* ---------line chart---------------------------- */
+.line-chart-paper {
+  background-color: var(--backgroundColor2) !important;
+  border-radius: 10%;
+  box-shadow: none !important;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.recharts-line {
+  stroke: var(--primaryColor1);
+}
+.recharts-line-dot {
+  stroke: var(--primaryColor1);
+}
+.recharts-tooltip-label {
+  color: var(--textHoverColor);
+  font-size: smaller;
+}
+.recharts-tooltip-value {
+  color: var(--primaryColor1);
+  font-size: smaller;
+}
+.line-chart-title {
+  color: var(--primaryColor2);
+}
+
+.recharts-line-curve {
+  stroke: var(--textHoverColor);
+}
+.line-chart-total-profit {
+  color: rgb(95, 93, 93);
+}
+.growthrate {
+  display: flex;
+  float: left;
+  font-size: smaller;
+}
+
+/* .overflow-auto {
+  overflow-y: auto;
+  max-height: 100%;
+} */
+
+/* ----------responsive----------------- */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 10px;
+  }
+  .bar-chart-title {
+    font-size: 1.6rem;
+  }
+  .line-chart-title {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-container {
+    padding: 5px;
+  }
+  .bar-chart-title {
+    font-size: 1.4rem;
+  }
+  .line-chart-title {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .dashboard-container {
+    padding: 3px;
+  }
+  .bar-chart-title {
+    font-size: 1.2rem;
+  }
+  .line-chart-title {
+    font-size: 1.2rem;
+  }
+}

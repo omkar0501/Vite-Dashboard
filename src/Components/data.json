@@ -1,0 +1,30 @@
+[
+    {
+      "id": 1,
+      "name": "Sanket Gaware",
+      "age":23,
+      "hobby":"Swimming",
+      "img":"sanket.jpeg"
+    },
+    {
+      "id": 2,
+      "name": "Nikita Ghodake",
+      "age":23,
+      "hobby":"singing",
+      "img":"client.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Kalyani Jadhav",
+      "age":23,
+      "hobby":"busy",
+      "img":"xyz.jpeg"
+    },
+    {
+      "id": 4,
+      "name": "Hrutik Bonde",
+      "age":23,
+      "hobby":"flattering",
+      "img":"facedetection.jpg"
+    }
+  ]

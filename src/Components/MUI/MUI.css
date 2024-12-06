@@ -1,0 +1,33 @@
+
+@keyframes animates {
+    0% {
+        width: 0;
+        height: 0;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: black;
+    }
+
+    50% {
+        width: 0;
+        height: 100%;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: black;
+        border-left-color: black;
+    }
+
+    100% {
+        width: 200%;
+        height: 200%;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: black;
+        border-left-color: black;
+    }
+}
+
+/* .profilepaper:hover{
+    animation: animates 1s ease-in;
+} */

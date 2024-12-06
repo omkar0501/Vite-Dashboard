@@ -1,0 +1,168 @@
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities; */
+
+
+
+/* -------------------navbar------------------- */
+
+.nav-bgc{
+    background-color: rgb(250, 247, 247);
+    font-family:'Times New Roman', Times, serif;
+    font-weight: bold;
+    border-radius: 100px;
+    /* background: transparent; */
+
+}
+.nav-i{
+    font-size: medium;
+    border: 1px solid;
+    border-radius: 20px;
+    color: black;
+    margin: 0 10px 0 10px;
+    padding:15px 10px 15px 10px;
+    width: 7rem;
+}
+
+.sanket-icon{
+    width:3rem;
+    border-radius: 100px;
+}
+/* --------------- about----------------------------- */
+.mypic{
+    /* border-radius: 100px; */
+    width: 90%;
+    border: 0.4px solid rgb(212, 209, 209);
+}
+.myintro{
+    margin-top: 3px;
+    float: left ;
+    font-weight: 1000;
+    color: rgb(156, 154, 154);
+    letter-spacing: 3px;    
+}
+.head1-am{
+    float: left;
+    font-weight: bold;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.introtext{
+    color: rgb(131, 130, 130);
+    font-size: large;
+    text-align: justify;
+    word-wrap: break-word;
+    line-height:30px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.key{
+    color: black;
+    font-size: large;
+    font-weight: bold;
+    text-align: left;
+    
+}
+.value{
+    color: #b1b493;
+    font-weight: bolder;
+    font-size: medium;
+    display: flex;
+    justify-content: left;
+    text-align: left;
+    letter-spacing: 0.5px;
+}
+.hobby-icons{
+    background-color: rgb(211, 208, 208);
+    margin: 0px;
+    border-radius: 0%;
+    display: flex;
+    align-items: center;
+}
+
+
+/* ------------------------ Home --------------------- */
+.home-hire{
+    background-color: #030303;
+    border: 2px solid #030303;
+    font-weight: 800;
+    font-size: larger;
+    background: transparent;
+    background: linear-gradient(to left, white 50%, #030303 50%);
+    background-size: 200% 100%;
+    background-position: left bottom;
+    transition: all .4s ease-out;
+    width: 50%;
+    height: 150%;
+}
+.home-download{
+    background: white;
+    font-weight: 1000;
+    font-size: larger;
+    width: 100%;
+    border: 2px solid;
+    background: transparent;
+    border-color: #030303;
+    color: #030303;
+    background: linear-gradient(to right, #030303 50%, white 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all .4s ease-out;
+    height: 150%;
+}
+:hover.home-hire{
+    /* background:  #030303; */
+    border-color: #030303;
+    color: #030303;
+    background-position: right bottom;
+    background-color: white;
+   
+}
+:hover.home-download{
+        color: white;
+        background-position: left bottom;
+        border-color: #030303;
+}
+
+/* -------------------- projects------------------------------ */
+.project-div{
+    text-align: justify;
+    padding: 18px;
+}
+.project-p1{
+    letter-spacing: 3px;
+    color: rgb(131, 130, 130);
+    font-weight: bold;
+}
+.project-p2{
+    font-size: 20px;
+    font-weight: bolder;
+    color: #030303;
+}
+.project-p3{
+    font-weight:500;
+}
+.projects{
+    color: #030303;
+    font-weight: 1000;
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+
+
+@media screen and (max-width:450px) {
+    .pimg1{
+        max-height: max-content;
+        display: flex;
+        justify-content: center;
+    }
+    .pimg2{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .pimg3{
+        
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    
+}

@@ -1,0 +1,615 @@
+import * as React from "react";
+import { styled, useTheme } from "@mui/material/styles";
+import { MuiBox } from "../../../MUIComponents/Mui";
+import CssBaseline from "@mui/material/CssBaseline";
+import MuiAppBar from "@mui/material/AppBar";
+import MenuIcon from "@mui/icons-material/Menu";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+// import SearchIcon from "@mui/icons-material/Search";
+import {
+  MuiAvatar,
+  MuiBadge,
+  MuiDivider,
+  MuiDrawer,
+  MuiIconButton,
+  // MuiInputBase,
+  // MuiList,
+  // MuiListItem,
+  // MuiListItemButton,
+  // MuiListItemIcon,
+  // MuiListItemText,
+  MuiMenu,
+  MuiMenuItem,
+  // MuiSwitch,
+  MuiThemeProvider,
+  MuiToolbar,
+  MuiTypography,
+} from "../../../MUIComponents/Mui";
+// import { alpha } from "@mui/material";
+// import { FaHireAHelper } from "react-icons/fa";
+import { Link, Outlet, useNavigate } from "react-router-dom";
+import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
+import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutlineOutlined";
+// import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+// import PersonPinOutlinedIcon from "@mui/icons-material/PersonPinOutlined";
+// import HistoryEduOutlinedIcon from "@mui/icons-material/HistoryEduOutlined";
+// import NotesIcon from "@mui/icons-material/Notes";
+// import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
+import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
+import ChevronLeftOutlinedIcon from "@mui/icons-material/ChevronLeftOutlined";
+// import { DarkModeSwitch } from "./DarkModeSwitch";
+import { DashboardMain } from "./DashboardMain";
+import { Search } from "./Search";
+import { Lists } from "./Lists";
+import { darkTheme, lightTheme } from "../Theme/Theme";
+import { DarkModeSwitch } from "./DarkModeSwitch";
+
+const drawerWidth = 240;
+
+// const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
+//   ({ theme }) => ({
+//     // position:'relative',
+//     flexGrow: 1,
+//     padding: theme.spacing(3),
+//     transition: theme.transitions.create("margin", {
+//       easing: theme.transitions.easing.sharp,
+//       duration: theme.transitions.duration.leavingScreen,
+//     }),
+//     marginLeft: `-${drawerWidth}px`,
+//     [theme.breakpoints.down("up")]: {},
+//     variants: [
+//       {
+//         transition: theme.transitions.create(["margin", "width"], {
+//           easing: theme.transitions.easing.sharp,
+//           duration: theme.transitions.duration.leavingScreen,
+//         }),
+//         props: ({ open }) => open,
+//         style: {
+//           transition: theme.transitions.create("margin", {
+//             easing: theme.transitions.easing.easeOut,
+//             duration: theme.transitions.duration.enteringScreen,
+//           }),
+//           marginLeft: 0,
+//         },
+//       },
+//     ],
+//   })
+// );
+
+const AppBar = styled(MuiAppBar, {
+  shouldForwardProp: (prop) => prop !== "open",
+})(({ theme }) => ({
+  transition: theme.transitions.create(["margin", "width"], {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  variants: [
+    {
+      props: ({ open }) => open,
+      style: {
+        // width:'100%',
+        width: `calc(100% - ${drawerWidth}px)`,
+        marginLeft: `${drawerWidth}px`,
+        transition: theme.transitions.create(["margin", "width"], {
+          easing: theme.transitions.easing.easeOut,
+          duration: theme.transitions.duration.enteringScreen,
+        }),
+      },
+    },
+  ],
+}));
+
+// const Search = styled("div")(({ theme }) => ({
+//   position: "relative",
+
+//   borderRadius: theme.shape.borderRadius,
+//   backgroundColor: alpha(theme.palette.common.black, 0.07),
+//   "&:hover": {
+//     backgroundColor: alpha(theme.palette.common.black, 0.15),
+//   },
+//   "&:focus": {
+//     backgroundColor: alpha(theme.palette.common.black, 0.9),
+//   },
+//   marginRight: theme.spacing(1),
+//   marginLeft: 0,
+//   width: "auto",
+//   [theme.breakpoints.down("md")]: {
+//     marginRight: theme.spacing(-1),
+//   },
+//   [theme.breakpoints.up("sm")]: {
+//     marginLeft: theme.spacing(3),
+//   },
+// }));
+
+// const SearchIconWrapper = styled("div")(({ theme }) => ({
+//   padding: theme.spacing(0, 2),
+//   height: "100%",
+//   position: "absolute",
+//   pointerEvents: "none",
+//   display: "flex",
+//   alignItems: "center",
+//   justifyContent: "center",
+//   [theme.breakpoints.down("md")]: {
+//     padding: theme.spacing(0, 0.5),
+//   },
+// }));
+
+// const StyledInputBase = styled(MuiInputBase)(({ theme }) => ({
+//   color: "inherit",
+//   "& .MuiInputBase-input": {
+//     padding: theme.spacing(1, 1, 1, 0),
+//     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+//     // transition: theme.transitions.create('width'),
+//     transition: "all .3s ease-out",
+//     width: "100%",
+//     [theme.breakpoints.down("md")]: {
+//       paddingLeft: `calc(1em + ${theme.spacing(0.5)})`,
+//       "&::placeholder": {
+//         fontSize: "small",
+//         padding: `calc(1em + ${theme.spacing(0.1)})`,
+//       },
+//       padding: theme.spacing(1, 1, 1, 1),
+//     },
+//     [theme.breakpoints.up("md")]: {
+//       width: "12ch",
+//       "&:focus": {
+//         width: "20ch",
+//         boxShadow: "inset 0 0 0 1px 	#808080",
+//         borderRadius: "5px",
+//       },
+//     },
+//   },
+// }));
+
+const DrawerHeader = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  padding: theme.spacing(0, 1),
+  ...theme.mixins.toolbar,
+  justifyContent: "flex-end",
+  [theme.breakpoints.down("md")]: {
+    paddingTop: 9,
+    marginBottom: 7,
+  },
+}));
+
+// const MaterialUISwitch = styled(MuiSwitch)(({ theme }) => ({
+//   width: 62,
+//   height: 34,
+//   padding: 7,
+//   "& .MuiSwitch-switchBase": {
+//     margin: 1,
+//     padding: 0,
+//     transform: "translateX(6px)",
+//     "&.Mui-checked": {
+//       color: "#fff",
+//       transform: "translateX(22px)",
+//       "& .MuiSwitch-thumb:before": {
+//         content: "''",
+//         backgroundImage: `url('sun.svg')`,
+//         backgroundRepeat: "no-repeat",
+//         backgroundPosition: "center",
+//         borderRadius: "100px",
+//         width: "100%",
+//         height: "100%",
+//         position: "absolute",
+//       },
+//       "& + .MuiSwitch-track": {
+//         opacity: 1,
+//         backgroundColor: "black",
+//         ...theme.applyStyles("dark", {
+//           backgroundColor: "#8796A5",
+//         }),
+//       },
+//     },
+//   },
+//   "& .MuiSwitch-thumb": {
+//     backgroundColor: "black",
+//     width: 32,
+//     height: 32,
+//     "&::before": {
+//       content: "''",
+//       backgroundImage: `url('/night.svg')`,
+//       backgroundRepeat: "no-repeat",
+//       backgroundPosition: "center",
+//       width: "99%",
+//       height: "97%",
+//       position: "absolute",
+//     },
+//     ...theme.applyStyles("dark", {
+//       backgroundColor: "black",
+//     }),
+//   },
+//   "& .MuiSwitch-track": {
+//     opacity: 1,
+//     backgroundColor: "black",
+//     borderRadius: 20 / 2,
+//     ...theme.applyStyles("dark", {
+//       backgroundColor: "#8796A5",
+//     }),
+//   },
+// }));
+
+// function MyApp() {
+//   const { mode, setMode } = useColorScheme();
+//   function changeMode() {
+//     if (mode) setMode("system");
+//     if (mode === "system") setMode("dark");
+//   }
+//   return <DarkModeSwitch onChange={changeMode}></DarkModeSwitch>;
+// }
+
+// const darkTheme = createTheme({
+//   colorSchemes: {
+//     dark: true,
+//   },
+// });
+
+function Dashboard() {
+  React.useEffect(() => {
+    if (!localStorage.getItem("Name")) {
+      navigate("/unauthorized");
+      // alert("Unauthorized user ! Please Login")
+    }
+  }, []);
+
+  function Logout() {
+    localStorage.removeItem("Name");
+    navigate("/");
+  }
+
+  const theme = useTheme();
+  const [open, setOpen] = React.useState(true);
+  // const [bgcolor] = React.useState("white");
+
+  // const isMobile = useMediaQuery();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  // const changestyle = React.useState("");
+  const navigate = useNavigate();
+  // React.useEffect(() => {
+  //   if (isMobile) {
+  //     setOpen(false);
+  //   } else {
+  //     setOpen(true);
+  //   }
+  // }, [isMobile]);
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+    // setmOpen(false);
+  };
+
+  const handleMenuOpen = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  // const HandleStyleChange =(name)=>{
+  // React.useEffect(()=>{
+
+  //     // { name == 'home' ? setChangestyle('l1') : ''}
+  //     // { name == 'about' ? setChangestyle('l2') : ''}
+  //     // const lid = document.getElementById('#l1');
+  //     // document.getElementById('#l1').style.backgroundColor='#635BFF';
+  //     // console.log(lid);
+
+  // },[name]);
+
+  // }
+  const [darkMode, setDarkMode] = React.useState(
+    localStorage.getItem("Mode") || "light"
+  );
+  const [dashTheme, setDashTheme] = React.useState(lightTheme);
+  const toggleDarkMode = () => {
+    const newMode = darkMode === "light" ? "dark" : "light";
+    setDarkMode(newMode);
+    localStorage.setItem("Mode", newMode);
+  };
+
+  React.useEffect(() => {
+    const storedMode = localStorage.getItem("Mode");
+    if (storedMode) {
+      setDarkMode(storedMode);
+    }
+  }, []);
+  React.useEffect(() => {
+    setDashTheme(darkMode === "dark" ? darkTheme : lightTheme);
+  }, [darkMode]);
+  return (
+    <MuiThemeProvider theme={dashTheme}>
+      <MuiBox sx={{ display: "flex" }}>
+        <CssBaseline />
+        <AppBar
+          className="appbar"
+          sx={{
+            // backgroundColor: `${bgcolor}`,
+            // color: "black",
+            [theme.breakpoints.down("md")]: { open: { close } },
+          }}
+          position="fixed"
+          open={open}
+        >
+          <MuiToolbar>
+            <MuiIconButton
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              sx={[
+                {
+                  mr: 2,
+                },
+                open && { display: "none" },
+              ]}
+            >
+              <MenuIcon />
+            </MuiIconButton>
+
+            <MuiBox sx={{ flexGrow: 1 }} />
+            {/* <Search>
+              <SearchIconWrapper>
+                <SearchIcon
+                  sx={{
+                    [theme.breakpoints.down("md")]: {
+                      width: "16px",
+                    },
+                  }}
+                />
+              </SearchIconWrapper>
+              <StyledInputBase placeholder="Search…" />
+            </Search> */}
+            <DarkModeSwitch
+              darkMode={darkMode}
+              toggleDarkMode={toggleDarkMode}
+            />
+            <Search />
+            <MuiBox sx={{ display: { xs: "flex", md: "flex" } }}>
+              <MuiIconButton size="large" color="gray">
+                <MuiBadge color="error">
+                  <ChatBubbleOutlineOutlinedIcon />
+                </MuiBadge>
+              </MuiIconButton>
+              <MuiIconButton size="large" color="gray">
+                <MuiBadge color="error">
+                  <NotificationsOutlinedIcon />
+                </MuiBadge>
+              </MuiIconButton>
+              <MuiIconButton
+                size="large"
+                edge="end"
+                onClick={handleMenuOpen}
+                color="inherit"
+              >
+                <MuiAvatar src="/sanket.jpeg" />
+              </MuiIconButton>
+              <MuiMenu
+                anchorEl={anchorEl}
+                open={Boolean(anchorEl)}
+                onClose={handleMenuClose}
+              >
+                <MuiMenuItem
+                  sx={{ color: "black" }}
+                  onClick={handleDrawerClose}
+                >
+                  {" "}
+                  <a href="/dashboard/profile">
+                    <MuiTypography sx={{ color: "black" }}>
+                      Profile
+                    </MuiTypography>
+                  </a>
+                </MuiMenuItem>
+                <MuiMenuItem>Account</MuiMenuItem>
+                <MuiMenuItem onClick={Logout}>Log Out</MuiMenuItem>
+              </MuiMenu>
+            </MuiBox>
+          </MuiToolbar>
+        </AppBar>
+        <MuiDrawer
+          sx={{
+            width: drawerWidth,
+            flexShrink: 0,
+            "& .MuiDrawer-paper": {
+              width: drawerWidth,
+              boxSizing: "border-box",
+              color: "gray",
+              backgroundColor: "#212636",
+            },
+          }}
+          variant="persistent"
+          anchor="left"
+          open={open}
+        >
+          <DrawerHeader>
+            <DashboardOutlinedIcon color="#cccccc" className="m-2" size="2vw" />
+            <MuiTypography
+              as={Link}
+              to="/dashboard/main"
+              sx={{
+                display: "flex",
+                mx: "auto",
+                fontWeight: "bold",
+                letterSpacing: 1,
+                color: "#cccccc",
+                "&:hover": { color: "white" },
+                "&:active": { color: "gray" },
+              }}
+            >
+              My Dashboard
+            </MuiTypography>
+            <MuiIconButton onClick={handleDrawerClose}>
+              {theme.direction === "ltr" ? (
+                <ChevronLeftOutlinedIcon sx={{ color: "white" }} />
+              ) : (
+                <ChevronRightIcon color="white" />
+              )}
+            </MuiIconButton>
+          </DrawerHeader>
+          <MuiDivider sx={{ borderColor: "white" }} />
+          {/* <MuiList
+            sx={{
+              ".list-item": {
+                borderRadius: "20px 0 0 20px",
+                margin: "10px 0 10px 0px",
+                background:
+                  "linear-gradient(to left, #635BFF 50%, #212636 50%)",
+                backgroundSize: "200% 100%",
+                transition: "all .4s ease-out",
+                "&:hover": {
+                  backgroundColor: "#635BFF",
+                  color: "white",
+                  backgroundPosition: "right bottom",
+                },
+              },
+            }}
+          >
+            <MuiListItem className="list-item" id="l1" disablePadding>
+              <MuiListItemButton as={NavLink} to="/dashboard/home">
+                <MuiListItemIcon>
+                  <HomeOutlinedIcon sx={{ color: "#cccccc" }} size="2.3vw" />
+                </MuiListItemIcon>
+                <MuiListItemText>
+                  <MuiTypography
+                    sx={{
+                      fontWeight: "bold",
+                      fontSize: "small",
+                      color: "#cccccc",
+                    }}
+                  >
+                    Home
+                  </MuiTypography>
+                </MuiListItemText>
+              </MuiListItemButton>
+            </MuiListItem>
+            <MuiDivider sx={{ mx: "15px" }} />
+            <MuiListItem className="list-item" id={changestyle} disablePadding>
+              <MuiListItemButton as={NavLink} to="/dashboard/about">
+                <MuiListItemIcon>
+                  <PersonPinOutlinedIcon sx={{ color: "#cccccc" }} size="2vw" />
+                </MuiListItemIcon>
+                <MuiListItemText>
+                  <MuiTypography
+                    sx={{
+                      fontWeight: "bold",
+                      fontSize: "small",
+                      color: "#cccccc",
+                    }}
+                  >
+                    About
+                  </MuiTypography>
+                </MuiListItemText>
+              </MuiListItemButton>
+            </MuiListItem>
+            <MuiDivider sx={{ mx: "15px" }} />
+            <MuiListItem className="list-item" disablePadding>
+              <MuiListItemButton as={NavLink} to="/dashboard/projects">
+                <MuiListItemIcon>
+                  <HistoryEduOutlinedIcon
+                    sx={{ color: "#cccccc" }}
+                    size="2vw"
+                  />
+                </MuiListItemIcon>
+                <MuiListItemText>
+                  <MuiTypography
+                    sx={{
+                      fontWeight: "bold",
+                      fontSize: "small",
+                      color: "#cccccc",
+                    }}
+                  >
+                    Projects
+                  </MuiTypography>
+                </MuiListItemText>
+              </MuiListItemButton>
+            </MuiListItem>
+            <MuiDivider sx={{ mx: "15px" }} />
+            <MuiListItem className="list-item" disablePadding>
+              <MuiListItemButton as={NavLink} to="/dashboard/notes">
+                <MuiListItemIcon>
+                  <NotesIcon sx={{ color: "#cccccc" }} size="2vw" />
+                </MuiListItemIcon>
+                <MuiListItemText>
+                  <MuiTypography
+                    sx={{
+                      fontWeight: "bold",
+                      fontSize: "small",
+                      color: "#cccccc",
+                    }}
+                  >
+                    Notes
+                  </MuiTypography>
+                </MuiListItemText>
+              </MuiListItemButton>
+            </MuiListItem>
+            <MuiDivider sx={{ mx: "15px" }} />
+            <MuiListItem className="list-item" disablePadding>
+              <MuiListItemButton onClick={() => navigate("/dashboard/users")}>
+                <MuiListItemIcon>
+                  <AccountCircleOutlinedIcon
+                    sx={{ color: "#cccccc" }}
+                    size="2vw"
+                  />
+                </MuiListItemIcon>
+                <MuiListItemText>
+                  <MuiTypography
+                    sx={{
+                      fontWeight: "bold",
+                      fontSize: "small",
+                      color: "#cccccc",
+                    }}
+                  >
+                    Account
+                  </MuiTypography>
+                </MuiListItemText>
+              </MuiListItemButton>
+            </MuiListItem>
+          </MuiList>
+          <MuiDivider sx={{ borderColor: "white" }} />
+          <MuiList
+            sx={{
+              ".list-item1": {
+                background: "linear-gradient(to left, white 35%, #212636 50%)",
+                backgroundSize: "200% 100%",
+                transition: "all .4s ease-out",
+                color: "#cccccc",
+                "&:hover": {
+                  backgroundColor: "#635BFF",
+                  color: "black",
+                  backgroundPosition: "right bottom",
+                  borderRadius: "100px 0 0 100px",
+                },
+              },
+            }}
+          >
+            <MuiListItem className="list-item1" disablePadding>
+              <MuiListItemButton>
+                <MuiListItemIcon>
+                  <FaHireAHelper color="#cccccc" />
+                </MuiListItemIcon>
+                <MuiListItemText>Hire Me</MuiListItemText>
+              </MuiListItemButton>
+            </MuiListItem>
+            <MuiListItem disablePadding>
+              <MuiListItemButton sx={{ ml: -2 }}>
+                <MuiListItemIcon>
+                  <MyApp />
+                </MuiListItemIcon>
+              </MuiListItemButton>
+            </MuiListItem>
+          </MuiList> */}
+          <Lists />
+        </MuiDrawer>
+
+        <DashboardMain sx={{}} open={open}>
+          <Outlet />
+        </DashboardMain>
+      </MuiBox>
+    </MuiThemeProvider>
+  );
+}
+export default Dashboard;

@@ -1,0 +1,29 @@
+@import "../../Css/DashboardAll.css";
+.list-item {
+  width: 100%;
+  color: #364152;
+  border-radius: 20px 0px 0px 20px;
+  margin: 5px 10px 5px 0px;
+  background: none;
+}
+
+.list-item-icon {
+  color: #364152;
+}
+.list-item-text {
+  color: #364152;
+  font-size: small;
+}
+.list-item-title {
+  color: #121926;
+  display: flex;
+}
+
+.list-item:hover {
+  background-color: #ede7f6 !important;
+  .list-item-icon,
+  .list-item-text {
+    color: #5e35b1;
+    font-weight: bold;
+  }
+}
