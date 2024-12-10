@@ -96,3 +96,59 @@
     font-size: 1.2rem;
   }
 }
+.paper-bg-page .MuiPaper-root{
+  color: whitesmoke !important;
+  transition: background-color 0.3s ease;
+  border-radius: 10px !important;
+  box-shadow: 0px 0px 10px rgba(136, 134, 134, 0.2);
+  cursor: pointer;
+  padding: 10px;
+  margin: 10px;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+
+  overflow-y: auto;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-wrap: break-word;
+
+}
+.paper-bg-page .paper-bg2{
+  background: linear-gradient(45deg, #9cc3e2, #0d86e9) !important;
+  .text2{
+    color: #616161
+    ;
+    font-weight: bold;
+  }
+  .text1{
+    font-size: x-large;
+    font-weight: bolder;
+  }
+}
+.paper-bg-page .paper-bg1{
+  background: linear-gradient(45deg, #631ce9, #c274f3) !important;
+  .text2{
+    color: #bdbdbd
+    ;
+    font-weight: bold;
+  }
+  .text1{
+    font-size: x-large;
+    font-weight: bolder;
+  }
+}
+.text1,.text2{
+  display: flex;
+}
+.CardIcon1{
+  border-radius: 10px !important;
+  padding: 15px !important;
+  background-color: #b388ff !important;
+}
+.CardIcon2{
+  border-radius: 10px !important;
+  padding: 15px !important;
+  background-color: #82b1ff !important;
+}
