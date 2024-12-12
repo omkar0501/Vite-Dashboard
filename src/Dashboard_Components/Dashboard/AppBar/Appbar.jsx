@@ -1,5 +1,12 @@
 import "../../Css/DashboardAll.css";
-import { AppBar,  Menu, styled, useMediaQuery, useTheme } from "@mui/material";
+import {
+  AppBar,
+  Menu,
+  MenuItem,
+  styled,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import {
   MuiAvatar,
   MuiBadge,
@@ -15,8 +22,13 @@ import TranslateIcon from "@mui/icons-material/Translate";
 import SearchComponent from "./SearchComponent";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import MenuIcon from "@mui/icons-material/Menu";
-import { TurnLeft } from "@mui/icons-material";
-import DrawerList from '../Drawer/DrawerList'
+import {
+  ExitToApp,
+  AccountCircleRounded,
+  SocialDistance,
+  TurnLeft,
+} from "@mui/icons-material";
+import DrawerList from "../Drawer/DrawerList";
 import { useEffect, useState } from "react";
 
 const drawerWidth = 240;
@@ -58,17 +70,27 @@ const MuiAppBar = styled(AppBar, {
   ],
 }));
 
-export const Appbar = ( ) => {
+export const Appbar = () => {
   const theme = useTheme();
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(true);
   // const [close, setClose] = useState(false);
   const isMd = useMediaQuery(theme.breakpoints.up("md"));
-  const handleDrawerToggle=()=>{
+  const handleDrawerToggle = () => {
     setOpen(!open);
-  }
-  useEffect(()=>{
+  };
+  useEffect(() => {
     setOpen(true);
-  },[isMd])
+  }, [isMd]);
+
+  const [anchorEl, setAnchorEl] = useState(false);
+  const open1 = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(false);
+  };
+
   return (
     <>
       <MuiAppBar
@@ -89,12 +111,11 @@ export const Appbar = ( ) => {
         >
           <MuiIconButton
             onClick={handleDrawerToggle}
-            
             sx={{
               backgroundColor: "#ede7f6",
               borderRadius: "25%",
-              width:'5%',
-              me:2,
+              width: "5%",
+              me: 2,
               display: "none",
               "&:hover": {
                 backgroundColor: "#5e35b1",
@@ -104,14 +125,13 @@ export const Appbar = ( ) => {
                 float: "left",
               },
               [theme.breakpoints.down("sm")]: {
-                width:'12%',
-                me:1,
-
+                width: "12%",
+                me: 1,
               },
             }}
           >
             <MenuIcon
-              size='small'
+              size="small"
               sx={{
                 color: "rgb(94, 53, 177)",
                 "&:hover": {
@@ -134,9 +154,9 @@ export const Appbar = ( ) => {
                 "&:hover": {
                   backgroundColor: "#5e35b1",
                 },
-                [theme.breakpoints.down('sm')]:{
-                  display:'none'
-                }
+                [theme.breakpoints.down("sm")]: {
+                  display: "none",
+                },
               }}
             >
               <MuiBadge>
@@ -161,9 +181,9 @@ export const Appbar = ( ) => {
                 "&:hover": {
                   backgroundColor: "#2196f3",
                 },
-                [theme.breakpoints.down('sm')]:{
-                  display:'none'
-                }
+                [theme.breakpoints.down("sm")]: {
+                  display: "none",
+                },
               }}
             >
               <MuiBadge>
@@ -188,9 +208,9 @@ export const Appbar = ( ) => {
                 "&:hover": {
                   backgroundColor: "#5e35b1",
                 },
-                [theme.breakpoints.down('sm')]:{
-                  display:'none'
-                }
+                [theme.breakpoints.down("sm")]: {
+                  display: "none",
+                },
               }}
             >
               <WifiTetheringIcon
@@ -207,6 +227,11 @@ export const Appbar = ( ) => {
               className="AppBarIconBtn2"
               size="small"
               color="inherit"
+              id="basic-button"
+              aria-controls={open1 ? "basic-menu" : undefined}
+              aria-haspopup="true"
+              aria-expanded={open1 ? "true" : undefined}
+              onClick={handleClick}
               sx={{
                 borderRadius: "15%",
                 backgroundColor: "#e3f2fd",
@@ -218,10 +243,17 @@ export const Appbar = ( ) => {
                 },
               }}
             >
-              <MuiAvatar sx={{ float: "left", p: "5px",[theme.breakpoints.down('sm')]:{
-                p:'0px',
-                float:'right',
-              } }} src="/sanket.jpg" />
+              <MuiAvatar
+                sx={{
+                  float: "left",
+                  p: "5px",
+                  [theme.breakpoints.down("sm")]: {
+                    p: "0px",
+                    float: "right",
+                  },
+                }}
+                src="/sanket.jpg"
+              />
               <SettingsOutlinedIcon
                 className="AppBarIcon2"
                 sx={{
@@ -231,12 +263,44 @@ export const Appbar = ( ) => {
                   "&:hover": {
                     color: "whitesmoke",
                   },
-                  [theme.breakpoints.down('sm')]:{
+                  [theme.breakpoints.down("sm")]: {
                     // display:'none',
-                  }
+                  },
                 }}
               />
             </MuiIconButton>
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open1}
+              onClose={handleClose}
+              MenuListProps={{
+                "aria-labelledby": "basic-button",
+              }}
+              sx={{ width: 300 }}
+            >
+              <MenuItem
+                onClick={handleClose}
+                sx={{ paddingLeft: 2, paddingRight: 2 }}
+              >
+                <AccountCircleRounded sx={{ marginRight: 2 }} />
+                <MuiTypography>Account Settings</MuiTypography>
+              </MenuItem>
+              <MenuItem
+                onClick={handleClose}
+                sx={{ paddingLeft: 2, paddingRight: 2 }}
+              >
+                <SocialDistance sx={{ marginRight: 2 }} />
+                <MuiTypography>Social Profile</MuiTypography>
+              </MenuItem>
+              <MenuItem
+                onClick={handleClose}
+                sx={{ paddingLeft: 2, paddingRight: 2 }}
+              >
+                <ExitToApp sx={{ marginRight: 2 }} />
+                <MuiTypography>Logout</MuiTypography>
+              </MenuItem>
+            </Menu>
           </MuiBox>
         </MuiToolbar>
       </MuiAppBar>
@@ -282,7 +346,8 @@ export const Appbar = ( ) => {
             <span className="mx-1" />
             BERRY
           </MuiTypography>
-          <MuiIconButton className='MenuCloseSection'
+          <MuiIconButton
+            className="MenuCloseSection"
             onClick={handleDrawerToggle}
             sx={{
               backgroundColor: "#ede7f6",
@@ -290,7 +355,7 @@ export const Appbar = ( ) => {
               width: "auto",
               height: "auto",
               color: "#5e35b1",
-              m:1,
+              m: 1,
               display: "none",
               "&:hover": {
                 backgroundColor: "#5e35b1",
@@ -302,7 +367,7 @@ export const Appbar = ( ) => {
             }}
           >
             <TurnLeft
-            size='small'
+              size="small"
               className="MenuCloseIcon"
               sx={{
                 color: "#5e35b1",

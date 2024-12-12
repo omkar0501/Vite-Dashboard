@@ -54,7 +54,7 @@ const BarChartComponent = () => {
         <BarChart
           data={bardata}
           margin={{ top: 2, right: 3, left: 2, bottom: 5 }}
-          // barCategoryGap="5%"
+          // barCategoryGap="100%"
           barSize={20}
         >
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
@@ -67,18 +67,20 @@ const BarChartComponent = () => {
             dataKey="loss"
             stackId="a"
             fill="rgba(30, 136, 229, 0.85)"
-            radius={[5, 5, 0, 0]}
+            radius={[0, 0, 0, 0]}
           />
+
           {/*  <Bar
               dataKey="investment"
               stackId="a"
               fill="rgba(144, 202, 249, 0.85)"
-            />
-            <Bar
-              dataKey="maintenance"
-              stackId="a"
-              fill="rgba(237, 231, 246, 999)"
-            /> */}
+            />*/}
+          <Bar
+            dataKey="maintenance"
+            stackId="a"
+            fill="rgba(127, 199, 999, 999)"
+            radius={[5, 5, 0, 0]}
+          />
         </BarChart>
       </ResponsiveContainer>
     </Paper>

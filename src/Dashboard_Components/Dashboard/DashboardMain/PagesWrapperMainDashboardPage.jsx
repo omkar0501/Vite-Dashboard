@@ -15,8 +15,8 @@ export const PageWarpperMainDashboardPage = (props) => {
       }),
       marginLeft: `${drawerWidth}px`,
       [theme.breakpoints.down("md")]: {
-        margin:'65px 0px 0px 0px',
-        padding:'0px',
+        margin: "65px 0px 0px 0px",
+        padding: "0px",
       },
       variants: [
         {
@@ -43,7 +43,8 @@ export const PageWarpperMainDashboardPage = (props) => {
         sx={{
           backgroundColor: "#EEF2F6",
           // borderRadius: "20px 20px 20px 20px",
-          mt:'60px',
+          mt: "40px",
+
           width: `calc(100% - ${drawerWidth})`,
         }}
         {...props}

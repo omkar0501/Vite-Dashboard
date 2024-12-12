@@ -17,6 +17,7 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useFormik } from "formik";
 import { Col, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const validationSchema = yup.object({
   email: yup
@@ -421,6 +422,8 @@ const DontHaveAccount = () => {
               fontWeight: "bold",
               "@media (max-width:430px)": { fontSize: "smaller" },
             }}
+            as={Link}
+            to="/"
           >
             Already have an account?
           </MuiTypography>

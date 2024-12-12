@@ -14,6 +14,7 @@ import ContentPasteGoOutlinedIcon from "@mui/icons-material/ContentPasteGoOutlin
 import QueryStatsOutlinedIcon from "@mui/icons-material/QueryStatsOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ShopOutlinedIcon from "@mui/icons-material/ShopOutlined";
+import { Link } from "react-router-dom";
 
 const DrawerList = () => {
   return (
@@ -38,6 +39,7 @@ const DrawerList = () => {
               id={links.id}
               icon={links.icon}
               title={links.title}
+              path={links.path}
             />
           );
         })}
@@ -52,6 +54,7 @@ const DrawerList = () => {
               id={links.id}
               icon={links.icon}
               title={links.title}
+              path={links.path}
             />
           );
         })}
@@ -66,6 +69,7 @@ const DrawerList = () => {
               id={links.id}
               icon={links.icon}
               title={links.title}
+              path={links.path}
             />
           );
         })}
@@ -78,10 +82,10 @@ const DrawerList = () => {
   );
 };
 
-const TabMenu = ({ icon, title }) => {
+const TabMenu = ({ icon, title, path }) => {
   return (
     <MuiListItem className="list-item" disablePadding>
-      <MuiListItemButton>
+      <MuiListItemButton as={Link} to={path}>
         <MuiListItemIcon>{icon}</MuiListItemIcon>
         <MuiListItemText>
           <MuiTypography className="list-item-text">{title}</MuiTypography>
@@ -96,11 +100,13 @@ const DashboardTabs = [
     id: 1,
     title: "Default",
     icon: <HomeOutlinedIcon className="list-item-icon" size="2vw" />,
+    path: "/dashboard/home",
   },
   {
     id: 2,
     title: "Analytics",
     icon: <AnalyticsOutlinedIcon className="list-item-icon" size="2vw" />,
+    path: "",
   },
 ];
 
@@ -109,16 +115,19 @@ const WidgetTabs = [
     id: 1,
     title: "Statistics",
     icon: <ContentPasteGoOutlinedIcon className="list-item-icon" size="2vw" />,
+    path: "",
   },
   {
     id: 2,
     title: "Data",
     icon: <QueryStatsOutlinedIcon className="list-item-icon" size="2vw" />,
+    path: "",
   },
   {
     id: 3,
     title: "Chart",
     icon: <PeopleOutlinedIcon className="list-item-icon" size="2vw" />,
+    path: "",
   },
 ];
 
@@ -127,51 +136,61 @@ const ApplicationTabs = [
     id: 1,
     title: "User",
     icon: <PeopleOutlinedIcon className="list-item-icon" size="2vw" />,
+    path: "/dashboard/user",
   },
   {
     id: 2,
     title: "Customer",
     icon: <ShopOutlinedIcon className="list-item-icon" size="2vw" />,
+    path: "",
   },
   {
     id: 3,
     title: "Chat",
     icon: <HomeOutlinedIcon className="list-item-icon" size="2vw" />,
+    path: "",
   },
   {
     id: 4,
     title: "Kanban",
     icon: <HomeOutlinedIcon className="list-item-icon" size="2vw" />,
+    path: "",
   },
   {
     id: 5,
     title: "Mail",
     icon: <HomeOutlinedIcon className="list-item-icon" size="2vw" />,
+    path: "",
   },
   {
     id: 6,
     title: "Calender",
     icon: <HomeOutlinedIcon className="list-item-icon" size="2vw" />,
+    path: "",
   },
   {
     id: 7,
     title: "Contact",
     icon: <HomeOutlinedIcon className="list-item-icon" size="2vw" />,
+    path: "",
   },
   {
     id: 8,
     title: "E-commerce",
     icon: <HomeOutlinedIcon className="list-item-icon" size="2vw" />,
+    path: "",
   },
   {
     id: 9,
     title: "Invoice",
     icon: <HomeOutlinedIcon className="list-item-icon" size="2vw" />,
+    path: "",
   },
   {
     id: 10,
     title: "CRM",
     icon: <HomeOutlinedIcon className="list-item-icon" size="2vw" />,
+    path: "",
   },
 ];
 
