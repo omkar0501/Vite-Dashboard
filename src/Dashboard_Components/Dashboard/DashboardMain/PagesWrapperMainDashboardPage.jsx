@@ -8,7 +8,7 @@ export const PageWarpperMainDashboardPage = (props) => {
     ({ theme }) => ({
       // position:'relative',
       flexGrow: 1,
-      padding: theme.spacing(3),
+      padding: theme.spacing(1), // padding for all childs of dashboard
       transition: theme.transitions.create("margin", {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.leavingScreen,
@@ -42,10 +42,14 @@ export const PageWarpperMainDashboardPage = (props) => {
       <Main
         sx={{
           backgroundColor: "#EEF2F6",
-          // borderRadius: "20px 20px 20px 20px",
-          mt: "40px",
 
+          // borderRadius: "20px 20px 20px 20px",
+          mt: "65px",
+          // height: "100vh",
           width: `calc(100% - ${drawerWidth})`,
+
+          // width: "160vh",
+          overflow: "hidden",
         }}
         {...props}
       >

@@ -15,6 +15,14 @@ import QueryStatsOutlinedIcon from "@mui/icons-material/QueryStatsOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ShopOutlinedIcon from "@mui/icons-material/ShopOutlined";
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import {
+  ExpandLess,
+  ExpandMore,
+  InboxOutlined,
+  StarBorder,
+} from "@mui/icons-material";
+import { Collapse } from "@mui/material";
 
 const DrawerList = () => {
   return (
@@ -32,14 +40,15 @@ const DrawerList = () => {
         }}
       >
         <MuiTypography className="list-item-title">Dashboard</MuiTypography>
-        {DashboardTabs.map((links, i) => {
+        {DashboardTabs.map((link, i) => {
           return (
             <TabMenu
               key={i}
-              id={links.id}
-              icon={links.icon}
-              title={links.title}
-              path={links.path}
+              id={link.id}
+              icon={link.icon}
+              title={link.title}
+              path={link.path}
+              childrens={link.childrens}
             />
           );
         })}
@@ -47,14 +56,15 @@ const DrawerList = () => {
         <MuiDivider sx={{ my: 1 }} />
 
         <MuiTypography className="list-item-title">Widget</MuiTypography>
-        {WidgetTabs.map((links, i) => {
+        {WidgetTabs.map((link, i) => {
           return (
             <TabMenu
               key={i}
-              id={links.id}
-              icon={links.icon}
-              title={links.title}
-              path={links.path}
+              id={link.id}
+              icon={link.icon}
+              title={link.title}
+              path={link.path}
+              childrens={link.childrens}
             />
           );
         })}
@@ -62,14 +72,15 @@ const DrawerList = () => {
         <MuiDivider sx={{ my: 1 }} />
 
         <MuiTypography className="list-item-title">Application</MuiTypography>
-        {ApplicationTabs.map((links, i) => {
+        {ApplicationTabs.map((link, i) => {
           return (
             <TabMenu
               key={i}
-              id={links.id}
-              icon={links.icon}
-              title={links.title}
-              path={links.path}
+              id={link.id}
+              icon={link.icon}
+              title={link.title}
+              path={link.path}
+              childrens={link.childrens}
             />
           );
         })}
@@ -82,16 +93,77 @@ const DrawerList = () => {
   );
 };
 
-const TabMenu = ({ icon, title, path }) => {
+const TabMenu = ({ icon, title, path, childrens }) => {
+  const [open, setOpen] = useState(true);
+
+  const handleClick = () => {
+    setOpen(!open);
+  };
   return (
-    <MuiListItem className="list-item" disablePadding>
-      <MuiListItemButton as={Link} to={path}>
+    // <MuiListItem className="list-item" disablePadding>
+    //   <MuiListItemButton as={Link} to={path} onClick={handleClick}>
+    //     <MuiListItemIcon>{icon}</MuiListItemIcon>
+    //     <MuiListItemText>
+    //       <MuiTypography className="list-item-text">{title}</MuiTypography>
+    //     </MuiListItemText>
+    //     {childrens && open ? <ExpandLess /> : <ExpandMore />}
+    //   </MuiListItemButton>
+    //   {childrens && (
+    //     <Collapse in={open} timeout="auto" unmountOnExit>
+    //       <MuiList component="div" disablePadding>
+    //         <MuiListItemButton sx={{ pl: 4 }}>
+    //           <MuiListItemIcon></MuiListItemIcon>
+    //           <MuiListItemText primary="Starred" />
+    //         </MuiListItemButton>
+    //       </MuiList>
+    //     </Collapse>
+    //   )}
+    // </MuiListItem>
+    <div>
+      <MuiListItemButton
+        onClick={handleClick}
+        className="list-item"
+        disablePadding
+        as={Link}
+        to={path}
+      >
         <MuiListItemIcon>{icon}</MuiListItemIcon>
         <MuiListItemText>
           <MuiTypography className="list-item-text">{title}</MuiTypography>
         </MuiListItemText>
+
+        {childrens &&
+          childrens?.length > 0 &&
+          (open ? (
+            <ExpandLess className="list-item-icon" />
+          ) : (
+            <ExpandMore className="list-item-icon" />
+          ))}
       </MuiListItemButton>
-    </MuiListItem>
+
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        {childrens && childrens.length > 0 && (
+          <MuiList component="div" disablePadding>
+            {childrens.map((child) => (
+              <MuiListItemButton
+                sx={{ pl: 4 }}
+                key={child.id}
+                as={Link}
+                to={child.path}
+                className="list-item"
+              >
+                <MuiListItemIcon>{child.icon}</MuiListItemIcon>
+                <MuiListItemText>
+                  <MuiTypography className="list-item-text">
+                    {child.title}
+                  </MuiTypography>
+                </MuiListItemText>
+              </MuiListItemButton>
+            ))}
+          </MuiList>
+        )}
+      </Collapse>
+    </div>
   );
 };
 
@@ -127,7 +199,7 @@ const WidgetTabs = [
     id: 3,
     title: "Chart",
     icon: <PeopleOutlinedIcon className="list-item-icon" size="2vw" />,
-    path: "",
+    path: "/dashboard/charts",
   },
 ];
 
@@ -142,7 +214,7 @@ const ApplicationTabs = [
     id: 2,
     title: "Customer",
     icon: <ShopOutlinedIcon className="list-item-icon" size="2vw" />,
-    path: "",
+    path: "/dashboard/customer",
   },
   {
     id: 3,
@@ -172,7 +244,20 @@ const ApplicationTabs = [
     id: 7,
     title: "Contact",
     icon: <HomeOutlinedIcon className="list-item-icon" size="2vw" />,
-    path: "",
+    childrens: [
+      {
+        id: 11,
+        title: "Cards",
+        icon: <HomeOutlinedIcon className="list-item-icon" size="2vw" />,
+        path: "/dashboard/contacts/cards",
+      },
+      {
+        id: 12,
+        title: "List",
+        icon: <HomeOutlinedIcon className="list-item-icon" size="2vw" />,
+        path: "/dashboard/contacts/list",
+      },
+    ],
   },
   {
     id: 8,

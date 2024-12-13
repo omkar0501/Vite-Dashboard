@@ -61,29 +61,31 @@ function LineChartComponent() {
           </ResponsiveContainer>
         </MuiPaper>
         {AreaChartData.map((data, i) => (
-          <MuiBox key={i} className="row m-1 py-2">
-            <MuiBox className="col-6">
+          <div>
+            <MuiBox key={i} className="row m-1 py-2">
+              <MuiBox className="col-6">
+                <MuiTypography
+                  sx={{ fontSize: "small" }}
+                  className="d-flex float-left fw-bold"
+                >
+                  {data.name}
+                </MuiTypography>
+                <MuiTypography
+                  className="growthrate"
+                  sx={{ color: getColor(data.growth), fontSize: "small" }}
+                >
+                  10% {data.growth}
+                </MuiTypography>
+              </MuiBox>
               <MuiTypography
-                sx={{ fontSize: "small" }}
-                className="d-flex float-left fw-bold"
+                className="col-6 fw-bold"
+                sx={{ color: getColor(data.growth) }}
               >
-                {data.name}
-              </MuiTypography>
-              <MuiTypography
-                className="growthrate"
-                sx={{ color: getColor(data.growth), fontSize: "small" }}
-              >
-                10% {data.growth}
+                {getIcon(data.growth)}${data.total.toFixed(2)}
               </MuiTypography>
             </MuiBox>
-            <MuiTypography
-              className="col-6 fw-bold"
-              sx={{ color: getColor(data.growth) }}
-            >
-              {getIcon(data.growth)}${data.total.toFixed(2)}
-            </MuiTypography>
-            <MuiDivider sx={{ width: "" }} />
-          </MuiBox>
+            <MuiDivider sx={{ m: 1 }} />
+          </div>
         ))}
       </MuiBox>
     </div>

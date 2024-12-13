@@ -7,7 +7,7 @@ import { Outlet } from "react-router-dom";
 export const Dashboard = () => {
   return (
     <>
-      <MuiBox>
+      <MuiBox sx={{ backgroundColor: "#EEF2F6" }}>
         <CssBaseline />
         <Appbar />
         <PageWarpperMainDashboardPage>

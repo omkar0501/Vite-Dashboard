@@ -37,7 +37,7 @@ const DashboardLogin = () => {
 
   function Login(values) {
     if (
-      values.email == "gawraesanket033@gmil.com" &&
+      values.email == "gawraesanket033@gmail.com" &&
       values.password == "Sanket@123"
     ) {
       alert("login success");

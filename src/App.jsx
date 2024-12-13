@@ -1,12 +1,6 @@
-// import "./App.css";
-// import DashboardLogin from "./Dashboard_Components/Login/DashboardLogin";
-// import { DontHaveAccount } from "./Dashboard_Components/Login/DontHaveAccount";
-// import ForgotPassword from "./Dashboard_Components/Login/ForgotPassword";
-import { Dashboard } from "./Dashboard_Components/Dashboard/DashboardMain/Dashboard";
-// import { RedeuxComponents } from "./ReduxComponents";
-// import RoutesFile from "./RoutesFile";
-import "./Dashboard_Components/Css/DashboardAll.css";
+import "./App.css";
 import RouteingFile from "./Dashboard_Components/RouteFile/RoutingFile";
+import UsersTable from "./Dashboard_Components/Pages/User/UsersTable";
 // export const UserContext1 = createContext();
 
 function App() {
@@ -14,12 +8,6 @@ function App() {
 
   return (
     <>
-      {/* <RedeuxComponents/> */}
-      {/* <RoutesFile /> */}
-      {/* <ForgotPassword /> */}
-      {/* <DashboardLogin /> */}
-      {/* <DontHaveAccount /> */}
-      {/* <Dashboard /> */}
       <RouteingFile />
     </>
   );

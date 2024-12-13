@@ -3,9 +3,16 @@ import { Suspense } from "react";
 import PageNotFound404 from "../../Components/MUI/PageNotFound404";
 import React from "react";
 import { Dashboard } from "../Dashboard/DashboardMain/Dashboard";
+
 const DashboardLogin = React.lazy(() => import("../Login/DashboardLogin"));
 const ForgotPassword = React.lazy(() => import("../Login/ForgotPassword"));
 const DontHaveAccount = React.lazy(() => import("../Login/DontHaveAccount"));
+const Contacts = React.lazy(() => import("../Pages/Contacts/Contacts"));
+const ContactsList = React.lazy(() => import("../Pages/Contacts/ContactsList"));
+const Charts = React.lazy(() => import("../Pages/All Charts/Charts"));
+const CustomerTable = React.lazy(() =>
+  import("../Pages/Customer/CustomerTable")
+);
 // const Dashboard = React.lazy(() =>
 //   import("../Dashboard/DashboardMain/Dashboard")
 // );
@@ -43,8 +50,24 @@ const RouteingFile = () => {
           element: <DefaultHome />,
         },
         {
+          path: "/dashboard/charts",
+          element: <Charts />,
+        },
+        {
           path: "/dashboard/user",
           element: <UsersTable />,
+        },
+        {
+          path: "/dashboard/contacts/cards",
+          element: <Contacts />,
+        },
+        {
+          path: "/dashboard/contacts/list",
+          element: <ContactsList />,
+        },
+        {
+          path: "/dashboard/customer",
+          element: <CustomerTable />,
         },
       ],
     },

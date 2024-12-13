@@ -79,6 +79,7 @@ export const mockDataContacts = [
     name: "Jon Snow",
     email: "jonsnow@gmail.com",
     age: 35,
+    gender: "male",
     phone: "(665)121-5454",
     address: "0912 Won Street, Alabama, SY 10001",
     city: "New York",
@@ -90,6 +91,7 @@ export const mockDataContacts = [
     name: "Cersei Lannister",
     email: "cerseilannister@gmail.com",
     age: 42,
+    gender: "female",
     phone: "(421)314-2288",
     address: "1234 Main Street, New York, NY 10001",
     city: "New York",
@@ -101,6 +103,7 @@ export const mockDataContacts = [
     name: "Jaime Lannister",
     email: "jaimelannister@gmail.com",
     age: 45,
+    gender: "male",
     phone: "(422)982-6739",
     address: "3333 Want Blvd, Estanza, NAY 42125",
     city: "New York",
@@ -112,6 +115,7 @@ export const mockDataContacts = [
     name: "Anya Stark",
     email: "anyastark@gmail.com",
     age: 16,
+    gender: "female",
     phone: "(921)425-6742",
     address: "1514 Main Street, New York, NY 22298",
     city: "New York",
@@ -123,6 +127,7 @@ export const mockDataContacts = [
     name: "Daenerys Targaryen",
     email: "daenerystargaryen@gmail.com",
     age: 31,
+    gender: "male",
     phone: "(421)445-1189",
     address: "11122 Welping Ave, Tenting, CD 21321",
     city: "Tenting",
@@ -134,6 +139,7 @@ export const mockDataContacts = [
     name: "Ever Melisandre",
     email: "evermelisandre@gmail.com",
     age: 150,
+    gender: "male",
     phone: "(232)545-6483",
     address: "1234 Canvile Street, Esvazark, NY 10001",
     city: "Esvazark",
@@ -145,6 +151,7 @@ export const mockDataContacts = [
     name: "Ferrara Clifford",
     email: "ferraraclifford@gmail.com",
     age: 44,
+    gender: "female",
     phone: "(543)124-0123",
     address: "22215 Super Street, Everting, ZO 515234",
     city: "Evertin",
@@ -156,6 +163,7 @@ export const mockDataContacts = [
     name: "Rossini Frances",
     email: "rossinifrances@gmail.com",
     age: 36,
+    gender: "female",
     phone: "(222)444-5555",
     address: "4123 Ever Blvd, Wentington, AD 142213",
     city: "Esteras",
@@ -167,6 +175,7 @@ export const mockDataContacts = [
     name: "Harvey Roxie",
     email: "harveyroxie@gmail.com",
     age: 65,
+    gender: "male",
     phone: "(444)555-6239",
     address: "51234 Avery Street, Cantory, ND 212412",
     city: "Colunza",
@@ -178,6 +187,7 @@ export const mockDataContacts = [
     name: "Enteri Redack",
     email: "enteriredack@gmail.com",
     age: 42,
+    gender: "male",
     phone: "(222)444-5555",
     address: "4123 Easer Blvd, Wentington, AD 142213",
     city: "Esteras",
@@ -189,6 +199,7 @@ export const mockDataContacts = [
     name: "Steve Goodman",
     email: "stevegoodmane@gmail.com",
     age: 11,
+    gender: "male",
     phone: "(444)555-6239",
     address: "51234 Fiveton Street, CunFory, ND 212412",
     city: "Colunza",
@@ -271,6 +282,7 @@ export const mockUserJson = [
     email: "john.doe@example.com",
     mobile: "+1234567890",
     role: "Admin",
+    status: "active",
   },
   {
     id: 2,
@@ -278,6 +290,7 @@ export const mockUserJson = [
     email: "jane.smith@example.com",
     mobile: "+1987654321",
     role: "User",
+    status: "inactive",
   },
   {
     id: 3,
@@ -285,6 +298,7 @@ export const mockUserJson = [
     email: "alice.johnson@example.com",
     mobile: "+1122334455",
     role: "Editor",
+    status: "active",
   },
   {
     id: 4,
@@ -292,6 +306,7 @@ export const mockUserJson = [
     email: "bob.brown@example.com",
     mobile: "+1222333444",
     role: "User",
+    status: "inactive",
   },
   {
     id: 5,
@@ -299,6 +314,7 @@ export const mockUserJson = [
     email: "charlie.white@example.com",
     mobile: "+1444556677",
     role: "Manager",
+    status: "pending",
   },
   {
     id: 6,
@@ -306,6 +322,7 @@ export const mockUserJson = [
     email: "david.black@example.com",
     mobile: "+1555667788",
     role: "User",
+    status: "active",
   },
   {
     id: 7,
@@ -313,6 +330,7 @@ export const mockUserJson = [
     email: "eva.green@example.com",
     mobile: "+1666778899",
     role: "Admin",
+    status: "pending",
   },
   {
     id: 8,
@@ -320,6 +338,7 @@ export const mockUserJson = [
     email: "frank.blue@example.com",
     mobile: "+1777889900",
     role: "Editor",
+    status: "active",
   },
   {
     id: 9,
@@ -327,6 +346,7 @@ export const mockUserJson = [
     email: "grace.yellow@example.com",
     mobile: "+1888990011",
     role: "Editor",
+    status: "inactive",
   },
   {
     id: 10,
@@ -334,6 +354,7 @@ export const mockUserJson = [
     email: "henry.red@example.com",
     mobile: "+1999001122",
     role: "Admin",
+    status: "active",
   },
 ];
 
@@ -770,5 +791,166 @@ export const AreaChartData = [
     name: "TTML",
     growth: "profit",
     total: 300,
+  },
+];
+export const ContactsData = [
+  {
+    name: "Phoebe",
+    role: "Dynamic Operations Officer",
+    description:
+      "Use the neural RSS application, then you can program the bluetooth firewall! #DOO",
+    email: "claudia_kuhn@yahoo.com",
+    phone: "380-293-0177",
+    location: "Port Narcos",
+    image:
+      "https://plus.unsplash.com/premium_photo-1664461667785-975db0bb5e30?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+  },
+  {
+    name: "Gaetano",
+    role: "Investor Division Strategist",
+    description:
+      "Try to connect the SAS transmitter, maybe it will index the optical hard drive!",
+    email: "alia_shields25@yahoo.com",
+    phone: "253-418-5940",
+    location: "Herminahaven",
+    image:
+      "https://images.unsplash.com/photo-1505033575518-a36ea2ef75ae?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cGVyZmVjdCUyMHByb2ZpbGUlMjBwaWN0dXJlc3xlbnwwfHwwfHx8MA%3D%3D",
+  },
+  {
+    name: "Elisabeth",
+    role: "Future Markets Associate",
+    description:
+      "If we calculate the monitor, we can get to the CSS sensor through the open-source AGP application!",
+    email: "kieran.mertz87@hotmail.com",
+    phone: "283-029-1364",
+    location: "Kihnland",
+    image:
+      "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8cGVyZmVjdCUyMHByb2ZpbGUlMjBwaWN0dXJlc3xlbnwwfHwwfHx8MA%3D%3D",
+  },
+  {
+    name: "Rosalia",
+    role: "Global Brand Planner",
+    description:
+      "The SCSI program is down, override the cross-platform sensor so we can quantify the SAS firewall!",
+    email: "luis.nader30@hotmail.com",
+    phone: "972-477-5225",
+    location: "Collinsborough",
+    image:
+      "https://images.unsplash.com/photo-1499557354967-2b2d8910bcca?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8cGVyZmVjdCUyMHByb2ZpbGUlMjBwaWN0dXJlc3xlbnwwfHwwfHx8MA%3D%3D",
+  },
+  {
+    name: "Lizeth",
+    role: "District Intranet Executive",
+    description:
+      "The TCP hard drive is down, navigate the redundant driver so we can connect the SMS sensor!",
+    email: "alicia.ohara@company.com",
+    phone: "474-215-1871",
+    location: "Alizaville",
+    image:
+      "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cGVyZmVjdCUyMHByb2ZpbGUlMjBwaWN0dXJlc3xlbnwwfHwwfHx8MA%3D%3D",
+  },
+  {
+    name: "Jessyca",
+    role: "Future Accountability Liaison",
+    description:
+      "You can't program the protocol without parsing the 1080p PNG bandwidth!",
+    email: "titus.kunde76@hotmail.com",
+    phone: "235-802-6863",
+    location: "Brandonville",
+    image:
+      "https://plus.unsplash.com/premium_photo-1723813879085-018a873e2371?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8cGVyZmVjdCUyMHByb2ZpbGUlMjBwaWN0dXJlc3xlbnwwfHwwfHx8MA%3D%3D",
+  },
+  {
+    name: "Roberto",
+    role: "Product Communications Analyst",
+    description:
+      "Use the solid state JBOD application, then you can generate the multi-byte pixel!",
+    email: "keira61@hotmail.com",
+    phone: "712-162-3638",
+    location: "Manuelastad",
+    image:
+      "https://images.unsplash.com/photo-1543610892-0b1f7e6d8ac1?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cGVyZmVjdCUyMHByb2ZpbGUlMjBwaWN0dXJlc3xlbnwwfHwwfHx8MA%3D%3D",
+  },
+  {
+    name: "Ava",
+    role: "Forward Accounts Assistant",
+    description:
+      "Use the 1080p HDD circuit, then you can calculate the open-source interface!",
+    email: "jailyn_wilderman@company.com",
+    phone: "192-612-2096",
+    location: "Lake Keenan",
+    image:
+      "https://plus.unsplash.com/premium_photo-1672699531008-29cefdc84735?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTd8fHBlcmZlY3QlMjBwcm9maWxlJTIwcGljdHVyZXN8ZW58MHx8MHx8fDA%3D",
+  },
+  {
+    name: "Dillon",
+    role: "Future Factors Strategist",
+    description:
+      "The PNG alarm is down, navigate the back-end application so we can generate the FTP driver!",
+    email: "caesar80@yahoo.com",
+    phone: "798-877-8614",
+    location: "Russelfurt",
+    image:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cGVyZmVjdCUyMHByb2ZpbGUlMjBwaWN0dXJlc3xlbnwwfHwwfHx8MA%3D%3D",
+  },
+  {
+    name: "Domingo",
+    role: "Investor Identity Facilitator",
+    description:
+      "Use the neural XSS firewall, then you can generate the cross-platform capacitor!",
+    email: "hudson.welch54@company.com",
+    phone: "642-979-7584",
+    location: "Itzelview",
+    image:
+      "https://images.unsplash.com/photo-1533636721434-0e2d61030955?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHBlcmZlY3QlMjBwcm9maWxlJTIwcGljdHVyZXN8ZW58MHx8MHx8fDA%3D",
+  },
+  {
+    name: "Connor",
+    role: "Dynamic Intranet Strategist",
+    description:
+      "The CSS program is down, copy the mobile capacitor so we can override the AI alarm!",
+    email: "reese_daniel54@yahoo.com",
+    phone: "838-147-6612",
+    location: "Margarettstad",
+    image:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHBlcmZlY3QlMjBwcm9maWxlJTIwcGljdHVyZXN8ZW58MHx8MHx8fDA%3D",
+  },
+  {
+    name: "Delfina",
+    role: "Chief Response Orchestrator",
+    description:
+      "Parsing the monitor won't do anything, we need to navigate the back-end JBOD bus!",
+    email: "stevie.corwin25@company.com",
+    phone: "777-709-1293",
+    location: "North Monty",
+    image:
+      "https://plus.unsplash.com/premium_photo-1681484107381-808444daec7e?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fHBlcmZlY3QlMjBwcm9maWxlJTIwcGljdHVyZXN8ZW58MHx8MHx8fDA%3D",
+  },
+];
+
+export const LineData = [
+  {
+    total: 4000,
+    title: "Sales",
+    per: "42%",
+    bgcolor: "rgb(30, 136, 229)",
+  },
+  {
+    total: 2500,
+    title: "Comments",
+    per: "15%",
+    bgcolor: "rgb(244, 67, 54)",
+  },
+  {
+    total: 2500,
+    title: "Status",
+    per: "95%",
+    bgcolor: "rgb(0, 200, 83)",
+  },
+  {
+    total: 1250,
+    title: "Visitors",
+    per: "75%",
+    bgcolor: "rgb(103, 58, 183)",
   },
 ];
