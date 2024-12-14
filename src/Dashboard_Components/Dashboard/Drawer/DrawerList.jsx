@@ -187,13 +187,13 @@ const WidgetTabs = [
     id: 1,
     title: "Statistics",
     icon: <ContentPasteGoOutlinedIcon className="list-item-icon" size="2vw" />,
-    path: "",
+    path: "/dashboard/soon",
   },
   {
     id: 2,
     title: "Data",
     icon: <QueryStatsOutlinedIcon className="list-item-icon" size="2vw" />,
-    path: "",
+    path: "/dashboard/soon",
   },
   {
     id: 3,
@@ -220,25 +220,25 @@ const ApplicationTabs = [
     id: 3,
     title: "Chat",
     icon: <HomeOutlinedIcon className="list-item-icon" size="2vw" />,
-    path: "",
+    path: "/dashboard/soon",
   },
   {
     id: 4,
     title: "Kanban",
     icon: <HomeOutlinedIcon className="list-item-icon" size="2vw" />,
-    path: "",
+    path: "/dashboard/soon",
   },
   {
     id: 5,
     title: "Mail",
     icon: <HomeOutlinedIcon className="list-item-icon" size="2vw" />,
-    path: "",
+    path: "/dashboard/soon",
   },
   {
     id: 6,
     title: "Calender",
     icon: <HomeOutlinedIcon className="list-item-icon" size="2vw" />,
-    path: "",
+    path: "/dashboard/soon",
   },
   {
     id: 7,
@@ -263,19 +263,19 @@ const ApplicationTabs = [
     id: 8,
     title: "E-commerce",
     icon: <HomeOutlinedIcon className="list-item-icon" size="2vw" />,
-    path: "",
+    path: "/dashboard/soon",
   },
   {
     id: 9,
     title: "Invoice",
     icon: <HomeOutlinedIcon className="list-item-icon" size="2vw" />,
-    path: "",
+    path: "/dashboard/soon",
   },
   {
     id: 10,
     title: "CRM",
     icon: <HomeOutlinedIcon className="list-item-icon" size="2vw" />,
-    path: "",
+    path: "/dashboard/soon",
   },
 ];
 
