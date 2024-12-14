@@ -8,7 +8,7 @@ import {
   MuiTypography,
 } from "../../../MUIComponents/Mui";
 import SearchComponent from "../../Dashboard/AppBar/SearchComponent";
-import { Box, Grid } from "@mui/material";
+import { Box, Grid, useTheme } from "@mui/material";
 import { ContactsData } from "../../../Data/JsonData/EmployeeData";
 import SearchBar from "./SearchBar";
 
@@ -24,6 +24,7 @@ const groupContactsByLetter = (contacts) => {
 };
 
 const ContactsList = () => {
+  const theme = useTheme();
   const groupedContacts = groupContactsByLetter(ContactsData);
 
   const sortedLetters = Object.keys(groupedContacts).sort();
@@ -71,16 +72,31 @@ const ContactsList = () => {
                               {data.name}
                             </MuiTypography>
                             <MuiTypography
-                              sx={{ fontSize: "small", color: "gray" }}
+                              sx={{
+                                fontSize: "small",
+                                color: "gray",
+                                [theme.breakpoints.down("sm")]: {
+                                  fontSize: "x-small",
+                                },
+                              }}
                             >
                               {data.role}
                             </MuiTypography>
                           </MuiBox>
                         </Box>
                         <Box>
-                          <MuiButton className="me-2" variant="outlined">
-                            <Message />
-                          </MuiButton>
+                          <MuiButton
+                            variant="outlined"
+                            sx={{
+                              marginRight: 2,
+                              [theme.breakpoints.down("sm")]: {
+                                marginRight: 0,
+                                size: "small",
+                              },
+                            }}
+                          >
+                            <Message sx={{ width: "100%" }} />
+                          </MuiButton>{" "}
                           <MuiButton variant="outlined" color="secondary">
                             <Phone />
                           </MuiButton>

@@ -13,12 +13,10 @@ const Charts = React.lazy(() => import("../Pages/All Charts/Charts"));
 const CustomerTable = React.lazy(() =>
   import("../Pages/Customer/CustomerTable")
 );
-// const Dashboard = React.lazy(() =>
-//   import("../Dashboard/DashboardMain/Dashboard")
-// );
 const DefaultHome = React.lazy(() =>
   import("../Pages/Default_Home/DefaultHome")
 );
+const CommingSoon = React.lazy(() => import("../Pages/CommingSoon"));
 const UsersTable = React.lazy(() => import("../Pages/User/UsersTable"));
 const RouteingFile = () => {
   // const navigate = useNavigate();
@@ -68,6 +66,10 @@ const RouteingFile = () => {
         {
           path: "/dashboard/customer",
           element: <CustomerTable />,
+        },
+        {
+          path: "/dashboard/soon",
+          element: <CommingSoon />,
         },
       ],
     },

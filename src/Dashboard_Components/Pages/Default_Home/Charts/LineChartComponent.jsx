@@ -46,7 +46,7 @@ function LineChartComponent() {
               width="100%"
               height={300}
               data={bardata}
-              margin={{ top: 0, right: 0, left: 0, bottom: 0 }}
+              margin={{ top: 1, right: 0, left: 0, bottom: 0 }}
             >
               <Tooltip height={2} />
               <Area

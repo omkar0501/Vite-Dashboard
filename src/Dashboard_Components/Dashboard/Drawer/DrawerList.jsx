@@ -178,7 +178,7 @@ const DashboardTabs = [
     id: 2,
     title: "Analytics",
     icon: <AnalyticsOutlinedIcon className="list-item-icon" size="2vw" />,
-    path: "",
+    path: "/dashboard/soon",
   },
 ];
 
