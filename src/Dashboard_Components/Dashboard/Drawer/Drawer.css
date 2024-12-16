@@ -1,21 +1,21 @@
 @import "../../Css/DashboardAll.css";
 .list-item {
   width: 100%;
-  color: #364152;
+  color: var(--primaryColor2);
   border-radius: 20px 0px 0px 20px;
   margin: 5px 10px 5px 0px;
   background: none;
 }
 
 .list-item-icon {
-  color: #364152;
+  color: var(--primaryColor2);
 }
 .list-item-text {
-  color: #364152;
+  color: var(--primaryColor2);
   font-size: small !important;
 }
 .list-item-title {
-  color: #121926;
+  color: var(--primaryColor1);
   display: flex;
 }
 

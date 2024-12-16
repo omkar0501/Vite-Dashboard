@@ -1,7 +1,7 @@
 import { DataGrid } from "@mui/x-data-grid";
 import { mockUserJson } from "../../../Data/JsonData/EmployeeData";
 import { MuiAvatar, MuiBox, MuiTypography } from "../../../MUIComponents/Mui";
-
+import "../../Css/DashboardAll.css";
 const StatusCell = (params) => {
   const status = params.value;
   const statusStyle = {
@@ -58,15 +58,15 @@ const UsersTable = () => {
             },
           ]}
           rows={mockUserJson}
+          className="datagrid-user"
           sx={{
             boxShadow: 2,
             borderRadius: "8px",
             border: "1px solid #ddd",
-            backgroundColor: "white",
             height: "10%",
             "& .MuiDataGrid-columnHeaders": {
               backgroundColor: "#1976d2",
-              color: "black",
+
               fontSize: "larger",
               borderBottom: "2px solid #ddd",
             },

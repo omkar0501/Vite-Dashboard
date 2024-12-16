@@ -79,11 +79,11 @@ const AreaCharts = () => {
         <MuiBox className="d-flex justify-content-between">
           <MuiBox>
             <MuiTypography
-              className="d-flex"
+              className="d-flex contacts-cards-data"
               sx={{
                 fontSize: "x-large",
                 fontWeight: "bold",
-                color: "black",
+
                 [theme.breakpoints.down("sm")]: {
                   fontSize: "medium",
                 },

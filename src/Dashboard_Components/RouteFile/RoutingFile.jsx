@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import PageNotFound404 from "../../Components/MUI/PageNotFound404";
 import React from "react";
 import { Dashboard } from "../Dashboard/DashboardMain/Dashboard";
+import Analytics from "../Pages/Analytics/Analytics";
 
 const DashboardLogin = React.lazy(() => import("../Login/DashboardLogin"));
 const ForgotPassword = React.lazy(() => import("../Login/ForgotPassword"));
@@ -66,6 +67,10 @@ const RouteingFile = () => {
         {
           path: "/dashboard/customer",
           element: <CustomerTable />,
+        },
+        {
+          path: "/dashboard/analytics",
+          element: <Analytics />,
         },
         {
           path: "/dashboard/soon",

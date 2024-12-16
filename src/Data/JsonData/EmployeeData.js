@@ -976,3 +976,69 @@ export const PieChartData = [
     ],
   },
 ];
+
+export const countryCoustomer = [
+  {
+    id: 1,
+    flag: "https://media.istockphoto.com/id/178369709/photo/flag-of-germany.webp?a=1&b=1&s=612x612&w=0&k=20&c=nf6SYliU7-D0XPkdlLxM-2cyMIR1DG89J3Nzjgu23ic=",
+    Country: "Germany",
+    Name: "Angelina Jolly",
+    Average: "56.23%",
+  },
+  {
+    id: 2,
+    flag: "https://media.istockphoto.com/id/524055319/photo/flag-of-the-united-states.webp?a=1&b=1&s=612x612&w=0&k=20&c=StdwRZzTb1sHH8D-QApZHADr-z-m4W4HRgDFTRfSk9Y=",
+    Country: "USA",
+    Name: "John Deo",
+    Average: "25.23%",
+  },
+  {
+    id: 3,
+    flag: "https://media.istockphoto.com/id/1080335700/photo/australian-flag-waving-australian-flag-3d-illustration.webp?a=1&b=1&s=612x612&w=0&k=20&c=vKqWEdsVNGpCbrhHEWDmEmuUyf9LLzSa91C_vZ7EjWY=",
+    Country: "Australia",
+    Name: "Jenifer Vintage",
+    Average: "12.45%",
+  },
+  {
+    id: 4,
+    flag: "https://media.istockphoto.com/id/1971982775/photo/waving-united-kingdom-flag-satin-fabric-3d-illustration-render.webp?a=1&b=1&s=612x612&w=0&k=20&c=rMT87IXHnvfbdd_aFkcdVgCit9trobrrc_rmY8OLCfo=",
+    Country: "United Kingdom",
+    Name: "Lori Moore",
+    Average: "8.65%",
+  },
+  {
+    id: 5,
+    flag: "https://plus.unsplash.com/premium_photo-1674591173482-ffb087662b4d?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YnJhemlsJTIwZmxhZ3xlbnwwfHwwfHx8MA%3D%3D",
+    Country: "Brazil",
+    Name: "Allianz Dacron",
+    Average: "3.56%",
+  },
+  {
+    id: 6,
+    flag: "https://media.istockphoto.com/id/1080335700/photo/australian-flag-waving-australian-flag-3d-illustration.webp?a=1&b=1&s=612x612&w=0&k=20&c=vKqWEdsVNGpCbrhHEWDmEmuUyf9LLzSa91C_vZ7EjWY=",
+    Country: "Australia",
+    Name: "Jenifer Vintage",
+    Average: "12.45%",
+  },
+  {
+    id: 7,
+    flag: "https://media.istockphoto.com/id/524055319/photo/flag-of-the-united-states.webp?a=1&b=1&s=612x612&w=0&k=20&c=StdwRZzTb1sHH8D-QApZHADr-z-m4W4HRgDFTRfSk9Y=",
+    Country: "USA",
+    Name: "John Deo",
+    Average: "25.23%",
+  },
+  {
+    id: 8,
+    flag: "https://media.istockphoto.com/id/1080335700/photo/australian-flag-waving-australian-flag-3d-illustration.webp?a=1&b=1&s=612x612&w=0&k=20&c=vKqWEdsVNGpCbrhHEWDmEmuUyf9LLzSa91C_vZ7EjWY=",
+    Country: "Australia",
+    Name: "Jenifer Vintage",
+    Average: "12.45%",
+  },
+  {
+    id: 9,
+    flag: "https://media.istockphoto.com/id/1971982775/photo/waving-united-kingdom-flag-satin-fabric-3d-illustration-render.webp?a=1&b=1&s=612x612&w=0&k=20&c=rMT87IXHnvfbdd_aFkcdVgCit9trobrrc_rmY8OLCfo=",
+    Country: "United Kingdom",
+    Name: "Lori Moore",
+    Average: "8.65%",
+  },
+];

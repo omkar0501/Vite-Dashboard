@@ -21,7 +21,7 @@ function LineChartComponent() {
 
   return (
     <div>
-      <MuiBox sx={{ backgroundColor: "white", p: 3, borderRadius: "20px" }}>
+      <MuiBox className="home-linechart-bg" sx={{ p: 3, borderRadius: "20px" }}>
         <MuiTypography className="mb-2 mt-0 fw-bold" variant="h5">
           Popular
         </MuiTypography>

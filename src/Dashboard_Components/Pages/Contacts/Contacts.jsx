@@ -16,6 +16,7 @@ import {
 import { Typography } from "@mui/material";
 import { ContactsData } from "../../../Data/JsonData/EmployeeData";
 import { useNavigate } from "react-router-dom";
+import "../../Css/DashboardAll.css";
 
 const ContactsTable = () => {
   const navigate = useNavigate();
@@ -61,8 +62,8 @@ const ContactsTable = () => {
                   Email:
                 </MuiTypography>
                 <Typography
-                  className="d-flex"
-                  sx={{ fontSize: "small", color: "black", fontWeight: "bold" }}
+                  className="d-flex contacts-cards-data"
+                  sx={{ fontSize: "small", fontWeight: "bold" }}
                 >
                   {data.email}
                 </Typography>
@@ -76,10 +77,10 @@ const ContactsTable = () => {
                       Phone
                     </MuiTypography>
                     <MuiTypography
-                      className="d-flex"
+                      className="d-flex contacts-cards-data"
                       sx={{
                         fontSize: "small",
-                        color: "black",
+                        // color: "black",
                         fontWeight: "bold",
                       }}
                     >
@@ -93,9 +94,10 @@ const ContactsTable = () => {
                       Location
                     </MuiTypography>
                     <MuiTypography
+                      className="contacts-cards-data"
                       sx={{
                         fontSize: "small",
-                        color: "black",
+                        // color: "black",
                         fontWeight: "bold",
                       }}
                     >

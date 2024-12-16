@@ -1,19 +1,48 @@
 import { CssBaseline } from "@mui/material";
-import { MuiBox } from "../../../MUIComponents/Mui";
+import { MuiBox, MuiThemeProvider } from "../../../MUIComponents/Mui";
 import { Appbar } from "../AppBar/Appbar";
 import PageWarpperMainDashboardPage from "./PagesWrapperMainDashboardPage";
-import DefaultHome from "../../Pages/Default_Home/DefaultHome";
 import { Outlet } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { darkTheme, lightTheme } from "../../Theme/Theme";
+import "../../Css/DashboardAll.css";
 export const Dashboard = () => {
+  const [darkMode, setDarkMode] = useState(
+    localStorage.getItem("Mode") || "light"
+  );
+  const [dashTheme, setDashTheme] = useState(lightTheme);
+  const toggleDarkMode = () => {
+    const newMode = darkMode === "light" ? "dark" : "light";
+    setDarkMode(newMode);
+    localStorage.setItem("Mode", newMode);
+    document.documentElement.setAttribute(
+      "data-theme",
+      dashTheme.palette.mode === "light" ? "dark" : "light"
+    );
+  };
+
+  useEffect(() => {
+    const storedMode = localStorage.getItem("Mode");
+    if (storedMode) {
+      setDarkMode(storedMode);
+      setDarkMode("light");
+    }
+  }, []);
+  useEffect(() => {
+    setDashTheme(darkMode === "dark" ? darkTheme : lightTheme);
+    localStorage.setItem("dashTheme", dashTheme);
+  }, [darkMode]);
   return (
     <>
-      <MuiBox sx={{ backgroundColor: "#EEF2F6" }}>
-        <CssBaseline />
-        <Appbar />
-        <PageWarpperMainDashboardPage>
-          <Outlet />
-        </PageWarpperMainDashboardPage>
-      </MuiBox>
+      <MuiThemeProvider theme={dashTheme}>
+        <MuiBox className="wrapper">
+          <CssBaseline />
+          <Appbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+          <PageWarpperMainDashboardPage>
+            <Outlet />
+          </PageWarpperMainDashboardPage>
+        </MuiBox>
+      </MuiThemeProvider>
     </>
   );
 };

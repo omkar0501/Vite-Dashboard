@@ -1,6 +1,6 @@
 import { styled } from "@mui/material";
 import { propTypes } from "react-bootstrap/esm/Image";
-
+import "../../Css/DashboardAll.css";
 export const PageWarpperMainDashboardPage = (props) => {
   const drawerWidth = 240;
 
@@ -40,9 +40,8 @@ export const PageWarpperMainDashboardPage = (props) => {
   return (
     <>
       <Main
+        className="wrapper"
         sx={{
-          backgroundColor: "#EEF2F6",
-
           // borderRadius: "20px 20px 20px 20px",
           mt: "65px",
           // height: "100vh",

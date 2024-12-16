@@ -30,6 +30,8 @@ import {
 } from "@mui/icons-material";
 import DrawerList from "../Drawer/DrawerList";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import DarkMode from "./DarkMode";
 
 const drawerWidth = 240;
 const DrawerHeader = styled("div")(({ theme }) => ({
@@ -70,8 +72,9 @@ const MuiAppBar = styled(AppBar, {
   ],
 }));
 
-export const Appbar = () => {
+export const Appbar = ({ darkMode, toggleDarkMode }) => {
   const theme = useTheme();
+  const navigate = useNavigate();
   const [open, setOpen] = useState(true);
   // const [close, setClose] = useState(false);
   const isMd = useMediaQuery(theme.breakpoints.up("md"));
@@ -84,11 +87,18 @@ export const Appbar = () => {
 
   const [anchorEl, setAnchorEl] = useState(false);
   const open1 = Boolean(anchorEl);
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(false);
+  };
+
+  const logout = () => {
+    localStorage.setItem("isLoggedIn", false);
+    navigate("/");
+    handleClose();
   };
 
   return (
@@ -144,6 +154,7 @@ export const Appbar = () => {
             <SearchComponent sx={{ width: "10px" }} />
           </MuiBox>
           <MuiBox sx={{ display: "flex", alignItems: "center" }}>
+            <DarkMode darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
             <MuiIconButton
               className="AppBarIconBtn1"
               size="medium"
@@ -294,7 +305,7 @@ export const Appbar = () => {
                 <MuiTypography>Social Profile</MuiTypography>
               </MenuItem>
               <MenuItem
-                onClick={handleClose}
+                onClick={logout}
                 sx={{ paddingLeft: 2, paddingRight: 2 }}
               >
                 <ExitToApp sx={{ marginRight: 2 }} />
@@ -313,8 +324,7 @@ export const Appbar = () => {
             height: "100%",
             width: drawerWidth,
             boxSizing: "border-box",
-            color: "gray",
-            backgroundColor: "white",
+            // color: "gray", ////////////////////
             border: "none",
           },
         }}
@@ -324,12 +334,13 @@ export const Appbar = () => {
       >
         <DrawerHeader sx={{ py: 1, height: "auto" }}>
           <MuiTypography
+            className="header-title"
             sx={{
               display: "flex",
               mx: 2,
               fontWeight: "bolder",
               letterSpacing: 2,
-              color: "black",
+              // color: "black",//////////////////////
               "&:active": { color: "black" },
               [theme.breakpoints.down("md")]: {
                 // display: "none",

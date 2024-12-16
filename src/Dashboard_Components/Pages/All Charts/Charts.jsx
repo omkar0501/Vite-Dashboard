@@ -8,16 +8,8 @@ import {
 } from "../../../MUIComponents/Mui";
 import { useNavigate } from "react-router-dom";
 import { bardata, LineData } from "../../../Data/JsonData/EmployeeData";
-import {
-  Area,
-  AreaChart,
-  CartesianGrid,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
-import { Box, Grid } from "@mui/material";
+import { Area, AreaChart, ResponsiveContainer, Tooltip } from "recharts";
+import { Grid } from "@mui/material";
 import AreaCharts from "./AreaCharts";
 import PieCharts from "./PieCharts";
 const CustomTooltip = ({ active, payload, label, title }) => {
@@ -84,7 +76,7 @@ const Charts = () => {
                   <MuiTypography
                     variant="h6"
                     color="white"
-                    className="line-chart-total-profit fw-bold col-md-6 "
+                    className="line-chart-total-proft fw-bold col-md-6 "
                   >
                     {data.per}
                   </MuiTypography>

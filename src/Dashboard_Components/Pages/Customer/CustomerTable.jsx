@@ -45,16 +45,15 @@ const CustomerTable = () => {
           },
         ]}
         rows={mockDataContacts}
+        className="datagrid-customer"
         sx={{
           boxShadow: 2,
           borderRadius: "8px",
           border: "1px solid #ddd",
-          backgroundColor: "#EEF2F6",
           height: "100%",
 
           "& .MuiDataGrid-columnHeaders": {
             backgroundColor: "#1976d2",
-            color: "black",
             fontSize: "larger",
             borderBottom: "2px solid #ddd",
           },

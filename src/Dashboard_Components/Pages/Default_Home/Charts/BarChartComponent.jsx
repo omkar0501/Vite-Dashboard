@@ -18,11 +18,11 @@ const BarChartComponent = () => {
   const [growth, setGrowth] = useState("Today");
   return (
     <Paper
+      className="MuiDrawer-paper"
       elevation={3}
       sx={{
         width: "100%",
         padding: "20px",
-        backgroundColor: "#fff",
         boxShadow: "none",
         borderRadius: 4,
       }}

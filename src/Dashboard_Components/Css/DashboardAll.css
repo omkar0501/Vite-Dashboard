@@ -1,10 +1,42 @@
 :root {
+  --bgwhite: white;
   --backgroundColor1: #e3f2fd;
   --backgroundColor2: #ede7f6;
   --backgroundColor3: #eef2f6;
   --primaryColor1: #121926;
   --primaryColor2: #364152;
   --textHoverColor: #5e35b1;
+  --backgroundColorMain: #eef2f6;
+
+  --backgroundColor1-dark: #121212;
+  --backgroundColor2-dark: #1d1d1d;
+  --backgroundColor3-dark: #2a2a2a;
+  --backgroundColorMain-dark: #000000;
+  --bgwhite-dark: #2d2d2d;
+
+  --primaryColor1-dark: #ffffff;
+  --primaryColor2-dark: #b0bec5;
+  --textHoverColor-dark: #90caf9;
+}
+[data-theme="dark"] {
+  --backgroundColor1: var(--backgroundColor1-dark);
+  --backgroundColor2: var(--backgroundColor2-dark);
+  --backgroundColor3: var(--backgroundColor3-dark);
+  --primaryColor1: var(--primaryColor1-dark);
+  --primaryColor2: var(--primaryColor2-dark);
+  --textHoverColor: var(--textHoverColor-dark);
+  --backgroundColorMain: var(--backgroundColorMain);
+  --bgwhite: var(--bgwhite-dark);
+}
+[data-theme="light"] {
+  --backgroundColor1: var(--backgroundColor1);
+  --backgroundColor2: var(--backgroundColor2);
+  --backgroundColor3: var(--backgroundColor3);
+  --primaryColor1: var(--primaryColor1);
+  --primaryColor2: var(--primaryColor2);
+  --textHoverColor: var(--textHoverColor);
+  --backgroundColorMain: #eef2f6;
+  --bgwhite-dark: var(--bgwhite-dark);
 }
 body {
   width: 100%;
@@ -22,15 +54,41 @@ body {
   margin: 0 1 0 1;
 }
 .appbar {
-  background-color: white !important;
+  background-color: var(--backgroundColor3) !important;
   box-shadow: none !important;
 }
-
+.sidebar {
+  background-color: var(--backgroundColor1) !important;
+}
+.MuiDrawer-paper {
+  color: var(--primaryColor1) !important;
+}
+.header-title {
+  color: var(--primaryColor1) !important;
+}
+.contacts-cards-data {
+  color: var(--primaryColor1);
+}
+.home-linechart-bg {
+  background-color: var(--bgwhite);
+}
+.MuiDataGrid-columnHeaders {
+  color: var(--primaryColor1);
+}
+.datagrid-user {
+  background-color: var(--bgwhite);
+}
+.datagrid-customer {
+  background-color: var(--backgroundColor3);
+}
+.c-title {
+  color: var(--backgroundColor1);
+}
 /* --------------media Query --------------- */
 
 @media screen and (max-width: 500px) {
   .AppBarIconBtn2 {
-  margin:0 !important;
+    margin: 0 !important;
   }
   .signupButton {
     width: 100%;
@@ -104,4 +162,7 @@ body {
   .signupForm {
     width: 100%;
   }
+}
+.wrapper {
+  background-color: var(--backgroundColorMain);
 }

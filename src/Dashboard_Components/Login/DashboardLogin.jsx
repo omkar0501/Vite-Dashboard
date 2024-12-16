@@ -12,7 +12,7 @@ import {
   MuiTypography,
 } from "../../MUIComponents/Mui";
 // import "./Css/DashboardAll.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useFormik } from "formik";
@@ -35,12 +35,19 @@ const DashboardLogin = () => {
   const navigate = useNavigate();
   const theme = useTheme();
 
+  useEffect(() => {
+    if (localStorage.getItem("isLoggedIn") === "true") {
+      navigate("/dashboard/home");
+    }
+  });
+
   function Login(values) {
     if (
       values.email == "gawraesanket033@gmail.com" &&
       values.password == "Sanket@123"
     ) {
       alert("login success");
+      localStorage.setItem("isLoggedIn", true);
       navigate("/dashboard/home");
     } else {
       alert("Invalid Credentials");
