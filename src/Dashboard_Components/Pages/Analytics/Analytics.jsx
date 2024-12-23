@@ -1,14 +1,27 @@
-import { Grid } from "@mui/material";
+import { Grid, useTheme } from "@mui/material";
 import AreaCharts from "../All Charts/AreaCharts";
 import LatestCustomer from "./LatestCustomer";
 import {
   MuiBox,
+  MuiCard,
+  MuiDivider,
   MuiIconButton,
   MuiPaper,
-  MuiTextField,
   MuiTypography,
 } from "../../../MUIComponents/Mui";
-import { AccountCircle, Paid, Share } from "@mui/icons-material";
+import {
+  AccountCircle,
+  ArrowDownward,
+  ArrowUpward,
+  CalendarTodayOutlined,
+  Paid,
+  RepeatRounded,
+  Share,
+  ShareTwoTone,
+  WifiTethering,
+} from "@mui/icons-material";
+import { getColor } from "../../../Utils/utils";
+import { Revenue } from "../../../Data/JsonData/EmployeeData";
 
 const BoxData = [
   {
@@ -17,25 +30,34 @@ const BoxData = [
     total: 1000,
   },
   {
-    icon: <Share />,
+    icon: <WifiTethering />,
     title: "NETWORK",
     total: 600,
   },
   {
-    icon: <Share />,
+    icon: <RepeatRounded />,
     title: "RETURNS",
     total: 3550,
   },
   {
-    icon: <Share />,
+    icon: <CalendarTodayOutlined />,
     title: "ORDER",
     total: "100%",
   },
 ];
 
 const Analytics = () => {
+  const getIcon = (growth) => {
+    return growth === "profit" ? (
+      <ArrowUpward fontSize="x-small" />
+    ) : (
+      <ArrowDownward fontSize="x-small" />
+    );
+  };
+  const theme = useTheme();
+
   return (
-    <MuiBox sx={{ width: "160vh" }} className="row">
+    <MuiBox className="row">
       <Grid className="col-md-7">
         <AreaCharts />
         <MuiBox className="d-flex gap-2 my-2">
@@ -111,15 +133,26 @@ const Analytics = () => {
                 as={Grid}
                 key={i}
                 className="col-md-6 col-xs-12 flex-fill border "
+                sx={{
+                  [theme.breakpoints.down("md")]: {
+                    mt: 1,
+                  },
+                }}
               >
-                {/* <MuiPaper className=""> */}
+                {/*<MuiPaper className=""> */}
                 <MuiBox className="d-flex justify-content-between p-4 mx-0">
                   <MuiBox>
-                    <MuiIconButton>{data.icon}</MuiIconButton>
+                    <MuiIconButton
+                      sx={{ borderRadius: "10px", backgroundColor: "#e3f2fd" }}
+                    >
+                      {data.icon}
+                    </MuiIconButton>
                   </MuiBox>
                   <MuiBox>
-                    <MuiTypography>{data.total}</MuiTypography>
-                    <MuiTypography>{data.title}</MuiTypography>
+                    <MuiTypography className="fw-bold">
+                      {data.total}
+                    </MuiTypography>
+                    <MuiTypography className="fs-6">{data.title}</MuiTypography>
                   </MuiBox>
                 </MuiBox>
               </MuiPaper>
@@ -127,6 +160,81 @@ const Analytics = () => {
             );
           })}
         </div>
+        <MuiPaper className="mt-2">
+          <MuiTypography className="p-3 py-4 fw-bold d-flex">
+            Total Revenue
+          </MuiTypography>
+          {Revenue.map((data, i) => {
+            return (
+              <MuiBox key={i}>
+                <MuiDivider sx={{ border: "1px solid gray" }} className="m-0" />
+                <MuiBox className="d-flex justify-content-between p-3 ">
+                  <MuiBox className="d-flex gap-3">
+                    <MuiTypography sx={{ color: getColor(data.growth) }}>
+                      {getIcon(data.growth)}
+                    </MuiTypography>
+                    <MuiTypography sx={{ fontSize: "small" }}>
+                      {data.title}
+                    </MuiTypography>
+                  </MuiBox>
+                  <MuiBox>
+                    <MuiTypography sx={{ color: getColor(data.growth) }}>
+                      {data.total}
+                    </MuiTypography>
+                  </MuiBox>
+                </MuiBox>
+              </MuiBox>
+            );
+          })}
+        </MuiPaper>
+        <MuiCard
+          className="d-flex justify-content-between"
+          sx={{
+            p: 3,
+            backgroundColor: "#5e35b1",
+            borderRadius: "10px",
+            mt: 2,
+          }}
+        >
+          <AccountCircle
+            sx={{
+              fontSize: "xxx-large",
+              color: "rgb(193, 168, 243)",
+            }}
+          />
+          <MuiBox>
+            <MuiTypography sx={{ fontWeight: "bold", color: "white" }}>
+              1,658
+            </MuiTypography>
+            <MuiTypography sx={{ fontWeight: "bold", color: "white" }}>
+              Daily Users
+            </MuiTypography>
+          </MuiBox>
+        </MuiCard>
+        <MuiCard
+          className="d-flex justify-content-between"
+          sx={{
+            p: 3,
+            backgroundColor: "#3698e7",
+            borderRadius: "10px",
+            mt: 2,
+          }}
+        >
+          <ShareTwoTone
+            sx={{
+              fontSize: "xxx-large",
+              color: "#90caf9",
+            }}
+          />
+          <MuiBox>
+            <MuiTypography sx={{ fontWeight: "bold", color: "white" }}>
+              1K
+            </MuiTypography>
+            <MuiTypography sx={{ fontWeight: "bold", color: "white" }}>
+              Daily Page view
+            </MuiTypography>
+          </MuiBox>
+        </MuiCard>
       </Grid>
     </MuiBox>
   );

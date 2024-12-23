@@ -1,4 +1,5 @@
 import "../../Css/DashboardAll.css";
+import "../../../App.css";
 import {
   AppBar,
   Menu,
@@ -34,6 +35,7 @@ import { useNavigate } from "react-router-dom";
 import DarkMode from "./DarkMode";
 
 const drawerWidth = 240;
+const drawerWidthMobile = 200;
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
@@ -113,6 +115,7 @@ export const Appbar = ({ darkMode, toggleDarkMode }) => {
         open={open}
       >
         <MuiToolbar
+          className="p-0"
           sx={{
             width: "100%",
             display: "flex",
@@ -121,11 +124,13 @@ export const Appbar = ({ darkMode, toggleDarkMode }) => {
         >
           <MuiIconButton
             onClick={handleDrawerToggle}
+            className="AppBarMenuBtn"
             sx={{
-              backgroundColor: "#ede7f6",
+              // backgroundColor: "#ede7f6",
               borderRadius: "25%",
-              width: "5%",
-              me: 2,
+              // width: "5%",
+              p: 1,
+              mx: 1,
               display: "none",
               "&:hover": {
                 backgroundColor: "#5e35b1",
@@ -133,17 +138,18 @@ export const Appbar = ({ darkMode, toggleDarkMode }) => {
               [theme.breakpoints.down("md")]: {
                 display: "flex",
                 float: "left",
+                // width: "7%",
               },
               [theme.breakpoints.down("sm")]: {
-                width: "12%",
+                // width: "7%",
                 me: 1,
               },
             }}
           >
             <MenuIcon
-              size="small"
               sx={{
                 color: "rgb(94, 53, 177)",
+                fontSize: "smaller",
                 "&:hover": {
                   color: "whitesmoke",
                 },
@@ -151,22 +157,32 @@ export const Appbar = ({ darkMode, toggleDarkMode }) => {
             />
           </MuiIconButton>
           <MuiBox sx={{ flex: 1 }}>
-            <SearchComponent sx={{ width: "10px" }} />
+            <SearchComponent
+              sx={{
+                [theme.breakpoints.down("sm")]: {
+                  display: "none",
+                },
+              }}
+            />
           </MuiBox>
-          <MuiBox sx={{ display: "flex", alignItems: "center" }}>
-            <DarkMode darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+          <MuiBox className="" sx={{ display: "flex", alignItems: "center" }}>
+            <DarkMode
+              darkMode={darkMode}
+              toggleDarkMode={toggleDarkMode}
+              className="my-0 mx-0"
+            />
             <MuiIconButton
               className="AppBarIconBtn1"
               size="medium"
               sx={{
-                backgroundColor: "#ede7f6",
+                // backgroundColor: "#ede7f6",
                 borderRadius: "25%",
                 mx: 1,
                 "&:hover": {
-                  backgroundColor: "#5e35b1",
+                  // backgroundColor: "#5e35b1",
                 },
                 [theme.breakpoints.down("sm")]: {
-                  display: "none",
+                  borderRadius: "25px",
                 },
               }}
             >
@@ -175,8 +191,9 @@ export const Appbar = ({ darkMode, toggleDarkMode }) => {
                   className="AppBarIcon1"
                   sx={{
                     color: "rgb(94, 53, 177)",
+                    fontSize: "smaller",
                     "&:hover": {
-                      color: "whitesmoke",
+                      // color: "whitesmoke",
                     },
                   }}
                 />
@@ -186,14 +203,14 @@ export const Appbar = ({ darkMode, toggleDarkMode }) => {
               className="AppBarIconBtn2"
               size="medium"
               sx={{
-                backgroundColor: "#e3f2fd",
+                // backgroundColor: "#e3f2fd",
                 borderRadius: "25%",
                 mx: 1,
                 "&:hover": {
-                  backgroundColor: "#2196f3",
+                  // backgroundColor: "#2196f3",
                 },
                 [theme.breakpoints.down("sm")]: {
-                  display: "none",
+                  borderRadius: "25px",
                 },
               }}
             >
@@ -201,9 +218,10 @@ export const Appbar = ({ darkMode, toggleDarkMode }) => {
                 <TranslateIcon
                   className="AppBarIcon2"
                   sx={{
+                    fontSize: "smaller",
                     color: "rgb(30, 136, 229)",
                     "&:hover": {
-                      color: "whitesmoke",
+                      // color: "whitesmoke",
                     },
                   }}
                 />
@@ -213,14 +231,14 @@ export const Appbar = ({ darkMode, toggleDarkMode }) => {
               size="medium"
               className="AppBarIconBtn1"
               sx={{
-                backgroundColor: "#ede7f6",
+                // backgroundColor: "#ede7f6",
                 borderRadius: "25%",
                 mx: 1,
                 "&:hover": {
-                  backgroundColor: "#5e35b1",
+                  // backgroundColor: "#5e35b1",
                 },
                 [theme.breakpoints.down("sm")]: {
-                  display: "none",
+                  borderRadius: "25px",
                 },
               }}
             >
@@ -228,8 +246,9 @@ export const Appbar = ({ darkMode, toggleDarkMode }) => {
                 className="AppBarIcon1"
                 sx={{
                   color: "rgb(94, 53, 177)",
+                  fontSize: "smaller",
                   "&:hover": {
-                    color: "whitesmoke",
+                    // color: "whitesmoke",
                   },
                 }}
               />
@@ -244,23 +263,23 @@ export const Appbar = ({ darkMode, toggleDarkMode }) => {
               aria-expanded={open1 ? "true" : undefined}
               onClick={handleClick}
               sx={{
-                borderRadius: "15%",
-                backgroundColor: "#e3f2fd",
+                borderRadius: "25px",
+                // backgroundColor: "#e3f2fd",
                 mx: 1,
                 display: "flex",
                 alignItems: "center",
-                "&:hover": {
-                  backgroundColor: "#2196f3",
-                },
               }}
             >
               <MuiAvatar
+                className="avatar"
                 sx={{
                   float: "left",
-                  p: "5px",
+                  // p: "5px",
                   [theme.breakpoints.down("sm")]: {
                     p: "0px",
                     float: "right",
+                    width: 35,
+                    height: 35,
                   },
                 }}
                 src="/sanket.jpg"
@@ -271,11 +290,12 @@ export const Appbar = ({ darkMode, toggleDarkMode }) => {
                   mx: 1,
                   my: 0,
                   color: "rgb(100, 136, 229)",
+                  // fontSize: "smaller",
                   "&:hover": {
-                    color: "whitesmoke",
+                    // color: "whitesmoke",
                   },
                   [theme.breakpoints.down("sm")]: {
-                    // display:'none',
+                    display: "none",
                   },
                 }}
               />
@@ -326,6 +346,12 @@ export const Appbar = ({ darkMode, toggleDarkMode }) => {
             boxSizing: "border-box",
             // color: "gray", ////////////////////
             border: "none",
+            [theme.breakpoints.down("sm")]: {
+              width: drawerWidthMobile,
+            },
+          },
+          [theme.breakpoints.down("sm")]: {
+            width: drawerWidthMobile,
           },
         }}
         variant="persistent"
@@ -337,6 +363,7 @@ export const Appbar = ({ darkMode, toggleDarkMode }) => {
             className="header-title"
             sx={{
               display: "flex",
+              alignItems: "center",
               mx: 2,
               fontWeight: "bolder",
               letterSpacing: 2,
@@ -350,23 +377,22 @@ export const Appbar = ({ darkMode, toggleDarkMode }) => {
             <img
               style={{
                 borderRadius: "50%",
-                width: "17%",
-              }}
+              }} className="berryimg"
               src="/DashboardImages/Berry.png"
             />
             <span className="mx-1" />
             BERRY
           </MuiTypography>
           <MuiIconButton
-            className="MenuCloseSection"
+            className="MenuCloseSection AppBarIconBtn1"
             onClick={handleDrawerToggle}
             sx={{
-              backgroundColor: "#ede7f6",
               borderRadius: "5px",
               width: "auto",
               height: "auto",
               color: "#5e35b1",
-              m: 1,
+              m: 0.7,
+              p: 0.7,
               display: "none",
               "&:hover": {
                 backgroundColor: "#5e35b1",
@@ -378,10 +404,11 @@ export const Appbar = ({ darkMode, toggleDarkMode }) => {
             }}
           >
             <TurnLeft
-              size="small"
               className="MenuCloseIcon"
               sx={{
                 color: "#5e35b1",
+                fontSize: "smaller",
+                p: 0,
                 "&:hover": {
                   color: "whitesmoke",
                 },
@@ -389,7 +416,7 @@ export const Appbar = ({ darkMode, toggleDarkMode }) => {
             />
           </MuiIconButton>
         </DrawerHeader>
-        <DrawerList />
+        <DrawerList handleDrawerToggle={handleDrawerToggle} />
       </MuiDrawer>
     </>
   );

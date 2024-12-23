@@ -104,7 +104,7 @@ const DashboardLogin = () => {
                 src="/DashboardImages/Berry.png"
               />
               <span className="mx-1" />
-              BERRY
+              View Point
             </MuiTypography>
             <br />
             <MuiTypography

@@ -35,9 +35,14 @@ export const Dashboard = () => {
   return (
     <>
       <MuiThemeProvider theme={dashTheme}>
-        <MuiBox className="wrapper">
+        <MuiBox className="wrapper1 overflow-aut">
           <CssBaseline />
-          <Appbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+          <Appbar
+            className="borderss"
+            darkMode={darkMode}
+            toggleDarkMode={toggleDarkMode}
+          />
+
           <PageWarpperMainDashboardPage>
             <Outlet />
           </PageWarpperMainDashboardPage>

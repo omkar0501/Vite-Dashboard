@@ -18,7 +18,7 @@ const CustomTooltip = ({ active, payload }) => {
   if (active && payload && payload.length) {
     return (
       <MuiBox
-        className="custom-tooltip"
+        className="custom-tooltip "
         sx={{
           backgroundColor: "white",
           opacity: "90%",
@@ -87,17 +87,19 @@ const PieCharts = () => {
         Total Revenue
       </MuiTypography>
       <MuiDivider />
-      <ResponsiveContainer width={400} height={200}>
-        <PieChart width={350} height={200}>
-          <Pie data={data} dataKey="value" nameKey="name" innerRadius={50}>
-            {data.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={entry.fill} />
-            ))}
-          </Pie>
-          <Tooltip content={<CustomTooltip />} />
-          <Legend />
-        </PieChart>
-      </ResponsiveContainer>
+      <div className="d-flex justify-content-center align-items-center mx-auto">
+        <ResponsiveContainer width={400} height={200}>
+          <PieChart width={350} height={200}>
+            <Pie data={data} dataKey="value" nameKey="name" innerRadius={50}>
+              {data.map((entry, index) => (
+                <Cell key={`cell-${index}`} fill={entry.fill} />
+              ))}
+            </Pie>
+            <Tooltip content={<CustomTooltip />} />
+            <Legend />
+          </PieChart>
+        </ResponsiveContainer>
+      </div>
       <MuiBox>
         <MuiBox>
           <MuiTypography sx={{ fontWeight: "bold", fontSize: "small", p: 1 }}>

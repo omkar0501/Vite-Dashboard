@@ -3,13 +3,14 @@ import SearchIcon from "@mui/icons-material/Search";
 import { MuiIconButton, MuiInputBase } from "../../../MUIComponents/Mui";
 import { useTheme } from "@mui/material";
 import TuneIcon from "@mui/icons-material/Tune";
+import "../../Css/DashboardAll.css";
 
 const SearchComponent = () => {
   const theme = useTheme();
   const Search = styled("div")(({ theme }) => ({
     position: "relative",
     borderRadius: theme.shape.borderRadius,
-    backgroundColor: "rgb(248, 250, 252)",
+    // backgroundColor: "rgb(248, 250, 252)",
     border: "1px solid #d6d6c2",
     display: "flex",
     alignItems: "center",
@@ -26,10 +27,11 @@ const SearchComponent = () => {
     width: "60%",
     [theme.breakpoints.down("md")]: {
       marginRight: theme.spacing(-1),
+      width: "90%",
     },
     [theme.breakpoints.down("sm")]: {
       marginLeft: theme.spacing(1.5),
-      width: "90%",
+      width: "100%",
     },
   }));
 
@@ -44,7 +46,6 @@ const SearchComponent = () => {
     [theme.breakpoints.down("md")]: {
       padding: theme.spacing(0, 0.5),
     },
-   
   }));
 
   const TuneIconWrapper = styled("div")(({ theme }) => ({
@@ -90,11 +91,20 @@ const SearchComponent = () => {
 
   return (
     <>
-      <Search>
+      <Search
+        className="searchbg"
+        sx={{
+          [theme.breakpoints.down("md")]: {},
+          [theme.breakpoints.down("sm")]: {
+            display: "none",
+            width: "150%",
+          },
+        }}
+      >
         <SearchIconWrapper>
           <SearchIcon
+            className="searchtext"
             sx={{
-              color: "rgb(18, 25, 38)",
               [theme.breakpoints.down("md")]: {
                 width: "16px",
               },
@@ -102,27 +112,24 @@ const SearchComponent = () => {
           />
         </SearchIconWrapper>
         <StyledInputBase
-          sx={{ color: "rgb(18, 25, 38);", fontWeight: 500 }}
+          className="searchtext"
+          sx={{ fontWeight: 500 }}
           placeholder="Search…"
         />
         <TuneIconWrapper>
           <MuiIconButton
+            className="AppBarIconBtn1"
             size="small"
             sx={{
-              backgroundColor: "#ede7f6",
               borderRadius: "25%",
               my: 2,
-              "&:hover": {
-                backgroundColor: "#5e35b1",
-              },
             }}
           >
             <TuneIcon
+              className="AppBarIcon1"
               sx={{
                 color: "rgb(94, 53, 177)",
-                "&:hover": {
-                  color: "whitesmoke",
-                },
+                fontSize: "medium",
                 [theme.breakpoints.down("md")]: {
                   width: "15px",
                   height: "15px",

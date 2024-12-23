@@ -1,6 +1,5 @@
 import "./App.css";
 import RouteingFile from "./Dashboard_Components/RouteFile/RoutingFile";
-import UsersTable from "./Dashboard_Components/Pages/User/UsersTable";
 // export const UserContext1 = createContext();
 
 function App() {

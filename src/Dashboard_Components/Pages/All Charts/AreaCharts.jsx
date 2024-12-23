@@ -91,7 +91,15 @@ const AreaCharts = () => {
             >
               Market Share
             </MuiTypography>
-            <MuiTypography className="d-flex" sx={{ fontSize: "smaller" }}>
+            <MuiTypography
+              className="d-flex"
+              sx={{
+                fontSize: "smaller",
+                [theme.breakpoints.down("sm")]: {
+                  fontSize: "x-small",
+                },
+              }}
+            >
               Department wise monthly sales report
             </MuiTypography>
           </MuiBox>
@@ -109,21 +117,63 @@ const AreaCharts = () => {
           </MuiTypography>
         </MuiBox>
         <MuiBox className="d-flex mt-2 gap-3">
-          <MuiTypography sx={{ fontWeight: "bold" }}>
+          <MuiTypography
+            sx={{
+              fontWeight: "bold",
+              [theme.breakpoints.down("sm")]: {
+                fontSize: "x-small",
+              },
+            }}
+          >
             <MuiIconButton sx={{ backgroundColor: "rgb(223, 210, 245)" }}>
-              <FacebookOutlined sx={{ color: "rgb(103, 58, 183)" }} />
+              <FacebookOutlined
+                sx={{
+                  color: "rgb(103, 58, 183)",
+                  [theme.breakpoints.down("sm")]: {
+                    fontSize: "smaller",
+                  },
+                }}
+              />
             </MuiIconButton>{" "}
             +45.36%
           </MuiTypography>
-          <MuiTypography sx={{ fontWeight: "bold" }}>
+          <MuiTypography
+            sx={{
+              fontWeight: "bold",
+              [theme.breakpoints.down("sm")]: {
+                fontSize: "x-small",
+              },
+            }}
+          >
             <MuiIconButton sx={{ backgroundColor: "rgb(186, 219, 248)" }}>
-              <Twitter sx={{ color: "rgb(30, 136, 229)" }} />
+              <Twitter
+                sx={{
+                  color: "rgb(30, 136, 229)",
+                  [theme.breakpoints.down("sm")]: {
+                    fontSize: "smaller",
+                  },
+                }}
+              />
             </MuiIconButton>{" "}
             -50.69%
           </MuiTypography>
-          <MuiTypography sx={{ fontWeight: "bold" }}>
+          <MuiTypography
+            sx={{
+              fontWeight: "bold",
+              [theme.breakpoints.down("sm")]: {
+                fontSize: "x-small",
+              },
+            }}
+          >
             <MuiIconButton sx={{ backgroundColor: "rgb(241, 194, 191)" }}>
-              <YouTube sx={{ color: "rgb(244, 67, 54)" }} />
+              <YouTube
+                sx={{
+                  color: "rgb(244, 67, 54)",
+                  [theme.breakpoints.down("sm")]: {
+                    fontSize: "smaller",
+                  },
+                }}
+              />
             </MuiIconButton>{" "}
             +16.85%
           </MuiTypography>

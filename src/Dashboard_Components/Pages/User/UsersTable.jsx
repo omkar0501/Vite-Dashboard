@@ -30,7 +30,7 @@ const StatusCell = (params) => {
 const UsersTable = () => {
   return (
     <>
-      <div className="container-fluid">
+      <div className="container-fluid mt-3">
         <DataGrid
           columns={[
             { field: "id", headerName: "ID" },
@@ -63,12 +63,12 @@ const UsersTable = () => {
             boxShadow: 2,
             borderRadius: "8px",
             border: "1px solid #ddd",
-            height: "10%",
+            width: "100%",
+            overflowX: "auto",
+            // height: "10%",
             "& .MuiDataGrid-columnHeaders": {
               backgroundColor: "#1976d2",
-
               fontSize: "larger",
-              borderBottom: "2px solid #ddd",
             },
             "& .MuiDataGrid-cell": {
               borderRight: "1px solid #ddd", // Vertical borders between columns
@@ -77,6 +77,7 @@ const UsersTable = () => {
             "& .MuiDataGrid-footerContainer": {
               borderTop: "1px solid #ddd",
             },
+            overflow: "auto",
           }}
           checkboxSelection
         />

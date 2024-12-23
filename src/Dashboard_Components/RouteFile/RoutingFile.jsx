@@ -1,9 +1,7 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Suspense } from "react";
-import PageNotFound404 from "../../Components/MUI/PageNotFound404";
 import React from "react";
 import { Dashboard } from "../Dashboard/DashboardMain/Dashboard";
-import Analytics from "../Pages/Analytics/Analytics";
 
 const DashboardLogin = React.lazy(() => import("../Login/DashboardLogin"));
 const ForgotPassword = React.lazy(() => import("../Login/ForgotPassword"));
@@ -19,6 +17,8 @@ const DefaultHome = React.lazy(() =>
 );
 const CommingSoon = React.lazy(() => import("../Pages/CommingSoon"));
 const UsersTable = React.lazy(() => import("../Pages/User/UsersTable"));
+const Analytics = React.lazy(() => import("../Pages/Analytics/Analytics"));
+const PageNotFound404 = React.lazy(() => import("../Pages/PageNotFound404"));
 const RouteingFile = () => {
   // const navigate = useNavigate();
 

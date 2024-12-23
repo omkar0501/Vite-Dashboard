@@ -12,6 +12,7 @@ import { Area, AreaChart, ResponsiveContainer, Tooltip } from "recharts";
 import { Grid } from "@mui/material";
 import AreaCharts from "./AreaCharts";
 import PieCharts from "./PieCharts";
+import "../Default_Home/Default_Home.css";
 const CustomTooltip = ({ active, payload, label, title }) => {
   if (active && payload && payload.length) {
     return (
@@ -61,25 +62,27 @@ const Charts = () => {
                 }}
               >
                 <MuiBox className="row p-2 pt-4">
-                  <MuiTypography
-                    className="mb-2 mt-0 col-md-6 d-flex float-left bar-chart-title"
-                    sx={{
-                      fontSize: "meduim",
-                      color: "white",
-                      fontWeight: "bold",
-                    }}
-                  >
-                    {data.total}
-                    <br />
-                    {data.title}
-                  </MuiTypography>
-                  <MuiTypography
-                    variant="h6"
-                    color="white"
-                    className="line-chart-total-proft fw-bold col-md-6 "
-                  >
-                    {data.per}
-                  </MuiTypography>
+                  <div className="d-flex justify-content-between">
+                    <MuiTypography
+                      className="mb-2 mt-0 col-md-6 d-flex float-left bar-chart-title "
+                      sx={{
+                        fontSize: "meduim",
+                        color: "white",
+                        fontWeight: "bold",
+                      }}
+                    >
+                      {data.total}
+                      <br />
+                      {data.title}
+                    </MuiTypography>
+                    <MuiTypography
+                      variant="h6"
+                      color="white"
+                      className="line-chart-total-proft fw-bold col-md-6"
+                    >
+                      {data.per}
+                    </MuiTypography>
+                  </div>
                 </MuiBox>
                 <ResponsiveContainer width="100%" height={150}>
                   <AreaChart

@@ -1042,3 +1042,56 @@ export const countryCoustomer = [
     Average: "8.65%",
   },
 ];
+
+export const Revenue = [
+  {
+    title: "Bitcon",
+    total: "+$145.85",
+    growth: "profit",
+  },
+  {
+    title: "Ethereum",
+    total: "-$6.368",
+    growth: "loss",
+  },
+  {
+    title: "Ripple",
+    total: "+$458.63",
+    growth: "profit",
+  },
+  {
+    title: "Neo",
+    total: "-$5.631",
+    growth: "loss",
+  },
+  {
+    title: "Ethereum",
+    total: "-$6.368",
+    growth: "loss",
+  },
+  {
+    title: "Ripple",
+    total: "+$458.63",
+    growth: "profit",
+  },
+  {
+    title: "Neo",
+    total: "-$5.631",
+    growth: "loss",
+  },
+  {
+    title: "Ethereum",
+    total: "-$6.368",
+    growth: "loss",
+  },
+  {
+    title: "Ripple",
+    total: "+$458.63",
+    growth: "profit",
+  },
+  {
+    title: "Neo",
+    total: "-$5.631",
+    growth: "loss",
+  },
+];

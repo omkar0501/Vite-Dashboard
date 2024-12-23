@@ -1,6 +1,7 @@
 import { styled } from "@mui/material";
 import { propTypes } from "react-bootstrap/esm/Image";
 import "../../Css/DashboardAll.css";
+import { useTheme } from "@emotion/react";
 export const PageWarpperMainDashboardPage = (props) => {
   const drawerWidth = 240;
 
@@ -40,15 +41,12 @@ export const PageWarpperMainDashboardPage = (props) => {
   return (
     <>
       <Main
-        className="wrapper"
+        className="wrapper2 p-2"
         sx={{
-          // borderRadius: "20px 20px 20px 20px",
           mt: "65px",
-          // height: "100vh",
           width: `calc(100% - ${drawerWidth})`,
 
-          // width: "160vh",
-          overflow: "hidden",
+          overflowX: "auto",
         }}
         {...props}
       >
