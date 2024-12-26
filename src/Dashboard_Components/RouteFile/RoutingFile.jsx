@@ -19,6 +19,7 @@ const CommingSoon = React.lazy(() => import("../Pages/CommingSoon"));
 const UsersTable = React.lazy(() => import("../Pages/User/UsersTable"));
 const Analytics = React.lazy(() => import("../Pages/Analytics/Analytics"));
 const PageNotFound404 = React.lazy(() => import("../Pages/PageNotFound404"));
+const Statastics = React.lazy(() => import("../Pages/Statastics/Statastics"));
 const RouteingFile = () => {
   // const navigate = useNavigate();
 
@@ -71,6 +72,10 @@ const RouteingFile = () => {
         {
           path: "/dashboard/analytics",
           element: <Analytics />,
+        },
+        {
+          path: "/dashboard/statistics",
+          element: <Statastics />,
         },
         {
           path: "/dashboard/soon",

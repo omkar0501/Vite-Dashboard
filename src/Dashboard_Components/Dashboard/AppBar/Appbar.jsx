@@ -377,7 +377,8 @@ export const Appbar = ({ darkMode, toggleDarkMode }) => {
             <img
               style={{
                 borderRadius: "50%",
-              }} className="berryimg"
+              }}
+              className="berryimg"
               src="/DashboardImages/Berry.png"
             />
             <span className="mx-1" />

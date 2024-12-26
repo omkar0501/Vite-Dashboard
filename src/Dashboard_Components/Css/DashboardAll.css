@@ -6,7 +6,8 @@
   --primaryColor1: #121926;
   --primaryColor2: #364152;
   --textHoverColor: #5e35b1;
-  --backgroundColorMain: #fcfdfd;
+  --backgroundColorMain: #f7f7f7;
+  /* #fcfdfd */
   --backgroundSearch: rgb(248, 250, 252);
   --borderBottomColor: #c4c5c5;
 
@@ -139,6 +140,15 @@ body {
   .searchtext {
     color: black !important;
   }
+}
+.social-icon-statistics {
+  color: #a9b8c5;
+  transform-origin: center;
+  transition: scale 0.3s;
+}
+.social-icon-statistics-card:hover .social-icon-statistics {
+  color: white;
+  scale: 1.2;
 }
 /* --------------media Query --------------- */
 
