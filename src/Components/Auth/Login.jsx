@@ -25,7 +25,7 @@ const validationSchema = yup.object({
     .required("Password is required"),
 });
 
-export const Login = () => {
+const Login = () => {
   const navigate = useNavigate();
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -49,8 +49,8 @@ export const Login = () => {
   function login(values) {
     setErrorMessage("");
     axios
-      .post("http://192.168.1.21:8001/api/login/", {
-        email: values.Username,
+      .post("http://localhost:8081/api/login", {
+        username: values.Username,
         password: values.pass,
       })
       .then((response) => {
@@ -157,3 +157,4 @@ export const Login = () => {
     </>
   );
 };
+export default Login;

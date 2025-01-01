@@ -17,6 +17,7 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const validationSchema = yup.object({
   email: yup
@@ -32,6 +33,7 @@ const validationSchema = yup.object({
 const DashboardLogin = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [rememberMe, setRememberMe] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
   const theme = useTheme();
 
@@ -53,6 +55,37 @@ const DashboardLogin = () => {
       alert("Invalid Credentials");
     }
   }
+
+  function login(values) {
+    setErrorMessage("");
+    axios
+      .post("http://localhost:8081/api/login", {
+        username: values.Username,
+        password: values.pass,
+      })
+      .then((response) => {
+        console.log(response);
+        if (response.status === 200) {
+          console.log(response);
+          alert("LogIn Successfull");
+          localStorage.setItem("Token", response.data.access);
+          localStorage.setItem("RefreshToken", response.data.refresh);
+          localStorage.setItem("Email", values.Username);
+          if (localStorage.getItem("Token")) {
+            navigate("dashboard/home");
+          }
+        }
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.log(error.response);
+          setErrorMessage(error.response.data.message || "Login failed !");
+        } else {
+          setErrorMessage("Login failed");
+        }
+      });
+  }
+
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
   };
@@ -66,7 +99,7 @@ const DashboardLogin = () => {
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      Login(values);
+      login(values);
     },
   });
   return (
@@ -124,6 +157,11 @@ const DashboardLogin = () => {
             >
               Enter your credentials to continue
             </MuiTypography>
+            {errorMessage && (
+              <MuiTypography color="error" sx={{ mb: 2 }}>
+                {errorMessage}
+              </MuiTypography>
+            )}
             <MuiTextField
               type="email"
               label="Email Address / Username"

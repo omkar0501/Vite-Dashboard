@@ -8,6 +8,7 @@ import { store } from "./app/Store";
 // import { ProductsCart } from "./features/Products/ProductsCart";
 // import { RoutingFile } from "./features/Products/RoutingFile";
 import { FoodProductList } from "./features/FoodProducts/FoodProductList";
+import UserList from "./features/AsyncThunk/UserList";
 
 export const RedeuxComponents = () => {
   return (
@@ -18,7 +19,8 @@ export const RedeuxComponents = () => {
           {/* <Arithmatic/> */}
           {/* <Todo/> */}
           {/* <RoutingFile /> */}
-          <FoodProductList />
+          {/* <FoodProductList /> */}
+          <UserList />
         </Provider>
       </Fragment>
     </>

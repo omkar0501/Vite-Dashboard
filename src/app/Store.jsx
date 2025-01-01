@@ -3,6 +3,7 @@ import counterReducer from "../features/counter/CounterSlice";
 import arithmaticReducer from "../features/Arithmatic/ArithmaticSlice";
 import todoReducer from "../features/Todo/TodoSlice";
 import FoodProductReducer from "../features/FoodProducts/FoodProductListSlice";
+import UserSlice from "../features/AsyncThunk/UserSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
     arithmatic: arithmaticReducer,
     todo: todoReducer,
     foodorder: FoodProductReducer,
+    users: UserSlice,
   },
 });
