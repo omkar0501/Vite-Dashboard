@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Suspense } from "react";
 import React from "react";
 import { Dashboard } from "../Dashboard/DashboardMain/Dashboard";
+import Loader from "../Pages/Loader";
 
 const DashboardLogin = React.lazy(() => import("../Login/DashboardLogin"));
 const ForgotPassword = React.lazy(() => import("../Login/ForgotPassword"));
@@ -20,6 +21,7 @@ const UsersTable = React.lazy(() => import("../Pages/User/UsersTable"));
 const Analytics = React.lazy(() => import("../Pages/Analytics/Analytics"));
 const PageNotFound404 = React.lazy(() => import("../Pages/PageNotFound404"));
 const Statastics = React.lazy(() => import("../Pages/Statastics/Statastics"));
+const ChatComponent = React.lazy(() => import("../Pages/Chats/ChatComponent"));
 const RouteingFile = () => {
   // const navigate = useNavigate();
 
@@ -78,7 +80,31 @@ const RouteingFile = () => {
           element: <Statastics />,
         },
         {
-          path: "/dashboard/soon",
+          path: "/dashboard/data",
+          element: <CommingSoon />,
+        },
+        {
+          path: "/dashboard/chat",
+          element: <ChatComponent />,
+        },
+        {
+          path: "/dashboard/mail",
+          element: <CommingSoon />,
+        },
+        {
+          path: "/dashboard/calender",
+          element: <CommingSoon />,
+        },
+        {
+          path: "/dashboard/ecommerce",
+          element: <CommingSoon />,
+        },
+        {
+          path: "/dashboard/invoice",
+          element: <CommingSoon />,
+        },
+        {
+          path: "/dashboard/CRM",
           element: <CommingSoon />,
         },
       ],
@@ -90,7 +116,7 @@ const RouteingFile = () => {
   ]);
   return (
     <>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader />}>
         <RouterProvider router={router}></RouterProvider>
       </Suspense>
     </>

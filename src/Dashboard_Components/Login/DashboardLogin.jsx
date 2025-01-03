@@ -43,32 +43,19 @@ const DashboardLogin = () => {
     }
   });
 
-  function Login(values) {
-    if (
-      values.email == "gawraesanket033@gmail.com" &&
-      values.password == "Sanket@123"
-    ) {
-      alert("login success");
-      localStorage.setItem("isLoggedIn", true);
-      navigate("/dashboard/home");
-    } else {
-      alert("Invalid Credentials");
-    }
-  }
-
   function login(values) {
     setErrorMessage("");
     axios
-      .post("http://localhost:8081/api/login", {
-        username: values.Username,
-        password: values.pass,
+      .post("http://localhost:8081/api/auth/login", {
+        username: values.email,
+        password: values.password,
       })
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
           console.log(response);
           alert("LogIn Successfull");
-          localStorage.setItem("Token", response.data.access);
+          localStorage.setItem("Token", response.data.token);
           localStorage.setItem("RefreshToken", response.data.refresh);
           localStorage.setItem("Email", values.Username);
           if (localStorage.getItem("Token")) {
@@ -103,8 +90,9 @@ const DashboardLogin = () => {
     },
   });
   return (
-    <div>
+    <div className="d-flex justify-content-center align-items-center">
       <MuiCard
+        className="d-flex justify-content-center align-items-center"
         sx={{
           py: 4,
 
@@ -113,8 +101,12 @@ const DashboardLogin = () => {
           border: "1px solid white",
         }}
       >
-        <form onSubmit={formik.handleSubmit}>
+        <form
+          onSubmit={formik.handleSubmit}
+          className="d-flex justify-content-center align-items-center"
+        >
           <MuiBox
+            className="justify-content-center align-items-center"
             sx={{
               [theme.breakpoints.down("sm")]: {
                 padding: "20px",
@@ -125,6 +117,7 @@ const DashboardLogin = () => {
             }}
           >
             <MuiTypography
+              className="d-flex justify-content-center align-items-center"
               variant="h5"
               sx={{ fontWeight: "bold", letterSpacing: "1px" }}
             >
@@ -141,6 +134,7 @@ const DashboardLogin = () => {
             </MuiTypography>
             <br />
             <MuiTypography
+              className="d-flex justify-content-center align-items-center"
               variant="h5"
               sx={{
                 fontWeight: "bolder",
@@ -153,139 +147,150 @@ const DashboardLogin = () => {
               Hi, Welcome
             </MuiTypography>
             <MuiTypography
+              className="d-flex justify-content-center align-items-center"
               sx={{ mb: 3, color: "#677586", fontFamily: "sans-serif" }}
             >
               Enter your credentials to continue
             </MuiTypography>
             {errorMessage && (
-              <MuiTypography color="error" sx={{ mb: 2 }}>
+              <MuiTypography
+                className="d-flex justify-content-center"
+                color="error"
+                sx={{ mb: 2 }}
+              >
                 {errorMessage}
               </MuiTypography>
             )}
-            <MuiTextField
-              type="email"
-              label="Email Address / Username"
-              variant="filled"
-              id="email"
-              name="email"
-              value={formik.values.email}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.email && Boolean(formik.errors.email)}
-              helperText={formik.touched.email && formik.errors.email}
-              InputLabelProps={{
-                sx: {
-                  fontSize: "0.75rem",
-                  "&.MuiInputLabel-shrink": {
-                    marginTop: "1rem", // Adjust margin when label is shrunk (focused or filled)
-                    paddingLeft: "0.25rem", // Adjust padding when label is shrunk
-                    fontSize: "0.95rem", // Ensure the font size remains small when shrunk
-                    transform: "translate(14px, -6px) scale(0.75)", // Adjust the transform to move the label correctly
+            <div className="d-flex justify-content-center align-items-center">
+              <MuiTextField
+                type="email"
+                label="Email Address / Username"
+                variant="filled"
+                id="email"
+                name="email"
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={formik.touched.email && Boolean(formik.errors.email)}
+                helperText={formik.touched.email && formik.errors.email}
+                InputLabelProps={{
+                  sx: {
+                    fontSize: "0.75rem",
+                    "&.MuiInputLabel-shrink": {
+                      marginTop: "1rem", // Adjust margin when label is shrunk (focused or filled)
+                      paddingLeft: "0.25rem", // Adjust padding when label is shrunk
+                      fontSize: "0.95rem", // Ensure the font size remains small when shrunk
+                      transform: "translate(14px, -6px) scale(0.75)", // Adjust the transform to move the label correctly
+                    },
                   },
-                },
-              }}
-              InputProps={{
-                disableUnderline: true, // Disable underline to make it look like outlined variant
-                sx: {
-                  fontWeight: "550",
-                  fontFamily: "inherit",
-                  backgroundColor: "white", // Input background color
-                  borderRadius: "10px", // Border radius
-                  border: "1px solid rgba(0, 0, 0, 0.23)", // Default border color
-                  paddingLeft: "0.3rem", // Padding inside the input
-                  "&:hover": {
-                    border: "1px solid rgba(0, 0, 0, 0.87)", // Border color on hover
+                }}
+                InputProps={{
+                  disableUnderline: true, // Disable underline to make it look like outlined variant
+                  sx: {
+                    fontWeight: "550",
+                    fontFamily: "inherit",
+                    backgroundColor: "white", // Input background color
+                    borderRadius: "10px", // Border radius
+                    border: "1px solid rgba(0, 0, 0, 0.23)", // Default border color
+                    paddingLeft: "0.3rem", // Padding inside the input
+                    "&:hover": {
+                      border: "1px solid rgba(0, 0, 0, 0.87)", // Border color on hover
+                    },
+                    "&.Mui-focused": {
+                      border: "2px solid rgb(33, 150, 243)", // Border color on focus
+                    },
                   },
-                  "&.Mui-focused": {
-                    border: "2px solid rgb(33, 150, 243)", // Border color on focus
-                  },
-                },
-              }}
-              sx={{
-                mb: 2,
-                width: "100%", // Make the text field take the full width of the container
-                maxWidth: "400px", // Limit the maximum width
-                "& .MuiFilledInput-root": {
-                  backgroundColor: "rgb(244 245 247)", // Set background color for the filled input
-                  borderRadius: "10px",
-                  "&:hover": {
-                    backgroundColor: "rgb(244 245 247)",
-                  },
-                },
-                "& .MuiFilledInput-underline:before, & .MuiFilledInput-underline:after":
-                  {
-                    display: "none", // Hide the underline for both before and after states
-                  },
-              }}
-            />
-            <MuiTextField
-              type={showPassword ? "text" : "password"}
-              label="Password"
-              variant="filled"
-              id="password"
-              name="password"
-              value={formik.values.password}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
-              error={formik.touched.password && Boolean(formik.errors.password)}
-              helperText={formik.touched.password && formik.errors.password}
-              InputLabelProps={{
-                sx: {
-                  fontSize: "0.95rem",
-                  "&.MuiInputLabel-shrink": {
-                    marginTop: "1rem", // Adjust margin when label is shrunk (focused or filled)
-                    paddingLeft: "0.25rem", // Adjust padding when label is shrunk
-                    fontSize: "0.95rem", // Ensure the font size remains small when shrunk
-                    transform: "translate(14px, -6px) scale(0.75)", // Adjust the transform to move the label correctly
-                  },
-                },
-              }}
-              InputProps={{
-                disableUnderline: true, // Disable underline to make it look like outlined variant
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <MuiIconButton
-                      aria-label="toggle password visibility"
-                      onClick={handleClickShowPassword}
-                      onMouseDown={handleMouseDownPassword}
-                      edge="end"
-                    >
-                      {showPassword ? <VisibilityOff /> : <Visibility />}
-                    </MuiIconButton>
-                  </InputAdornment>
-                ),
-                sx: {
-                  fontWeight: "550",
-                  fontFamily: "inherit",
-                  backgroundColor: "white", // Input background color
-                  borderRadius: "10px", // Border radius
-                  border: "1px solid rgba(0, 0, 0, 0.23)", // Default border color
-                  paddingLeft: "0.3rem", // Padding inside the input
-                  "&:hover": {
-                    border: "1px solid rgba(0, 0, 0, 0.87)", // Border color on hover
-                  },
-                  "&.Mui-focused": {
-                    border: "2px solid rgb(33, 150, 243)", // Border color on focus
-                  },
-                },
-              }}
-              sx={{
-                width: "100%", // Make the text field take the full width of the container
-                maxWidth: "400px", // Limit the maximum width
-                "& .MuiFilledInput-root": {
-                  backgroundColor: "rgb(232, 240, 254)", // Set background color for the filled input
-                  borderRadius: "10px",
+                }}
+                sx={{
                   mb: 2,
-                  "&:hover": {
-                    backgroundColor: "rgb(232, 240, 254)",
+                  width: "100%", // Make the text field take the full width of the container
+                  maxWidth: "400px", // Limit the maximum width
+                  "& .MuiFilledInput-root": {
+                    backgroundColor: "rgb(244 245 247)", // Set background color for the filled input
+                    borderRadius: "10px",
+                    "&:hover": {
+                      backgroundColor: "rgb(244 245 247)",
+                    },
                   },
-                },
-                "& .MuiFilledInput-underline:before, & .MuiFilledInput-underline:after":
-                  {
-                    display: "none", // Hide the underline for both before and after states
+                  "& .MuiFilledInput-underline:before, & .MuiFilledInput-underline:after":
+                    {
+                      display: "none", // Hide the underline for both before and after states
+                    },
+                }}
+              />
+            </div>
+            <div className="d-flex justify-content-center align-items-center">
+              <MuiTextField
+                type={showPassword ? "text" : "password"}
+                label="Password"
+                variant="filled"
+                id="password"
+                name="password"
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                error={
+                  formik.touched.password && Boolean(formik.errors.password)
+                }
+                helperText={formik.touched.password && formik.errors.password}
+                InputLabelProps={{
+                  sx: {
+                    fontSize: "0.95rem",
+                    "&.MuiInputLabel-shrink": {
+                      marginTop: "1rem", // Adjust margin when label is shrunk (focused or filled)
+                      paddingLeft: "0.25rem", // Adjust padding when label is shrunk
+                      fontSize: "0.95rem", // Ensure the font size remains small when shrunk
+                      transform: "translate(14px, -6px) scale(0.75)", // Adjust the transform to move the label correctly
+                    },
                   },
-              }}
-            />
+                }}
+                InputProps={{
+                  disableUnderline: true, // Disable underline to make it look like outlined variant
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <MuiIconButton
+                        aria-label="toggle password visibility"
+                        onClick={handleClickShowPassword}
+                        onMouseDown={handleMouseDownPassword}
+                        edge="end"
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </MuiIconButton>
+                    </InputAdornment>
+                  ),
+                  sx: {
+                    fontWeight: "550",
+                    fontFamily: "inherit",
+                    backgroundColor: "white", // Input background color
+                    borderRadius: "10px", // Border radius
+                    border: "1px solid rgba(0, 0, 0, 0.23)", // Default border color
+                    paddingLeft: "0.3rem", // Padding inside the input
+                    "&:hover": {
+                      border: "1px solid rgba(0, 0, 0, 0.87)", // Border color on hover
+                    },
+                    "&.Mui-focused": {
+                      border: "2px solid rgb(33, 150, 243)", // Border color on focus
+                    },
+                  },
+                }}
+                sx={{
+                  width: "100%", // Make the text field take the full width of the container
+                  maxWidth: "400px", // Limit the maximum width
+                  "& .MuiFilledInput-root": {
+                    backgroundColor: "rgb(232, 240, 254)", // Set background color for the filled input
+                    borderRadius: "10px",
+                    mb: 2,
+                    "&:hover": {
+                      backgroundColor: "rgb(232, 240, 254)",
+                    },
+                  },
+                  "& .MuiFilledInput-underline:before, & .MuiFilledInput-underline:after":
+                    {
+                      display: "none", // Hide the underline for both before and after states
+                    },
+                }}
+              />
+            </div>
             <MuiBox
               sx={{
                 display: "flex",
@@ -335,6 +340,7 @@ const DashboardLogin = () => {
                 }}
               >
                 <MuiTypography
+                  className="text-decoration-none"
                   sx={{
                     color: "#673Ab7",
                     "@media (max-width:430px)": {
@@ -348,22 +354,24 @@ const DashboardLogin = () => {
                 </MuiTypography>
               </MuiBox>
             </MuiBox>
-            <MuiButton
-              type="submit"
-              className="signupButton"
-              variant="filled"
-              sx={{
-                backgroundColor: "#673Ac7",
-                width: "65%",
-                color: "white",
-                fontWeight: "bold",
-                p: 1,
-                mb: 2,
-                "@media (max-width:500px)": { width: "100%" },
-              }}
-            >
-              Sign In
-            </MuiButton>
+            <div className="d-flex justify-content-center align-items-center">
+              <MuiButton
+                type="submit"
+                className="signupButton"
+                variant="filled"
+                sx={{
+                  backgroundColor: "#673Ac7",
+                  width: "65%",
+                  color: "white",
+                  fontWeight: "bold",
+                  p: 1,
+                  mb: 2,
+                  "@media (max-width:500px)": { width: "100%" },
+                }}
+              >
+                Sign In
+              </MuiButton>
+            </div>
             <MuiDivider
               sx={{
                 mb: 2,
@@ -373,6 +381,7 @@ const DashboardLogin = () => {
               }}
             />
             <MuiTypography
+              className="d-flex justify-content-center align-items-center text-decoration-none"
               sx={{
                 color: "#121226",
                 fontWeight: "bold",

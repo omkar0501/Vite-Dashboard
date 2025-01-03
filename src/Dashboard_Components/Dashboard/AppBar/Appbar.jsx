@@ -98,7 +98,7 @@ export const Appbar = ({ darkMode, toggleDarkMode }) => {
   };
 
   const logout = () => {
-    localStorage.setItem("isLoggedIn", false);
+    localStorage.removeItem("Token");
     navigate("/");
     handleClose();
   };
