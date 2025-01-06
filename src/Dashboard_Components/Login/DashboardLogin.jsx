@@ -57,6 +57,7 @@ const DashboardLogin = () => {
           alert("LogIn Successfull");
           localStorage.setItem("Token", response.data.token);
           localStorage.setItem("RefreshToken", response.data.refresh);
+          localStorage.setItem("username", values.email);
           localStorage.setItem("Email", values.Username);
           if (localStorage.getItem("Token")) {
             navigate("dashboard/home");
@@ -90,9 +91,9 @@ const DashboardLogin = () => {
     },
   });
   return (
-    <div className="d-flex justify-content-center align-items-center">
+    <div className="d-flex justify-content-center align-items-center mt-5">
       <MuiCard
-        className="d-flex justify-content-center align-items-center"
+        className="d-flex justify-content-center align-items-center "
         sx={{
           py: 4,
 
