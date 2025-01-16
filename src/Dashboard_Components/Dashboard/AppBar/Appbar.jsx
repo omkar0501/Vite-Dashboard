@@ -382,7 +382,7 @@ export const Appbar = ({ darkMode, toggleDarkMode }) => {
               src="/DashboardImages/Berry.png"
             />
             <span className="mx-1" />
-            BERRY
+            VIEW POINT
           </MuiTypography>
           <MuiIconButton
             className="MenuCloseSection AppBarIconBtn1"

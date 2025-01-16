@@ -86,7 +86,7 @@ const ForgotPassword = () => {
               src="/DashboardImages/Berry.png"
             />
             <span className="mx-1" />
-            BERRY
+            VIEW Point
           </MuiTypography>
           <br />
           <MuiTypography

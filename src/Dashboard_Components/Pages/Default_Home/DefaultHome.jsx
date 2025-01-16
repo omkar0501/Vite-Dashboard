@@ -231,12 +231,6 @@ export default function DefaultHome() {
           <div className="col-12 col-md-4 mt-3">
             <LineChartComponent />
           </div>
-          <div className="col-12 col-md-4 mt-3">
-            <BarChartComponent />
-          </div>
-          <div className="col-12 col-md-8 mt-3">
-            <BarChartComponent />
-          </div>
         </div>
       </div>
     </>

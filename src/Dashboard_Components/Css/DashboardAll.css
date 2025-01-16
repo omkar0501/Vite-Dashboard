@@ -150,6 +150,31 @@ body {
   color: white;
   scale: 1.2;
 }
+.chatbar {
+  overflow: auto;
+  max-height: 480px;
+  scrollbar-width: none;
+}
+.chatarea {
+  overflow: auto;
+  height: 300px;
+  scrollbar-width: none;
+  
+}
+.msground {
+  background-color: var(--backgroundColor3);
+  padding: 5px;
+  border-radius: 10px 0px 10px 10px;
+}
+.msground1 {
+  background-color: var(--bgwhite);
+  padding: 5px 0px 0px 0px;
+  border-radius: 0px 10px 10px 10px;
+}
+.sendbar {
+  background-color: var(--backgroundSearch);
+}
+
 /* --------------media Query --------------- */
 
 @media screen and (max-width: 500px) {

@@ -7,15 +7,24 @@ import {
   MuiListItemText,
   MuiTypography,
 } from "../../../MUIComponents/Mui";
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
+import HomeOutlinedIcon from "@mui/icons-material/AddHomeOutlined";
 import AnalyticsOutlinedIcon from "@mui/icons-material/AnalyticsOutlined";
 import ContentPasteGoOutlinedIcon from "@mui/icons-material/ContentPasteGoOutlined";
 import QueryStatsOutlinedIcon from "@mui/icons-material/QueryStatsOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ShopOutlinedIcon from "@mui/icons-material/ShopOutlined";
-import { Link, NavLink } from "react-router-dom";
+import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
+import MailIcon from "@mui/icons-material/Mail";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import PeopleIcon from "@mui/icons-material/People";
+import BadgeIcon from "@mui/icons-material/Badge";
+import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
+import ShoppingBasketIcon from "@mui/icons-material/ShoppingBasket";
+import InterpreterModeIcon from "@mui/icons-material/InterpreterMode";
+import HandshakeIcon from "@mui/icons-material/Handshake";
+import { NavLink } from "react-router-dom";
 import { useState } from "react";
-import { ExpandLess, ExpandMore } from "@mui/icons-material";
+import { BarChart, ExpandLess, ExpandMore } from "@mui/icons-material";
 import { Collapse } from "@mui/material";
 
 const DrawerList = ({ handleDrawerToggle }) => {
@@ -26,10 +35,10 @@ const DrawerList = ({ handleDrawerToggle }) => {
         sx={{
           mx: 2,
           "&:hover": {
-            backgroundColor: "transparent", // Removes the unwanted hover background
+            backgroundColor: "transparent",
             "&.MuiListItemIcon-root, & .MuiListItemText-root": {
-              color: "#364152", // Keeps the text and icon color the same on hover
-              fontWeight: "normal", // Ensures font weight does not change
+              color: "#364152",
+              fontWeight: "normal",
             },
           },
         }}
@@ -104,7 +113,7 @@ const TabMenu = ({
   exact,
   handleDrawerToggle,
 }) => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
   const handleClick = () => {
     setOpen(!open);
@@ -112,25 +121,6 @@ const TabMenu = ({
   const mediaQuery = window.matchMedia("(max-width: 900px)");
 
   return (
-    // <MuiListItem className="list-item" disablePadding>
-    //   <MuiListItemButton as={Link} to={path} onClick={handleClick}>
-    //     <MuiListItemIcon>{icon}</MuiListItemIcon>
-    //     <MuiListItemText>
-    //       <MuiTypography className="list-item-text">{title}</MuiTypography>
-    //     </MuiListItemText>
-    //     {childrens && open ? <ExpandLess /> : <ExpandMore />}
-    //   </MuiListItemButton>
-    //   {childrens && (
-    //     <Collapse in={open} timeout="auto" unmountOnExit>
-    //       <MuiList component="div" disablePadding>
-    //         <MuiListItemButton sx={{ pl: 4 }}>
-    //           <MuiListItemIcon></MuiListItemIcon>
-    //           <MuiListItemText primary="Starred" />
-    //         </MuiListItemButton>
-    //       </MuiList>
-    //     </Collapse>
-    //   )}
-    // </MuiListItem>
     <div onClick={() => (mediaQuery.matches ? handleDrawerToggle() : "")}>
       <MuiListItemButton
         onClick={handleClick}
@@ -211,7 +201,7 @@ const WidgetTabs = [
   {
     id: 3,
     title: "Chart",
-    icon: <PeopleOutlinedIcon className="list-item-icon" size="2vw" />,
+    icon: <BarChart className="list-item-icon" size="2vw" />,
     path: "/dashboard/charts",
   },
 ];
@@ -232,42 +222,36 @@ const ApplicationTabs = [
   {
     id: 3,
     title: "Chat",
-    icon: <HomeOutlinedIcon className="list-item-icon" size="2vw" />,
+    icon: <ChatBubbleOutlineIcon className="list-item-icon" size="2vw" />,
     path: "/dashboard/chat",
   },
-  // {
-  //   id: 4,
-  //   title: "Kanban",
-  //   icon: <HomeOutlinedIcon className="list-item-icon" size="2vw" />,
-  //   path: "/dashboard/soon",
-  // },
   {
     id: 5,
     title: "Mail",
-    icon: <HomeOutlinedIcon className="list-item-icon" size="2vw" />,
+    icon: <MailIcon className="list-item-icon" size="2vw" />,
     path: "/dashboard/mail",
   },
   {
     id: 6,
     title: "Calender",
-    icon: <HomeOutlinedIcon className="list-item-icon" size="2vw" />,
+    icon: <CalendarMonthIcon className="list-item-icon" size="2vw" />,
     path: "/dashboard/calender",
   },
   {
     id: 7,
     title: "Contact",
-    icon: <HomeOutlinedIcon className="list-item-icon" size="2vw" />,
+    icon: <PeopleIcon className="list-item-icon" size="2vw" />,
     childrens: [
       {
         id: 11,
         title: "Cards",
-        icon: <HomeOutlinedIcon className="list-item-icon" size="2vw" />,
+        icon: <BadgeIcon className="list-item-icon" size="1.5vw" />,
         path: "/dashboard/contacts/cards",
       },
       {
         id: 12,
         title: "List",
-        icon: <HomeOutlinedIcon className="list-item-icon" size="2vw" />,
+        icon: <ContactPhoneIcon className="list-item-icon" size="1.5vw" />,
         path: "/dashboard/contacts/list",
       },
     ],
@@ -275,19 +259,19 @@ const ApplicationTabs = [
   {
     id: 8,
     title: "E-commerce",
-    icon: <HomeOutlinedIcon className="list-item-icon" size="2vw" />,
+    icon: <ShoppingBasketIcon className="list-item-icon" size="2vw" />,
     path: "/dashboard/ecommerce",
   },
   {
     id: 9,
     title: "Invoice",
-    icon: <HomeOutlinedIcon className="list-item-icon" size="2vw" />,
+    icon: <InterpreterModeIcon className="list-item-icon" size="2vw" />,
     path: "/dashboard/invoice",
   },
   {
     id: 10,
     title: "CRM",
-    icon: <HomeOutlinedIcon className="list-item-icon" size="2vw" />,
+    icon: <HandshakeIcon className="list-item-icon" size="2vw" />,
     path: "/dashboard/crm",
   },
 ];

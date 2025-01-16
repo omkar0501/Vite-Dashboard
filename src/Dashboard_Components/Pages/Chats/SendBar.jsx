@@ -1,34 +1,45 @@
 import { Send } from "@mui/icons-material";
+import SentimentSatisfiedAltIcon from "@mui/icons-material/SentimentSatisfiedAlt";
+import AttachmentIcon from "@mui/icons-material/Attachment";
 import { MuiTextField, MuiIconButton } from "../../../MUIComponents/Mui";
 import { useState } from "react";
 import axios from "axios";
-
 const SendBar = ({ id, onSend }) => {
   const token = localStorage.getItem("Token");
   const [sendMessage, setSendMessage] = useState("");
 
   const SendMsg = () => {
-    axios
-      .post(
-        `http://localhost:8081/api/messages/sendmessage/${id._id}`,
-        {
-          message: sendMessage,
-        },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
+    if (sendMessage != "") {
+      axios
+        .post(
+          `https://node-js-view-point.onrender.com/api/messages/sendmessage/${id._id}`,
+          {
+            message: sendMessage,
           },
-        }
-      )
-      .then((response) => {
-        response.status == 201 ? setSendMessage("") : "";
-      });
-    onSend(`${id._id}`);
-    onSend(`${id._id}`);
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              "Content-Type": "application/json",
+            },
+          }
+        )
+        .then((response) => {
+          response.status == 201 ? setSendMessage("") : "";
+        });
+      onSend(`${id._id}`);
+    }
   };
   return (
-    <div className="d-flex justify-content-between align-items-center border rounded-3 p-2 mt-2">
+    <div className="d-flex justify-content-between align-items-center border rounded-3 p-2 mt-2 sendbar">
+      <MuiIconButton
+        onClick={() => SendMsg()}
+        sx={{
+          borderRadius: "50%",
+          padding: "8px",
+        }}
+      >
+        <SentimentSatisfiedAltIcon color="primary" />
+      </MuiIconButton>
       <MuiTextField
         sx={{ width: "85%", marginRight: "10px" }}
         placeholder="Type a message..."
@@ -44,6 +55,15 @@ const SendBar = ({ id, onSend }) => {
           },
         }}
       />
+      <MuiIconButton
+        onClick={() => SendMsg()}
+        sx={{
+          borderRadius: "50%",
+          padding: "8px",
+        }}
+      >
+        <AttachmentIcon color="dark" />
+      </MuiIconButton>
       <MuiIconButton
         onClick={() => SendMsg()}
         sx={{

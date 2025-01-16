@@ -84,19 +84,18 @@ const ContactsList = () => {
                             </MuiTypography>
                           </MuiBox>
                         </Box>
-                        <Box>
+                        <Box className="d-flex justify-content-end">
                           <MuiButton
-                            variant="outlined"
+                            // variant="outlined"
                             sx={{
                               marginRight: 2,
                               [theme.breakpoints.down("sm")]: {
-                                marginRight: 0,
-                                size: "small",
+                                marginRight: "0px",
                               },
                             }}
                           >
-                            <Message sx={{ width: "100%" }} />
-                          </MuiButton>{" "}
+                            <Message sx={{ fontSize: "small" }} />
+                          </MuiButton>
                           <MuiButton variant="outlined" color="secondary">
                             <Phone />
                           </MuiButton>

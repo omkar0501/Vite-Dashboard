@@ -38,7 +38,7 @@ const DashboardLogin = () => {
   const theme = useTheme();
 
   useEffect(() => {
-    if (localStorage.getItem("isLoggedIn") === "true") {
+    if (localStorage.getItem("Token")) {
       navigate("/dashboard/home");
     }
   });
@@ -46,7 +46,7 @@ const DashboardLogin = () => {
   function login(values) {
     setErrorMessage("");
     axios
-      .post("http://localhost:8081/api/auth/login", {
+      .post("https://node-js-view-point.onrender.com/api/auth/login", {
         username: values.email,
         password: values.password,
       })
@@ -145,7 +145,7 @@ const DashboardLogin = () => {
                 mb: 1,
               }}
             >
-              Hi, Welcome
+              Welcome
             </MuiTypography>
             <MuiTypography
               className="d-flex justify-content-center align-items-center"

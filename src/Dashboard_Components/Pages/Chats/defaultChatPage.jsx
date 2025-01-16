@@ -2,9 +2,17 @@ import { MuiCard } from "../../../MUIComponents/Mui";
 
 const DefaultChatPage = () => {
   return (
-    <div className="d-flex justify-content-center">
-      <img src="\DashboardImages\chatimg.jpg" style={{ width: "70%" }} />
-    </div>
+    <div
+      className="d-flex justify-content-center"
+      style={{
+        backgroundImage: `url('/DashboardImages/chatbg.jpg')`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        height: "100%",
+        width: "100%",
+      }}
+    ></div>
   );
 };
 export default DefaultChatPage;
