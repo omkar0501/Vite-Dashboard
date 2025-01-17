@@ -164,7 +164,7 @@ const ChatComponent = () => {
               {chatUser && (
                 <div className="sendbar p-md-2 p-lg-2">
                   <MuiTypography className="d-flex justify-content-between align-items-center mb-1">
-                    <div className="d-flex align-items-center gap-2">
+                    <div className="d-flex align-items-center gap-md-2 gap-lg-2 gap-1">
                       <MuiIconButton
                         sx={{
                           px: 0,
@@ -172,14 +172,23 @@ const ChatComponent = () => {
                           display: { xs: "block", md: "none" },
                         }}
                       >
-                        <ArrowBack onClick={handleMobileView} />
+                        <ArrowBack sx={{}} onClick={handleMobileView} />
                       </MuiIconButton>
                       <MuiAvatar src="\DashboardImages\male.jpg" />
-                      <MuiTypography className="fw-bold">
+                      <MuiTypography
+                        className="fw-bold"
+                        sx={{
+                          whiteSpace: "nowrap",
+                          overflow: "hidden",
+                          textOverflow: "ellipsis",
+                          fontSize: { xs: "small" },
+                          ms: { xs: 1 },
+                        }}
+                      >
                         {chatUser.fullname}
                       </MuiTypography>
                     </div>
-                    <div className="d-flex gap-lg-3 gap-1 justify-content-center align-items-center">
+                    <div className="d-flex gap-lg-3 gap-0 justify-content-center align-items-center">
                       <MuiIconButton>
                         <CallOutlined color="primary" />
                       </MuiIconButton>
@@ -237,7 +246,7 @@ const ChatComponent = () => {
                     </div>
                   ))
                 ) : (
-                  <MuiTypography className="d-flex justify-content-center align-items-center">
+                  <MuiTypography className="d-flex justify-content-center align-items-center my-auto">
                     No messages yet
                   </MuiTypography>
                 )}

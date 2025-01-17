@@ -30,7 +30,7 @@ const SendBar = ({ id, onSend }) => {
     }
   };
   return (
-    <div className="d-flex justify-content-between align-items-center border rounded-3 p-lg-2 p-md-2 px-0 py-2 mt-0 mt-md-2 mt-lg-2 sendbar">
+    <div className="d-flex justify-content-between align-items-center border rounded-3 p-lg-2 p-md-2 px-0 py-1 mt-0 mt-md-2 mt-lg-2 sendbar">
       <MuiIconButton
         // onClick={() => SendMsg()}
         sx={{
