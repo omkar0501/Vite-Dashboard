@@ -159,7 +159,6 @@ body {
   overflow: auto;
   height: 300px;
   scrollbar-width: none;
-  
 }
 .msground {
   background-color: var(--backgroundColor3);

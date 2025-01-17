@@ -22,6 +22,11 @@ import SendBar from "./SendBar";
 import DefaultChatPage from "./defaultChatPage";
 import "../../Css/DashboardAll.css";
 import { Box } from "@mui/material";
+import {
+  CurrentPage,
+  CurrentPage2,
+  ReturnHomeCard,
+} from "../Common/ReturnHome";
 
 const ChatComponent = () => {
   const [users, setUsers] = useState([]);
@@ -76,17 +81,10 @@ const ChatComponent = () => {
 
   return (
     <div className="container-fluid">
-      <MuiCard className="d-flex justify-content-between m-1 p-3 mb-3">
-        <MuiTypography sx={{ fontSize: "medium", fontWeight: "bold" }}>
-          Chats
-        </MuiTypography>
-        <MuiTypography sx={{ fontSize: "small", fontWeight: "bold" }}>
-          <MuiIconButton onClick={() => navigate("/dashboard/home")}>
-            <Home fontSize="small" sx={{ color: "#5e35b1" }} />{" "}
-          </MuiIconButton>
-          <ChevronRight sx={{ color: "gray" }} /> Chat
-        </MuiTypography>
-      </MuiCard>
+      <ReturnHomeCard>
+        <CurrentPage>Chats</CurrentPage>
+        <CurrentPage2>Chat</CurrentPage2>
+      </ReturnHomeCard>
       <div className="row d-flex">
         <Box
           className="col-md-4 col-xs-12"
@@ -95,7 +93,7 @@ const ChatComponent = () => {
             flex: "column",
           }}
         >
-          <MuiCard className=" flex-grow-1 h-100 chatbar">
+          <MuiCard className=" flex-grow-1 chatbar">
             <MuiTypography className=" p-3 d-flex justify-content-between align-items-center mb-1">
               {currentUser && (
                 <div className="d-flex align-items-center gap-2">
@@ -164,7 +162,7 @@ const ChatComponent = () => {
               }}
             >
               {chatUser && (
-                <div className="sendbar p-2">
+                <div className="sendbar p-md-2 p-lg-2">
                   <MuiTypography className="d-flex justify-content-between align-items-center mb-1">
                     <div className="d-flex align-items-center gap-2">
                       <MuiIconButton
@@ -181,7 +179,7 @@ const ChatComponent = () => {
                         {chatUser.fullname}
                       </MuiTypography>
                     </div>
-                    <div className="d-flex gap-3 justify-content-center align-items-center">
+                    <div className="d-flex gap-lg-3 gap-1 justify-content-center align-items-center">
                       <MuiIconButton>
                         <CallOutlined color="primary" />
                       </MuiIconButton>
@@ -196,16 +194,21 @@ const ChatComponent = () => {
                 </div>
               )}
 
-              <MuiDivider sx={{ mb: 2, borderBottom: "1px solid white" }} />
+              <MuiDivider
+                sx={{ mb: { md: 2, xs: 0 }, borderBottom: "1px solid white" }}
+              />
 
-              <div className="flex-grow-1 pb-2 chatarea p-3">
+              <MuiBox
+                className="flex-grow-1 pb-2 chatarea p-lg-3 p-1"
+                sx={{ height: { xs: "380px", md: "300px" } }}
+              >
                 {messages.length > 0 ? (
                   messages.map((data, i) => (
                     <div key={i}>
                       {data.senderId !== chatUser._id ? (
                         <div className="d-flex justify-content-end">
                           <div className="msground px-2 mb-3">
-                            <MuiTypography sx={{ mb: "1px" }} className=" ">
+                            <MuiTypography sx={{ mb: "1px" }} className="">
                               {data.message}
                             </MuiTypography>
                             <MuiTypography
@@ -238,8 +241,8 @@ const ChatComponent = () => {
                     No messages yet
                   </MuiTypography>
                 )}
-              </div>
-              <div className="position-sticky p-3" style={{ bottom: 0 }}>
+              </MuiBox>
+              <div className="position-sticky p-1 p-lg-3" style={{ bottom: 0 }}>
                 <SendBar id={chatUser} onSend={handleSelectedUser} />
               </div>
             </MuiCard>

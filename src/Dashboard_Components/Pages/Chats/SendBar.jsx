@@ -30,9 +30,9 @@ const SendBar = ({ id, onSend }) => {
     }
   };
   return (
-    <div className="d-flex justify-content-between align-items-center border rounded-3 p-2 mt-2 sendbar">
+    <div className="d-flex justify-content-between align-items-center border rounded-3 p-lg-2 p-md-2 px-0 py-2 mt-0 mt-md-2 mt-lg-2 sendbar">
       <MuiIconButton
-        onClick={() => SendMsg()}
+        // onClick={() => SendMsg()}
         sx={{
           borderRadius: "50%",
           padding: "8px",
@@ -41,7 +41,7 @@ const SendBar = ({ id, onSend }) => {
         <SentimentSatisfiedAltIcon color="primary" />
       </MuiIconButton>
       <MuiTextField
-        sx={{ width: "85%", marginRight: "10px" }}
+        sx={{ width: "85%", marginRight: { md: "10px", xs: "0px" } }}
         placeholder="Type a message..."
         value={sendMessage}
         onChange={(e) => setSendMessage(e.target.value)}
@@ -56,7 +56,7 @@ const SendBar = ({ id, onSend }) => {
         }}
       />
       <MuiIconButton
-        onClick={() => SendMsg()}
+        // onClick={() => SendMsg()}
         sx={{
           borderRadius: "50%",
           padding: "8px",

@@ -17,23 +17,21 @@ import { Typography } from "@mui/material";
 import { ContactsData } from "../../../Data/JsonData/EmployeeData";
 import { useNavigate } from "react-router-dom";
 import "../../Css/DashboardAll.css";
+import {
+  CurrentPage,
+  CurrentPage2,
+  ReturnHomeCard,
+} from "../Common/ReturnHome";
 
 const ContactsTable = () => {
   const navigate = useNavigate();
   return (
     <div className="container-fluid">
       <div className="row">
-        <MuiCard className="d-flex justify-content-between m-1 p-3 mb-3">
-          <MuiTypography sx={{ fontSize: "medium", fontWeight: "bold" }}>
-            Contact Cards
-          </MuiTypography>
-          <MuiTypography sx={{ fontSize: "small", fontWeight: "bold" }}>
-            <MuiIconButton onClick={() => navigate("/dashboard/home")}>
-              <Home fontSize="small" sx={{ color: "#5e35b1" }} />{" "}
-            </MuiIconButton>
-            <ChevronRight sx={{ color: "gray" }} /> Cards
-          </MuiTypography>
-        </MuiCard>
+        <ReturnHomeCard>
+          <CurrentPage>Contact Cards</CurrentPage>
+          <CurrentPage2>Contact \ Cards</CurrentPage2>
+        </ReturnHomeCard>
         {ContactsData.map((data, i) => {
           return (
             <div key={i} className="col-12 col-sm-6 col-md-4 col-lg-4 mb-3">

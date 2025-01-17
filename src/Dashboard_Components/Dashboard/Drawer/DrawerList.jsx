@@ -30,7 +30,7 @@ import { Collapse } from "@mui/material";
 const DrawerList = ({ handleDrawerToggle }) => {
   return (
     <>
-      <MuiList
+      <MuiList 
         className="drawer-list"
         sx={{
           mx: 2,

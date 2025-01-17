@@ -26,24 +26,20 @@ import {
 import { useNavigate } from "react-router-dom";
 import { CalendarIcon } from "@mui/x-date-pickers";
 import { Card, LinearProgress, useTheme } from "@mui/material";
+import {
+  CurrentPage,
+  CurrentPage2,
+  ReturnHomeCard,
+} from "../Common/ReturnHome";
 const Statastics = () => {
-  const navigate = useNavigate();
   const theme = useTheme();
   return (
     <div className="container ">
       <div className="row">
-        <MuiCard className="d-flex justify-content-between mx-1 p-3 mb-3">
-          <MuiTypography sx={{ fontSize: "medium", fontWeight: "bold" }}>
-            Statastics
-          </MuiTypography>
-          <MuiTypography sx={{ fontSize: "small", fontWeight: "bold" }}>
-            <MuiIconButton onClick={() => navigate("/dashboard/home")}>
-              <Home fontSize="small" sx={{ color: "#5e35b1" }} />{" "}
-            </MuiIconButton>
-            <ChevronRight sx={{ color: "gray" }} />{" "}
-            <span style={{ color: "gray" }}> Statastics </span>
-          </MuiTypography>
-        </MuiCard>
+        <ReturnHomeCard>
+          <CurrentPage>Statastics</CurrentPage>
+          <CurrentPage2>Statastics</CurrentPage2>
+        </ReturnHomeCard>
       </div>
       <div className="row">
         {Row1stData.map((data, i) => {

@@ -2,6 +2,11 @@ import { DataGrid } from "@mui/x-data-grid";
 import { mockDataContacts } from "../../../Data/JsonData/EmployeeData";
 import { MuiAvatar, MuiBox } from "../../../MUIComponents/Mui";
 import { useState, useEffect } from "react";
+import {
+  CurrentPage,
+  CurrentPage2,
+  ReturnHomeCard,
+} from "../Common/ReturnHome";
 
 const GenderCell = (params) => {
   const [path, setPath] = useState("");
@@ -25,6 +30,10 @@ const GenderCell = (params) => {
 const CustomerTable = () => {
   return (
     <div className="container-fluid ms-2 mt-2">
+      <ReturnHomeCard>
+        <CurrentPage>Customer Table</CurrentPage>
+        <CurrentPage2>Customer</CurrentPage2>
+      </ReturnHomeCard>
       <DataGrid
         columns={[
           { field: "id", headerName: "ID" },

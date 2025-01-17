@@ -23,6 +23,7 @@ const PageNotFound404 = React.lazy(() => import("../Pages/PageNotFound404"));
 const Statastics = React.lazy(() => import("../Pages/Statastics/Statastics"));
 const ChatComponent = React.lazy(() => import("../Pages/Chats/ChatComponent"));
 const Calender = React.lazy(() => import("../Pages/Calender/Calender"));
+const MailComponent = React.lazy(() => import("../Pages/Mail/MailComponent"));
 const RouteingFile = () => {
   // const navigate = useNavigate();
 
@@ -90,7 +91,7 @@ const RouteingFile = () => {
         },
         {
           path: "/dashboard/mail",
-          element: <CommingSoon />,
+          element: <MailComponent />,
         },
         {
           path: "/dashboard/calender",

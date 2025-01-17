@@ -2,6 +2,11 @@ import { DataGrid } from "@mui/x-data-grid";
 import { mockUserJson } from "../../../Data/JsonData/EmployeeData";
 import { MuiAvatar, MuiBox, MuiTypography } from "../../../MUIComponents/Mui";
 import "../../Css/DashboardAll.css";
+import {
+  CurrentPage,
+  CurrentPage2,
+  ReturnHomeCard,
+} from "../Common/ReturnHome";
 const StatusCell = (params) => {
   const status = params.value;
   const statusStyle = {
@@ -31,6 +36,10 @@ const UsersTable = () => {
   return (
     <>
       <div className="container-fluid mt-3">
+        <ReturnHomeCard>
+          <CurrentPage>User Table</CurrentPage>
+          <CurrentPage2>User</CurrentPage2>
+        </ReturnHomeCard>
         <DataGrid
           columns={[
             { field: "id", headerName: "ID" },

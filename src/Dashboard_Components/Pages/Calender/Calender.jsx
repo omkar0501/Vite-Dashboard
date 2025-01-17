@@ -12,6 +12,11 @@ import {
   DialogTitle,
 } from "@mui/material";
 import { ArrowBack, ArrowForward } from "@mui/icons-material";
+import {
+  CurrentPage,
+  CurrentPage2,
+  ReturnHomeCard,
+} from "../Common/ReturnHome";
 
 function Calender() {
   const [currentDate, setCurrentDate] = useState(new Date());
@@ -107,93 +112,99 @@ function Calender() {
   };
 
   return (
-    <Box
-      sx={{
-        maxWidth: 800,
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        mx: "auto",
-        mt: 5,
-        border: "2px solid #1976D2",
-        backgroundColor: "white",
-      }}
-    >
+    <div className="container-fluid">
+      <ReturnHomeCard>
+        <CurrentPage>Calender</CurrentPage>
+        <CurrentPage2>Calender</CurrentPage2>
+      </ReturnHomeCard>
       <Box
         sx={{
           maxWidth: 800,
-          margin: "auto",
-          py: 5,
-          mx: { md: 5, xs: 1 },
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          mx: "auto",
+          mt: 2,
+          border: "2px solid #1976D2",
+          backgroundColor: "white",
         }}
       >
         <Box
           sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            mb: 2,
+            maxWidth: 800,
+            margin: "auto",
+            py: 5,
+            mx: { md: 5, xs: 1 },
           }}
         >
-          <IconButton onClick={() => changeMonth(-1)}>
-            <ArrowBack />
-          </IconButton>
-          <Typography variant="h5">
-            {months[currentDate.getMonth()]} {currentDate.getFullYear()}
-          </Typography>
-          <IconButton onClick={() => changeMonth(1)}>
-            <ArrowForward />
-          </IconButton>
-        </Box>
-        <Grid container spacing={1} sx={{ textAlign: "center" }}>
-          {daysOfWeek.map((day) => (
-            <Grid sx={{ fontWeight: "bold", mb: 1 }} item xs={1.7} key={day}>
-              <Typography variant="h6" fontWeight="bold">
-                {day}
-              </Typography>
-            </Grid>
-          ))}
-        </Grid>
-        <Grid
-          sx={{
-            backgroundColor: "rgba(241, 241, 241, 0.83)",
-            pb: 1,
-          }}
-          container
-          spacing={1}
-        >
-          {renderCalendar().map((dayElement, index) => (
-            <Grid item xs={1.7} key={index}>
-              {dayElement}
-            </Grid>
-          ))}
-        </Grid>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              mb: 2,
+            }}
+          >
+            <IconButton onClick={() => changeMonth(-1)}>
+              <ArrowBack />
+            </IconButton>
+            <Typography variant="h5">
+              {months[currentDate.getMonth()]} {currentDate.getFullYear()}
+            </Typography>
+            <IconButton onClick={() => changeMonth(1)}>
+              <ArrowForward />
+            </IconButton>
+          </Box>
+          <Grid container spacing={1} sx={{ textAlign: "center" }}>
+            {daysOfWeek.map((day) => (
+              <Grid sx={{ fontWeight: "bold", mb: 1 }} item xs={1.7} key={day}>
+                <Typography variant="h6" fontWeight="bold">
+                  {day}
+                </Typography>
+              </Grid>
+            ))}
+          </Grid>
+          <Grid
+            sx={{
+              backgroundColor: "rgba(241, 241, 241, 0.83)",
+              pb: 1,
+            }}
+            container
+            spacing={1}
+          >
+            {renderCalendar().map((dayElement, index) => (
+              <Grid item xs={1.7} key={index}>
+                {dayElement}
+              </Grid>
+            ))}
+          </Grid>
 
-        <Dialog open={openDialog} onClose={() => setOpenDialog(false)}>
-          <DialogTitle>Add Event</DialogTitle>
-          <DialogContent>
-            <TextField
-              fullWidth
-              label="Event Details"
-              value={eventText}
-              onChange={(e) => setEventText(e.target.value)}
-            />
-          </DialogContent>
-          <DialogActions>
-            <Button variant="outlined" onClick={() => setOpenDialog(false)}>
-              Cancel
-            </Button>
-            <Button
-              variant="outlined"
-              onClick={handleSaveEvent}
-              color="primary"
-            >
-              Save
-            </Button>
-          </DialogActions>
-        </Dialog>
+          <Dialog open={openDialog} onClose={() => setOpenDialog(false)}>
+            <DialogTitle>Add Event</DialogTitle>
+            <DialogContent>
+              <TextField
+                fullWidth
+                label="Event Details"
+                value={eventText}
+                onChange={(e) => setEventText(e.target.value)}
+              />
+            </DialogContent>
+            <DialogActions>
+              <Button variant="outlined" onClick={() => setOpenDialog(false)}>
+                Cancel
+              </Button>
+              <Button
+                variant="outlined"
+                onClick={handleSaveEvent}
+                color="primary"
+              >
+                Save
+              </Button>
+            </DialogActions>
+          </Dialog>
+        </Box>
       </Box>
-    </Box>
+    </div>
   );
 }
 

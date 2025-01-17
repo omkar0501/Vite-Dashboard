@@ -338,7 +338,7 @@ const DontHaveAccount = () => {
                           border: "1px solid rgba(0, 0, 0, 0.87)",
                         },
                         "&.Mui-focused": {
-                          border: "2px solid rgb(33, 150, 243)",
+                          // border: "2px solid rgb(33, 150, 243)",
                         },
                       },
                     }}

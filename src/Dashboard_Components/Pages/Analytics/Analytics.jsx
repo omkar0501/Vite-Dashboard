@@ -22,6 +22,11 @@ import {
 } from "@mui/icons-material";
 import { getColor } from "../../../Utils/utils";
 import { Revenue } from "../../../Data/JsonData/EmployeeData";
+import {
+  CurrentPage,
+  CurrentPage2,
+  ReturnHomeCard,
+} from "../Common/ReturnHome";
 
 const BoxData = [
   {
@@ -57,7 +62,11 @@ const Analytics = () => {
   const theme = useTheme();
 
   return (
-    <MuiBox className="row">
+    <MuiBox className="row mx-1">
+      <ReturnHomeCard>
+        <CurrentPage>Analytics</CurrentPage>
+        <CurrentPage2>Analytics</CurrentPage2>
+      </ReturnHomeCard>
       <Grid className="col-md-7">
         <AreaCharts />
         <MuiBox className="d-flex gap-2 my-2">

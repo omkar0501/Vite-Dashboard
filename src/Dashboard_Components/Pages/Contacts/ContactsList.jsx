@@ -11,6 +11,11 @@ import SearchComponent from "../../Dashboard/AppBar/SearchComponent";
 import { Box, Grid, useTheme } from "@mui/material";
 import { ContactsData } from "../../../Data/JsonData/EmployeeData";
 import SearchBar from "./SearchBar";
+import {
+  CurrentPage,
+  CurrentPage2,
+  ReturnHomeCard,
+} from "../Common/ReturnHome";
 
 const groupContactsByLetter = (contacts) => {
   return contacts.reduce((acc, contact) => {
@@ -32,15 +37,12 @@ const ContactsList = () => {
   return (
     <div className="container-fluid">
       <div className="row">
+        <ReturnHomeCard>
+          <CurrentPage> Contacts List</CurrentPage>
+          <CurrentPage2>List</CurrentPage2>
+        </ReturnHomeCard>
         <MuiCard sx={{ width: "100%", p: 0 }}>
-          <MuiTypography
-            className="d-flex m-3 align-items-center fw-bold"
-            sx={{ fontSize: "large" }}
-          >
-            Contact List
-          </MuiTypography>
-          <MuiDivider className="my-3" sx={{ width: "100%" }} />
-          <MuiBox className="d-flex justify-content-between mb-3 px-3">
+          <MuiBox className="d-flex justify-content-between mb-3 mt-3 px-3">
             <SearchBar />
             <MuiButton variant="contained" className="fw-bold">
               <AddCircleRounded className="me-1 fw-bold" /> Add
@@ -84,20 +86,41 @@ const ContactsList = () => {
                             </MuiTypography>
                           </MuiBox>
                         </Box>
-                        <Box className="d-flex justify-content-end">
+                        <Box
+                          sx={{ gap: { xs: 1 } }}
+                          className="d-flex justify-content-end"
+                        >
                           <MuiButton
-                            // variant="outlined"
+                            variant="outlined"
                             sx={{
                               marginRight: 2,
                               [theme.breakpoints.down("sm")]: {
                                 marginRight: "0px",
+                                padding: "4px 8px",
+                                fontSize: "0.75rem",
                               },
                             }}
                           >
-                            <Message sx={{ fontSize: "small" }} />
+                            <Message
+                              sx={{ fontSize: { xs: "small", md: "x-large" } }}
+                            />
                           </MuiButton>
-                          <MuiButton variant="outlined" color="secondary">
-                            <Phone />
+                          <MuiButton
+                            variant="outlined"
+                            color="secondary"
+                            sx={{
+                              marginRight: 2,
+                              [theme.breakpoints.down("sm")]: {
+                                marginRight: "0px",
+                                padding: "5px 1px 5px 1px",
+                                fontSize: "0.75rem",
+                                width: "70%",
+                              },
+                            }}
+                          >
+                            <Phone
+                              sx={{ fontSize: { xs: "small", md: "x-large" } }}
+                            />
                           </MuiButton>
                         </Box>
                       </Box>

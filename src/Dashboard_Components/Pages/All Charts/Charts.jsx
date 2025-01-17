@@ -13,6 +13,11 @@ import { Grid } from "@mui/material";
 import AreaCharts from "./AreaCharts";
 import PieCharts from "./PieCharts";
 import "../Default_Home/Default_Home.css";
+import {
+  CurrentPage,
+  CurrentPage2,
+  ReturnHomeCard,
+} from "../Common/ReturnHome";
 const CustomTooltip = ({ active, payload, label, title }) => {
   if (active && payload && payload.length) {
     return (
@@ -37,20 +42,12 @@ const CustomTooltip = ({ active, payload, label, title }) => {
 };
 
 const Charts = () => {
-  const navigate = useNavigate();
   return (
     <div className="container-fluid">
-      <MuiCard className="d-flex justify-content-between m-1 p-3 mb-3 align-items-center">
-        <MuiTypography sx={{ fontSize: "medium", fontWeight: "bold" }}>
-          Charts
-        </MuiTypography>
-        <MuiTypography sx={{ fontSize: "small", fontWeight: "bold" }}>
-          <MuiIconButton onClick={() => navigate("/dashboard/home")}>
-            <Home fontSize="small" sx={{ color: "#5e35b1" }} />{" "}
-          </MuiIconButton>
-          <ChevronRight sx={{ color: "gray" }} /> Charts
-        </MuiTypography>
-      </MuiCard>
+      <ReturnHomeCard>
+        <CurrentPage>Charts</CurrentPage>
+        <CurrentPage2>Charts</CurrentPage2>
+      </ReturnHomeCard>
       <div className="row">
         {LineData.map((data, i) => {
           return (
