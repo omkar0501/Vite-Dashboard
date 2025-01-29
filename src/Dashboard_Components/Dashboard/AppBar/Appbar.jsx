@@ -33,6 +33,7 @@ import DrawerList from "../Drawer/DrawerList";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DarkMode from "./DarkMode";
+import toast from "react-hot-toast";
 
 const drawerWidth = 240;
 const drawerWidthMobile = 200;
@@ -101,6 +102,7 @@ export const Appbar = ({ darkMode, toggleDarkMode }) => {
     localStorage.removeItem("Token");
     navigate("/");
     handleClose();
+    toast.success("Logout Successfully");
   };
 
   return (
@@ -282,7 +284,7 @@ export const Appbar = ({ darkMode, toggleDarkMode }) => {
                     height: 35,
                   },
                 }}
-                src="/sanket.jpg"
+                src="/DashboardImages/male.jpg"
               />
               <SettingsOutlinedIcon
                 className="AppBarIcon2"

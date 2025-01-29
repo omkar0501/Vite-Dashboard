@@ -20,6 +20,7 @@ import { useFormik } from "formik";
 import { Col, Row } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const validationSchema = yup.object({
   fname: yup.string("Enter your email").required("First name is required"),
@@ -57,7 +58,7 @@ const DontHaveAccount = () => {
         console.log(response);
         if (response.status === 201) {
           console.log(response);
-          alert("User Created");
+          toast.success("User Created");
           navigate("dashboard/home");
         }
       })
@@ -65,8 +66,10 @@ const DontHaveAccount = () => {
         if (error.response) {
           console.log(error.response);
           setErrorMessage(error.response.data.message || "failed !");
+          toast.error(error.response.data.message);
         } else {
           setErrorMessage("User creation failed");
+          toast.error("User Creation Failed");
         }
       });
   }
@@ -543,7 +546,7 @@ const DontHaveAccount = () => {
                 fontWeight: "bold",
                 p: 1,
                 mb: 2,
-                "@media (max-width:500px)": { width: "100%" },
+                "@media (max-width:500px)": { width: "90%" },
               }}
             >
               Sign Up

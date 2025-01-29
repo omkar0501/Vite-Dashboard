@@ -10,7 +10,7 @@ import propTypes from "prop-types";
 export const ReturnHomeCard = (props) => {
   return (
     <MuiCard
-      className="d-flex justify-content-between align-items-center m-1 p-md-3 p-lg-3 p-2 mb-2 mb-md-3 mb-lg-3"
+      className="d-flex justify-content-between align-items-center m-1 p-md-2 px-lg-3 px-md-3 p-lg-2 p-2 mb-2 mb-md-3 mb-lg-3"
       {...props}
     >
       {props.children}

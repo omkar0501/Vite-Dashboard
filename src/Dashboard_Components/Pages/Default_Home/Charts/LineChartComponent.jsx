@@ -29,7 +29,7 @@ function LineChartComponent() {
           <MuiBox className="row p-2 pt-4">
             <MuiTypography
               className="mb-2 mt-0 col-md-6 d-flex float-left bar-chart-title"
-              sx={{ fontSize: "smaller" }}
+              sx={{ fontSize: "smaller", fontWeight: "bold" }}
             >
               10% Profit
             </MuiTypography>

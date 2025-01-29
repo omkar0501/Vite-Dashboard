@@ -30,7 +30,7 @@ import { Collapse } from "@mui/material";
 const DrawerList = ({ handleDrawerToggle }) => {
   return (
     <>
-      <MuiList 
+      <MuiList
         className="drawer-list"
         sx={{
           mx: 2,
@@ -113,15 +113,22 @@ const TabMenu = ({
   exact,
   handleDrawerToggle,
 }) => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(true);
 
   const handleClick = () => {
-    setOpen(!open);
+    // setOpen(true);
   };
   const mediaQuery = window.matchMedia("(max-width: 900px)");
+  const handleItemClick = () => {
+    if (mediaQuery.matches) {
+      handleDrawerToggle();
+    } else {
+      handleClick();
+    }
+  };
 
   return (
-    <div onClick={() => (mediaQuery.matches ? handleDrawerToggle() : "")}>
+    <div onClick={() => (mediaQuery.matches ? handleItemClick() : "")}>
       <MuiListItemButton
         onClick={handleClick}
         className="list-item"

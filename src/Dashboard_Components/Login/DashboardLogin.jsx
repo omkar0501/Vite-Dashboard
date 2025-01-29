@@ -18,6 +18,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useFormik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 const validationSchema = yup.object({
   email: yup
@@ -53,8 +54,9 @@ const DashboardLogin = () => {
       .then((response) => {
         console.log(response);
         if (response.status === 200) {
-          console.log(response);
-          alert("LogIn Successfull");
+          console.log("response");
+          toast.success("Login successful!");
+          console.log("end");
           localStorage.setItem("Token", response.data.token);
           localStorage.setItem("RefreshToken", response.data.refresh);
           localStorage.setItem("username", values.email);
@@ -68,8 +70,10 @@ const DashboardLogin = () => {
         if (error.response) {
           console.log(error.response);
           setErrorMessage(error.response.data.message || "Login failed !");
+          toast.error(error.response.data.message);
         } else {
           setErrorMessage("Login failed");
+          toast.error("Login failed!");
         }
       });
   }
@@ -82,8 +86,8 @@ const DashboardLogin = () => {
   };
   const formik = useFormik({
     initialValues: {
-      email: "",
-      password: "",
+      email: "sanket1@gmail.com",
+      password: "Sanket@12345",
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
@@ -367,7 +371,7 @@ const DashboardLogin = () => {
                   fontWeight: "bold",
                   p: 1,
                   mb: 2,
-                  "@media (max-width:500px)": { width: "100%" },
+                  "@media (max-width:500px)": { width: "90%" },
                 }}
               >
                 Sign In

@@ -22,7 +22,7 @@
 /* ---------line chart---------------------------- */
 .line-chart-paper {
   background-color: var(--backgroundColor2) !important;
-  border-radius: 10%;
+  border-radius: 10px;
   box-shadow: none !important;
   cursor: pointer;
   transition: background-color 0.3s ease;

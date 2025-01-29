@@ -1,5 +1,7 @@
+import { Toaster } from "react-hot-toast";
 import "./App.css";
 import RouteingFile from "./Dashboard_Components/RouteFile/RoutingFile";
+
 // export const UserContext1 = createContext();
 
 function App() {
@@ -8,6 +10,7 @@ function App() {
   return (
     <>
       <RouteingFile />
+      <Toaster />
     </>
   );
 }
