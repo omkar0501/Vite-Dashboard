@@ -132,7 +132,7 @@ const TabMenu = ({
       <MuiListItemButton
         onClick={handleClick}
         className="list-item"
-        disablePadding
+        disablepadding
         as={childrens ? "" : NavLink}
         to={path}
         end={exact}
@@ -153,7 +153,7 @@ const TabMenu = ({
 
       <Collapse in={open} timeout="auto" unmountOnExit>
         {childrens && childrens.length > 0 && (
-          <MuiList component="div" disablePadding>
+          <MuiList component="div" disablepadding>
             {childrens.map((child) => (
               <MuiListItemButton
                 sx={{ pl: 4 }}

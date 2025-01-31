@@ -16,6 +16,7 @@ import {
   MuiToolbar,
   MuiDrawer,
   MuiTypography,
+  MuiDivider,
 } from "../../../MUIComponents/Mui";
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import WifiTetheringIcon from "@mui/icons-material/WifiTethering";
@@ -28,12 +29,14 @@ import {
   AccountCircleRounded,
   SocialDistance,
   TurnLeft,
+  BorderColor,
 } from "@mui/icons-material";
 import DrawerList from "../Drawer/DrawerList";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DarkMode from "./DarkMode";
 import toast from "react-hot-toast";
+import { LoggedUser } from "../../Utils/Util";
 
 const drawerWidth = 240;
 const drawerWidthMobile = 200;
@@ -79,8 +82,10 @@ export const Appbar = ({ darkMode, toggleDarkMode }) => {
   const theme = useTheme();
   const navigate = useNavigate();
   const [open, setOpen] = useState(true);
-  // const [close, setClose] = useState(false);
+  const [user, setUser] = useState(null);
   const isMd = useMediaQuery(theme.breakpoints.up("md"));
+  const username = localStorage.getItem("username");
+
   const handleDrawerToggle = () => {
     setOpen(!open);
   };
@@ -104,6 +109,15 @@ export const Appbar = ({ darkMode, toggleDarkMode }) => {
     handleClose();
     toast.success("Logout Successfully");
   };
+  useEffect(() => {
+    const getLoggedUser = async () => {
+      const users = await LoggedUser();
+      setUser(users.filter((data) => data.username == username));
+
+      console.log(user?.[0].fullname);
+    };
+    getLoggedUser();
+  }, []);
 
   return (
     <>
@@ -276,6 +290,7 @@ export const Appbar = ({ darkMode, toggleDarkMode }) => {
                 className="avatar"
                 sx={{
                   float: "left",
+                  border: "2px solid white",
                   // p: "5px",
                   [theme.breakpoints.down("sm")]: {
                     p: "0px",
@@ -284,7 +299,7 @@ export const Appbar = ({ darkMode, toggleDarkMode }) => {
                     height: 35,
                   },
                 }}
-                src="/DashboardImages/male.jpg"
+                src={user?.[0]?.profile}
               />
               <SettingsOutlinedIcon
                 className="AppBarIcon2"
@@ -312,6 +327,28 @@ export const Appbar = ({ darkMode, toggleDarkMode }) => {
               }}
               sx={{ width: 300 }}
             >
+              <MenuItem
+                onClick={handleClose}
+                sx={{
+                  backgroundColor: "#e3f2fd",
+                  marginTop: "-8px",
+                  py: 1,
+                  borderBottom: "1px solid rgb(185, 185, 187)",
+                }}
+              >
+                <MuiTypography
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    mx: "auto",
+                    fontWeight: "bold",
+                    color: "rgb(30, 136, 229)",
+                  }}
+                >
+                  {user?.[0]?.fullname}
+                </MuiTypography>
+              </MenuItem>
+              {/* <MuiDivider sx={{ border: "1px solid gray" }} /> */}
               <MenuItem
                 onClick={handleClose}
                 sx={{ paddingLeft: 2, paddingRight: 2 }}
@@ -346,7 +383,6 @@ export const Appbar = ({ darkMode, toggleDarkMode }) => {
             height: "100%",
             width: drawerWidth,
             boxSizing: "border-box",
-            // color: "gray", ////////////////////
             border: "none",
             [theme.breakpoints.down("sm")]: {
               width: drawerWidthMobile,
@@ -369,7 +405,6 @@ export const Appbar = ({ darkMode, toggleDarkMode }) => {
               mx: 2,
               fontWeight: "bolder",
               letterSpacing: 2,
-              // color: "black",//////////////////////
               "&:active": { color: "black" },
               [theme.breakpoints.down("md")]: {
                 // display: "none",

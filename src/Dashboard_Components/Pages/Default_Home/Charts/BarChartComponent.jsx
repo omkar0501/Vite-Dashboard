@@ -56,7 +56,7 @@ const BarChartComponent = () => {
           margin={{ top: 2, right: 3, left: 2, bottom: 5 }}
           // barCategoryGap="100%"
           barSize={20}
-        >
+        > 
           <CartesianGrid strokeDasharray="3 3" vertical={false} />
           <XAxis dataKey="month" />
           <YAxis />

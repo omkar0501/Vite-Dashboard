@@ -61,8 +61,8 @@ function LineChartComponent() {
           </ResponsiveContainer>
         </MuiPaper>
         {AreaChartData.map((data, i) => (
-          <div>
-            <MuiBox key={i} className="row m-1 py-2">
+          <div key={i}>
+            <MuiBox className="row m-1 py-2">
               <MuiBox className="col-6">
                 <MuiTypography
                   sx={{ fontSize: "small" }}

@@ -1,7 +1,7 @@
 import { styled } from "@mui/material";
 import { propTypes } from "react-bootstrap/esm/Image";
 import "../../Css/DashboardAll.css";
-import { useTheme } from "@emotion/react";
+import PropTypes from "prop-types";
 export const PageWarpperMainDashboardPage = (props) => {
   const drawerWidth = 240;
 
@@ -57,7 +57,7 @@ export const PageWarpperMainDashboardPage = (props) => {
 };
 
 PageWarpperMainDashboardPage.propTypes = {
-  children: propTypes.any,
+  children: PropTypes.any,
 };
 
 export default PageWarpperMainDashboardPage;

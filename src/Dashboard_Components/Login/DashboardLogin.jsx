@@ -86,7 +86,7 @@ const DashboardLogin = () => {
   };
   const formik = useFormik({
     initialValues: {
-      email: "sanket1@gmail.com",
+      email: "sanket01@gmail.com",
       password: "Sanket@12345",
     },
     validationSchema: validationSchema,

@@ -213,7 +213,7 @@ const ChatComponent = () => {
               <MuiTypography className=" p-3 d-flex justify-content-between align-items-center mb-1">
                 {currentUser && (
                   <div className="d-flex align-items-center gap-2">
-                    <MuiAvatar src={getGenderPath(currentUser.gender)} />
+                    <MuiAvatar src={currentUser.profile} />
                     <MuiTypography className="fw-bold">
                       {currentUser.fullname}
                     </MuiTypography>
@@ -256,7 +256,7 @@ const ChatComponent = () => {
                           className="d-flex gap-2"
                           onClick={handleMobileView}
                         >
-                          <MuiAvatar src={getGenderPath(user?.gender)} />
+                          <MuiAvatar src={user.profile} />
 
                           <MuiTypography className="fw-bold">
                             {user.fullname}
@@ -311,7 +311,7 @@ const ChatComponent = () => {
                         >
                           <ArrowBack sx={{}} onClick={handleMobileView} />
                         </MuiIconButton>
-                        <MuiAvatar src={getGenderPath(currentUser.gender)} />
+                        <MuiAvatar src={chatUser.profile} />
                         <MuiTypography
                           className="fw-bold"
                           sx={{

@@ -1,19 +1,17 @@
-import { useTheme, InputAdornment, Popper } from "@mui/material";
+import { useTheme, InputAdornment, Avatar } from "@mui/material";
 import * as yup from "yup";
 import {
   MuiBox,
   MuiButton,
   MuiCard,
-  MuiCheckBox,
   MuiDivider,
-  MuiFormControlLabel,
   MuiIconButton,
   MuiMenuItem,
   MuiTextField,
   MuiTypography,
 } from "../../MUIComponents/Mui";
 import "../Css/DashboardAll.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useFormik } from "formik";
@@ -41,6 +39,7 @@ const validationSchema = yup.object({
 const DontHaveAccount = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [profile, setProfile] = useState(null);
   const navigate = useNavigate();
   const theme = useTheme();
 
@@ -48,6 +47,7 @@ const DontHaveAccount = () => {
     setErrorMessage("");
     axios
       .post("https://node-js-view-point.onrender.com/api/auth/signup", {
+        profile: profile,
         fullname: values.fname + " " + values.lname,
         username: values.email,
         gender: values.gender,
@@ -59,7 +59,7 @@ const DontHaveAccount = () => {
         if (response.status === 201) {
           console.log(response);
           toast.success("User Created");
-          navigate("dashboard/home");
+          navigate("/");
         }
       })
       .catch((error) => {
@@ -94,6 +94,7 @@ const DontHaveAccount = () => {
       signup(values);
     },
   });
+
   return (
     <div className="d-flex justify-content-center align-items-center">
       <MuiCard
@@ -120,13 +121,7 @@ const DontHaveAccount = () => {
               variant="h5"
               sx={{ fontWeight: "bold", letterSpacing: "1px" }}
             >
-              <img
-                style={{
-                  borderRadius: "50%",
-                  width: "6%",
-                }}
-                src="/DashboardImages/Berry.png"
-              />
+              <Avatar src="/DashboardImages/Berry.png" />
               <span className="mx-1" />
               View Point
             </MuiTypography>
@@ -150,12 +145,7 @@ const DontHaveAccount = () => {
             >
               Enter your credentials to continue
             </MuiTypography>
-            <MuiTypography
-              className="d-flex justify-content-center align-items-center"
-              sx={{ mb: 3, color: "black", fontFamily: "sans-serif" }}
-            >
-              Sign up with Email address
-            </MuiTypography>
+
             {errorMessage && (
               <MuiTypography
                 className="d-flex justify-content-center"
@@ -165,7 +155,35 @@ const DontHaveAccount = () => {
                 {errorMessage}
               </MuiTypography>
             )}
-
+            <MuiTypography
+              className="d-flex justify-content-center align-items-center"
+              sx={{ mb: 2, color: "black", fontFamily: "sans-serif" }}
+            >
+              Select a Profile Picture
+            </MuiTypography>
+            <div className="d-flex gap-2 justify-content-center mb-2">
+              {ProfileImages.map((pic, i) => {
+                return (
+                  <Avatar
+                    key={i}
+                    src={pic.link}
+                    onClick={() => setProfile(pic.link)}
+                    sx={{
+                      border:
+                        profile === pic.link
+                          ? "3px solid rgb(136, 228, 159)"
+                          : "3px solid rgb(187, 157, 252)",
+                      width: "50px",
+                      height: "50px",
+                      mb: 1,
+                      "&:hover": {
+                        border: "none",
+                      },
+                    }}
+                  />
+                );
+              })}
+            </div>
             <MuiBox>
               <Row className="d-flex justify-content-center">
                 <Col md={4} sm={4} xs={12}>
@@ -377,7 +395,7 @@ const DontHaveAccount = () => {
                     }
                     InputLabelProps={{
                       sx: {
-                        fontSize: "0.95rem",
+                        fontSize: "0.75rem",
                         "&.MuiInputLabel-shrink": {
                           marginTop: "1rem",
                           paddingLeft: "0.25rem",
@@ -442,7 +460,7 @@ const DontHaveAccount = () => {
                     }
                     InputLabelProps={{
                       sx: {
-                        fontSize: "0.95rem",
+                        fontSize: "0.75rem",
                         "&.MuiInputLabel-shrink": {
                           marginTop: "1rem",
                           paddingLeft: "0.25rem",
@@ -490,52 +508,9 @@ const DontHaveAccount = () => {
               </Row>
             </MuiBox>
           </MuiBox>
-          <Popper sx={{ width: "65%", mx: "auto" }} />
-          <MuiBox
-            sx={{
-              display: "flex",
-              justifyContent: "space-between",
-              mb: 2,
-              width: "100%",
-              maxWidth: "400px",
-              marginLeft: "auto",
-              marginRight: "auto",
-            }}
-          >
-            <MuiBox
-              sx={{
-                display: "flex",
-                alignItems: "center",
-                "@media (max-width:430px)": {
-                  flexDirection: "row",
-                },
-              }}
-            >
-              <MuiFormControlLabel
-                control={
-                  <MuiCheckBox
-                    name="checkedA"
-                    color="primary"
-                    // onChange={(e) => setRememberMe(e.target.checked)}
-                    // checked={rememberMe}
-                  />
-                }
-                label="Agree with Terms & Condition."
-                sx={{
-                  "& .MuiFormControlLabel-label": {
-                    fontSize: "small",
-                    fontWeight: "bold",
-                    "@media (max-width:430px)": {
-                      fontSize: "smaller",
-                    },
-                  },
-                }}
-              />
-            </MuiBox>
-          </MuiBox>
+          {/* <Popper sx={{ width: "65%", mx: "auto" }} /> */}
           <div className="d-flex justify-content-center align-items-center">
             <MuiButton
-              // onClick={formik.submitForm()}
               type="submit"
               className="signupButton"
               variant="filled"
@@ -546,7 +521,7 @@ const DontHaveAccount = () => {
                 fontWeight: "bold",
                 p: 1,
                 mb: 2,
-                "@media (max-width:500px)": { width: "90%" },
+                "@media (max-width:500px)": { width: "90%", mx: 2 },
               }}
             >
               Sign Up
@@ -580,3 +555,26 @@ const DontHaveAccount = () => {
   );
 };
 export default DontHaveAccount;
+
+const ProfileImages = [
+  {
+    link: "https://img.freepik.com/free-photo/3d-rendering-boy-wearing-cap-with-letter-r_1142-40523.jpg?ga=GA1.1.1384733336.1733983682&semt=ais_hybrid",
+    id: 1,
+  },
+  {
+    link: "https://img.freepik.com/free-photo/3d-illustration-business-man-with-glasses-grey-background-clipping-path_1142-58140.jpg?t=st=1738217918~exp=1738221518~hmac=71c7f150c4bc67af8c2c065c100f87dcfedf7f0dac3d755a0700e7f709b34159&w=740",
+    id: 2,
+  },
+  {
+    link: "https://img.freepik.com/free-photo/3d-illustration-cute-little-girl-with-green-jacket_1142-42111.jpg?ga=GA1.1.1384733336.1733983682",
+    id: 3,
+  },
+  {
+    link: "https://img.freepik.com/free-photo/medium-shot-little-girl-indoors_23-2151061744.jpg?ga=GA1.1.1384733336.1733983682",
+    id: 4,
+  },
+  {
+    link: "https://static.qobuz.com/images/covers/ua/a8/fy53g3rnha8ua_600.jpg",
+    id: 5,
+  },
+];
