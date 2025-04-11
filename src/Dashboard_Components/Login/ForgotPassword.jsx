@@ -11,15 +11,18 @@ import {
 } from "../../MUIComponents/Mui";
 import "../Css/DashboardAll.css";
 import { useFormik } from "formik";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import toast from "react-hot-toast";
+import axios from "axios";
 
 const validationSchema = yup.object({
   email: yup
     .string("Enter your email")
     .email("Enter a valid email")
     .required("Email is required"),
+  otp: yup.string("Enter OTP").required("OTP is required"),
   password: yup
     .string("Enter your password")
     .min(8, "Password should be of minimum 8 characters length")
@@ -33,7 +36,7 @@ const validationSchema = yup.object({
 const ForgotPassword = () => {
   const theme = useTheme();
   const [showPassword, setShowPassword] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -45,12 +48,68 @@ const ForgotPassword = () => {
   const formik = useFormik({
     initialValues: {
       email: "",
+      otp: "",
       password: "",
       confirmPassword: "",
     },
     validationSchema: validationSchema,
-    onSubmit: (values) => {},
+    onSubmit: () => {},
   });
+
+  const SendOtp = (email) => {
+    email == ""
+      ? toast.error("enter email")
+      : axios
+          .post("https://node-js-view-point.onrender.com/api/auth/send-otp", {
+            username: email,
+          })
+          .then((response) => {
+            console.log(response);
+            if (response.status === 200) {
+              toast.success(response.data.msg || "OTP Send Succesfully !");
+            }
+          })
+          .catch((error) => {
+            if (error.response) {
+              console.log(error.response);
+              toast.error(error.response.data.msg);
+            } else {
+              toast.error("Login failed!");
+            }
+          });
+  };
+
+  const SetNewPassword = (email, otp, password) => {
+    otp || password == ""
+      ? toast.error("enter otp & password")
+      : axios
+          .post(
+            "https://node-js-view-point.onrender.com/api/auth/reset-password",
+            {
+              email: email,
+              otp: otp,
+              newPassword: password,
+            }
+          )
+          .then((response) => {
+            console.log(response);
+            if (response.status === 200) {
+              toast.success(
+                response.data.msg || "Password Updated Successfully!"
+              );
+              navigate("/");
+            }
+          })
+          .catch((error) => {
+            if (error.response) {
+              console.log(error.response);
+              toast.error(error.response.data.msg);
+            } else {
+              toast.error("Something went wrong!");
+            }
+          });
+  };
+
   return (
     <div className="d-flex justify-content-center align-items-center">
       <MuiCard
@@ -86,7 +145,7 @@ const ForgotPassword = () => {
               src="/DashboardImages/Berry.png"
             />
             <span className="mx-1" />
-            VIEW Point
+            View Point
           </MuiTypography>
           <br />
           <MuiTypography
@@ -118,7 +177,7 @@ const ForgotPassword = () => {
           <div className="d-flex justify-content-center align-items-center">
             <MuiTextField
               type="email"
-              label="Email Address / Username"
+              label="Email Address"
               variant="filled"
               id="email"
               name="email"
@@ -175,6 +234,7 @@ const ForgotPassword = () => {
           </div>
           <div className="d-flex justify-content-center align-items-center">
             <MuiButton
+              onClick={() => SendOtp(formik.values.email)}
               className="signupButton"
               variant="filled"
               sx={{
@@ -187,7 +247,7 @@ const ForgotPassword = () => {
                 "@media (max-width:500px)": { width: "100%" },
               }}
             >
-              Send Email
+              Send OTP
             </MuiButton>
           </div>
           <MuiDivider
@@ -198,6 +258,64 @@ const ForgotPassword = () => {
               mx: "auto",
             }}
           />
+          <div className="d-flex justify-content-center align-items-center">
+            <MuiTextField
+              type="text"
+              label="OTP"
+              variant="filled"
+              id="otp"
+              name="otp"
+              value={formik.values.otp}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={formik.touched.otp && Boolean(formik.errors.otp)}
+              helperText={formik.touched.otp && formik.errors.otp}
+              InputLabelProps={{
+                sx: {
+                  fontSize: "0.75rem",
+                  "&.MuiInputLabel-shrink": {
+                    marginTop: "1rem", // Adjust margin when label is shrunk (focused or filled)
+                    paddingLeft: "0.25rem", // Adjust padding when label is shrunk
+                    fontSize: "0.95rem", // Ensure the font size remains small when shrunk
+                    transform: "translate(14px, -6px) scale(0.75)", // Adjust the transform to move the label correctly
+                  },
+                },
+              }}
+              InputProps={{
+                disableUnderline: true, // Disable underline to make it look like outlined variant
+                sx: {
+                  fontWeight: "550",
+                  fontFamily: "inherit",
+                  backgroundColor: "white", // Input background color
+                  borderRadius: "10px", // Border radius
+                  border: "1px solid rgba(0, 0, 0, 0.23)", // Default border color
+                  paddingLeft: "0.3rem", // Padding inside the input
+                  "&:hover": {
+                    border: "1px solid rgba(0, 0, 0, 0.87)", // Border color on hover
+                  },
+                  "&.Mui-focused": {
+                    border: "2px solid rgb(33, 150, 243)", // Border color on focus
+                  },
+                },
+              }}
+              sx={{
+                mb: 2,
+                width: "100%", // Make the text field take the full width of the container
+                maxWidth: "400px", // Limit the maximum width
+                "& .MuiFilledInput-root": {
+                  backgroundColor: "rgb(244 245 247)", // Set background color for the filled input
+                  borderRadius: "10px",
+                  "&:hover": {
+                    backgroundColor: "rgb(244 245 247)",
+                  },
+                },
+                "& .MuiFilledInput-underline:before, & .MuiFilledInput-underline:after":
+                  {
+                    display: "none", // Hide the underline for both before and after states
+                  },
+              }}
+            />
+          </div>
           <div className="d-flex justify-content-center align-items-center">
             <MuiTextField
               type={showPassword ? "text" : "password"}
@@ -253,10 +371,10 @@ const ForgotPassword = () => {
               sx={{
                 width: "100%", // Make the text field take the full width of the container
                 maxWidth: "400px", // Limit the maximum width
+                mb: 2,
                 "& .MuiFilledInput-root": {
                   backgroundColor: "rgb(232, 240, 254)", // Set background color for the filled input
                   borderRadius: "10px",
-                  mb: 2,
                   "&:hover": {
                     backgroundColor: "rgb(232, 240, 254)",
                   },
@@ -328,10 +446,10 @@ const ForgotPassword = () => {
               sx={{
                 width: "100%", // Make the text field take the full width of the container
                 maxWidth: "400px", // Limit the maximum width
+                mb: 2,
                 "& .MuiFilledInput-root": {
                   backgroundColor: "rgb(232, 240, 254)", // Set background color for the filled input
                   borderRadius: "10px",
-                  mb: 2,
                   "&:hover": {
                     backgroundColor: "rgb(232, 240, 254)",
                   },
@@ -345,6 +463,13 @@ const ForgotPassword = () => {
           </div>
           <div className="d-flex justify-content-center align-items-center">
             <MuiButton
+              onClick={() => {
+                SetNewPassword(
+                  formik.values.email,
+                  formik.values.otp,
+                  formik.values.password
+                );
+              }}
               className="signupButton"
               variant="filled"
               sx={{

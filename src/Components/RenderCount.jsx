@@ -32,7 +32,7 @@ const RenderCount = () => {
 };
 export default RenderCount;
 
-export const FocusInput = () => {
+export const FocusInput = () => { 
   const inputRef = useRef(null);
 
   const handleClick = () => {
